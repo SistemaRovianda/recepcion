@@ -1,0 +1,7 @@
+{
+  "name": "rovianda_mobile_reception",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
