@@ -8,11 +8,8 @@ import {
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-// import { AppStateInterface } from "src/app/shared/models/storeState.interface";
-// import {
-//   SELECT_USER_CURRENT_TOKEN,
-//   SELECT_USER_TOKEN,
-// } from "src/app/features/landing/store/authentication/authentication.selectors";
+import { SELECT_USER_TOKEN } from "../features/landing/store/authentication/authentication.selectors";
+import { AppState } from "../shared/models/app-state.interface";
 
 @Injectable({
   providedIn: "root",
@@ -20,10 +17,10 @@ import { Observable } from "rxjs";
 export class AuthorizationTokenInterceptor implements HttpInterceptor {
   token: string;
 
-  constructor() {
-    // this.store.select(SELECT_USER_TOKEN).subscribe((token) => {
-    //   this.token = token;
-    // });
+  constructor(private _store: Store<AppState>) {
+    this._store.select(SELECT_USER_TOKEN).subscribe((token) => {
+      this.token = token;
+    });
   }
 
   intercept(
