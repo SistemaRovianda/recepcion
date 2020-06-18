@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { from, of } from "rxjs";
-import { catchError, delay, exhaustMap, switchMap, tap } from "rxjs/operators";
-import * as fromLoginActions from "./login.action";
-import { AuthService } from "src/app/shared/Services/auth.service";
-import * as fromAuthenticationUser from "../authentication/authentication.action";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { from, of } from 'rxjs';
+import { catchError, delay, exhaustMap, switchMap, tap } from 'rxjs/operators';
+import * as fromLoginActions from './login.action';
+import * as fromAuthenticationUser from '../authentication/authentication.action';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Injectable()
 export class LogginEffects {
@@ -46,7 +46,7 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getTokenCurrentUser().pipe(
           switchMap(({ currentToken }) => {
-            localStorage.setItem("token", currentToken);
+            localStorage.setItem('token', currentToken);
             return [
               fromAuthenticationUser.loadUser({ currentToken }),
               fromLoginActions.signAuthSuccess({ uid: action.uid }),
@@ -69,7 +69,7 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getUserData(action.uid).pipe(
           switchMap(({ email, name, rol }) => {
-            localStorage.setItem("role", rol);
+            localStorage.setItem('role', rol);
             return [
               fromAuthenticationUser.loadUser({
                 email,
@@ -94,11 +94,11 @@ export class LogginEffects {
     this.action$.pipe(
       ofType(fromLoginActions.signInSuccess),
       exhaustMap(() =>
-        from(this.router.navigate(["/formulation/register-product"])).pipe(
+        from(this.router.navigate(['/menu/reception'])).pipe(
           switchMap((result) =>
             result
               ? [fromLoginActions.finishLoad()]
-              : [fromLoginActions.signInFailure({ error: "Usuario no valido" })]
+              : [fromLoginActions.signInFailure({ error: 'Usuario no valido' })]
           ),
           catchError((error) =>
             of(

@@ -1,0 +1,33 @@
+.btn-class {
+  width: 182px;
+  height: 172px;
+}
+
+ion-button {
+  width: 470px;
+  height: 172px;
+  --background: #575552;
+  --border-radius: 7px;
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+}
+
+h1 {
+  --font-family: Montserrat;
+  --font-size: 30px;
+  --font-weight: bold;
+  text-align: left;
+  color: #575552;
+}
+
+.center {
+  text-align: center;
+}
+
+#btn-next {
+  width: 359px;
+  height: 76px;
+  border-radius: 9px;
+  --background: #e1bc5c;
+}
