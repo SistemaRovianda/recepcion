@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/menu/menu.module').then((m) => m.MenuModule),
   },
+  {
+    path: 'meat',
+    loadChildren: () =>
+      import('./features/meat/meat.routing').then((m) => m.MeatRoutingModule),
+  },
 ];
 
 @NgModule({
