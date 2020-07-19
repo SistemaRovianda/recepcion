@@ -1,33 +1,75 @@
-.btn-class {
-  width: 182px;
-  height: 172px;
+@import "../../../../../theme/mixins.scss";
+
+.menu {
+  height: 100%;
+
+  &__header {
+    height: 10%;
+  }
+
+  &__title {
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-title-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-medium) {
+      font-size: var(--fs-text-title-md);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-title-xl);
+    }
+  }
+
+  &__options {
+    height: 90%;
+  }
 }
 
-ion-button {
-  width: 470px;
-  height: 172px;
-  --background: #575552;
-  --border-radius: 7px;
-  display: inline-block;
-  text-align: center;
-  font-size: 30px;
-}
+.options {
+  width: 85%;
+  height: 85%;
+  &__row {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 
-h1 {
-  --font-family: Montserrat;
-  --font-size: 30px;
-  --font-weight: bold;
-  text-align: left;
-  color: #575552;
-}
+  &__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-.center {
-  text-align: center;
-}
+  &__button {
+    width: 90%;
+    height: 80%;
+    vertical-align: middle;
+    white-space: pre-wrap;
+    line-height: 1.6;
 
-#btn-next {
-  width: 359px;
-  height: 76px;
-  border-radius: 9px;
-  --background: #e1bc5c;
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-sm);
+    }
+
+    @include breakpoint-size(ms-medium) {
+      font-size: var(--fs-text-md);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-xl);
+    }
+  }
 }

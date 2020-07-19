@@ -1,16 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import { from, Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
-import { User } from "../models/user.interface";
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import { from, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { API_ENDPOINT_PROVIDER } from 'src/app/providers/tokens';
+import { User } from '../models/user.interface';
 import Auth = firebase.auth.Auth;
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthService {
   url: string;
@@ -20,11 +21,12 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private _router: Router,
+    private _storage: Storage,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {
     firebase.initializeApp({
-      apiKey: "AIzaSyDaoKnC-MSM0b069pawJ5KI1eWlbmng99o",
-      authDomain: "rovianda-88249.firebaseapp.com",
+      apiKey: 'AIzaSyDaoKnC-MSM0b069pawJ5KI1eWlbmng99o',
+      authDomain: 'rovianda-88249.firebaseapp.com',
     });
 
     this.auth = firebase.auth();
@@ -49,11 +51,24 @@ export class AuthService {
     return this.http.get<User>(`${this.url}/user/${uid}`);
   }
 
-  isAuth(): boolean {
-    return (
-      localStorage.getItem("token") != null &&
-      localStorage.getItem("role") == "RECEPTION"
-    );
+  isAuth(): Observable<any> {
+    return from(
+      this._storage.get('token').then((token) => {
+        console.log('Token: ', token);
+        if (token) return Promise.resolve(true);
+        return false;
+      })
+    ).pipe(map((val) => val));
+  }
+
+  verifyRole(): Observable<boolean> {
+    return from(
+      this._storage.get('role').then((role) => {
+        console.log('rol: ', role);
+        if (role != null && role == 'RECEPTION') return Promise.resolve(true);
+        return Promise.resolve(false);
+      })
+    ).pipe(map((res) => res));
   }
 
   getTokenCurrentUser(): Observable<any> {
@@ -70,10 +85,12 @@ export class AuthService {
   }
 
   signOut(): Observable<any> {
-    localStorage.clear();
+    this._storage.clear().then((res) => {
+      console.log('Clear Storage');
+    });
     return from(
       this.auth.signOut().then(() => {
-        this._router.navigate(["/"], { replaceUrl: true });
+        this._router.navigate(['/'], { replaceUrl: true });
       })
     );
   }

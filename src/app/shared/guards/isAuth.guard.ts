@@ -1,14 +1,16 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router,
-} from "@angular/router";
-import { AuthService } from "../services/auth.service";
+} from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class IsAuthGuard implements CanActivate {
   constructor(private _authService: AuthService) {}
@@ -18,9 +20,21 @@ export class IsAuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ):
     | boolean
-    | import("@angular/router").UrlTree
-    | import("rxjs").Observable<boolean | import("@angular/router").UrlTree>
-    | Promise<boolean | import("@angular/router").UrlTree> {
-    return this._authService.isAuth() == false ? true : false;
+    | import('@angular/router').UrlTree
+    | import('rxjs').Observable<boolean | import('@angular/router').UrlTree>
+    | Promise<boolean | import('@angular/router').UrlTree> {
+    return this.checkLogin();
+  }
+
+  checkLogin(): Observable<boolean> {
+    return this._authService.isAuth().pipe(
+      mergeMap(
+        (val) => this._authService.verifyRole(),
+        (val1, val2) => {
+          console.log('[isAuth] mergeMap: token: ', val1, 'role: ', val2);
+          return !val1 && !val2 ? true : false;
+        }
+      )
+    );
   }
 }

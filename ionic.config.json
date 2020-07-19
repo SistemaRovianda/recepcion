@@ -1,7 +1,8 @@
 {
   "name": "rovianda_mobile_reception",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

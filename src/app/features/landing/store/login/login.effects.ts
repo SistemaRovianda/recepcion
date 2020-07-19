@@ -6,13 +6,15 @@ import { catchError, delay, exhaustMap, switchMap, tap } from 'rxjs/operators';
 import * as fromLoginActions from './login.action';
 import * as fromAuthenticationUser from '../authentication/authentication.action';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class LogginEffects {
   constructor(
     private action$: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _storage: Storage
   ) {}
 
   signInEffect$ = createEffect(() =>
@@ -46,7 +48,7 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getTokenCurrentUser().pipe(
           switchMap(({ currentToken }) => {
-            localStorage.setItem('token', currentToken);
+            this._storage.set("token", currentToken);
             return [
               fromAuthenticationUser.loadUser({ currentToken }),
               fromLoginActions.signAuthSuccess({ uid: action.uid }),
@@ -69,7 +71,8 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getUserData(action.uid).pipe(
           switchMap(({ email, name, rol }) => {
-            localStorage.setItem('role', rol);
+            this._storage.set("role", rol);
+            this._storage.set("uid", action.uid);
             return [
               fromAuthenticationUser.loadUser({
                 email,

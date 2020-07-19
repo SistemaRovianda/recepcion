@@ -1,33 +1,32 @@
-<title-header
-  [titlePath]="'Regresar'"
-  [path]="'/'"
-  [title]="'Men&uacute;'"
-></title-header>
+<title-header [titlePath]="'Salir'" [title]="'Recepción'" (onBack)="logout($event)"></title-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row size="12">
-      <ion-col size="12">
-        <h1 class="title-menu">Men&uacute;</h1>
-        <br /><br /><br /><br />
+  <ion-grid fixed class="menu">
+    <ion-row class="menu menu__row menu__header" size="12">
+      <ion-col class="menu menu__column" size="12">
+        <h1 class="menu menu__title">Menú</h1>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col class="center"
-        ><ion-button size="6" class="btn-class"
-          >Entrada<br />Carne</ion-button
-        ></ion-col
-      >
-      <ion-col class="center"
-        ><ion-button size="6" class="btn-class"
-          >Entrada<br />Paquetes</ion-button
-        ></ion-col
-      >
-    </ion-row>
-    <ion-row>
-      <ion-col class="center">
-        <ion-button>Entrada<br />Secos</ion-button>
-      </ion-col>
+    <ion-row class="menu menu__row menu__options">
+
+      <ion-grid class="options">
+        <ion-row class="options options__row">
+          <ion-col class="options options__column" size="6">
+            <ion-button class="options options__button" color="secondary">Entrada Carne</ion-button>
+          </ion-col>
+          <ion-col class="options options__column" size=6>
+            <ion-button class="options options__button" color="secondary">Entrada Paquetes</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="option options__row">
+          <ion-col class="options options__column" size="6">
+            <ion-button class="options options__button" color="secondary">Entrada Secos</ion-button>
+          </ion-col>
+          <ion-col class="options options__column" size="6">
+            <ion-button class="options options__button" color="secondary">Registro ingredientes</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-row>
   </ion-grid>
 </ion-content>
