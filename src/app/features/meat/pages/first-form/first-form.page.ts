@@ -14,4 +14,8 @@ export class FirstFormPage implements OnInit {
   onBack(evt) {
     this._router.navigate(['/menu/reception']);
   }
+
+  onNextPage() {
+    this._router.navigate(['meat', 'second-form-meat']);
+  }
 }

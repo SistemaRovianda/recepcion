@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seventh-form.page.scss'],
 })
 export class SeventhFormPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  openCamera() {
+    console.log('Tomar foto');
   }
-
 }

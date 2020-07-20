@@ -1,0 +1,86 @@
+@import "../../../../../theme/mixins.scss";
+
+.container {
+    height: 100%;
+
+    &__row {
+        &--title {
+            @include breakpoint-size(ms-extra-small) {
+                height: 5%;
+            }
+
+            @include breakpoint-size(ms-small) {
+                height: 5%;
+            }
+
+            @include breakpoint-size(ms-medium) {
+                height: 10%;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+                height: 10%;
+            }
+        }
+
+        &--form {
+            @include breakpoint-size(ms-extra-small) {
+                height: 85%;
+            }
+
+            @include breakpoint-size(ms-small) {
+                height: 85%;
+            }
+
+            @include breakpoint-size(ms-medium) {
+                height: 80%;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+                height: 80%;
+            }
+        }
+
+        &--action {
+            @include breakpoint-size(ms-extra-small) {
+                height: 10%;
+            }
+
+            @include breakpoint-size(ms-small) {
+                height: 10%;
+            }
+
+            @include breakpoint-size(ms-medium) {
+                height: 10%;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+                height: 10%;
+            }
+        }
+    }
+
+    &__column {
+        display: flex;
+    }
+
+    &__button {
+        width: 50%;
+        height: 50%;
+
+        @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+        }
+
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+
+        @include breakpoint-size(ms-medium) {
+            font-size: var(--fs-text-md);
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl);
+        }
+    }
+}

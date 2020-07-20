@@ -5,5 +5,37 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <h2>Etiqueta</h2>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <img src="{{imageURL}}" width="150px" height="150px">
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="openCamera()" expand="block" fill="clear" shape="round">
+          Tomar foto
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Inspector de caliad</ion-label>
+          <ion-input type="text" placeholder="Ingrese nombre del inspector"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Puesto</ion-label>
+          <ion-input type="text" placeholder="Ingrese puesto"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

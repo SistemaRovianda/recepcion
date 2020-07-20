@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-second-form',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second-form.page.scss'],
 })
 export class SecondFormPage implements OnInit {
+  constructor(private _router: Router) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onNextPage(evt) {
+    this._router.navigate(['meat', 'third-form-meat']);
   }
-
 }

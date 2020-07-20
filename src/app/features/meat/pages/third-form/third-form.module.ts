@@ -6,9 +6,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { ThirdFormPage } from './third-form.page';
 import { RouterModule } from '@angular/router';
+import { ThirdFormModule } from '../../components/forms/third-form/third-form.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule,
+    ThirdFormModule,
+  ],
   declarations: [ThirdFormPage],
 })
 export class ThirdFormPageModule {}

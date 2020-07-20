@@ -1,0 +1,45 @@
+@import "../../../../../../theme/mixins.scss";
+
+.container {
+    height: 100%;
+
+    &__row {
+        @include breakpoint-size(ms-extra-small) {
+            height: 20%;
+        }
+
+        @include breakpoint-size(ms-small) {
+            height: 20%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+            height: 20%;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            height: 20%;
+        }
+    }
+
+    &__item {
+        height: auto;
+    }
+
+    &__label {
+        @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+        }
+
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+
+        @include breakpoint-size(ms-medium) {
+            font-size: var(--fs-text-md);
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl);
+        }
+    }
+}

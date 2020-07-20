@@ -1,5 +1,25 @@
 <title-header [titlePath]="'Regresar'" [title]="'Entrada Secos'" (onBack)="onBack($event)"></title-header>
 
 <ion-content>
+    <ion-grid fixed class="container">
+        <ion-row class="container container__row container__row--title">
+            <ion-col class="container container__column" size="12">
+                <h1 class="container container__title">Información principal</h1>
+            </ion-col>
+        </ion-row>
+        <ion-row class="container container__row container__row--form">
+            <ion-col class="container container__column" size="12">
+                <first-form></first-form>
+            </ion-col>
+        </ion-row>
+        <ion-row class="container container__row container__row--action">
+            <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
+                <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
+                    color="primary">
+                    Siguiente
+                </ion-button>
+            </ion-col>
 
+        </ion-row>
+    </ion-grid>
 </ion-content>

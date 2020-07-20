@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-first-form',
+  selector: 'first-form',
   templateUrl: './first-form.component.html',
   styleUrls: ['./first-form.component.scss'],
 })
 export class FirstFormComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
