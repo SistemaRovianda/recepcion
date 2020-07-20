@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { FourthFormPage } from './fourth-form.page';
 import { RouterModule } from '@angular/router';
-import { FourthFormModule } from '../../components/forms/fourth-form/fourth-form.module';
+import { BasicFormModule } from '../../components/forms/basic-form/basic-form.module';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { FourthFormModule } from '../../components/forms/fourth-form/fourth-form
     FormsModule,
     IonicModule,
     RouterModule,
-    FourthFormModule,
+    BasicFormModule,
   ],
   declarations: [FourthFormPage],
 })

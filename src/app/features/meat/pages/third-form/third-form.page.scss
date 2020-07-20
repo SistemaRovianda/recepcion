@@ -4,13 +4,31 @@
     height: 100%;
 
     &__row {
-        &--form {
+        &--form-above {
             @include breakpoint-size(ms-extra-small) {
                 height: 90%;
             }
 
             @include breakpoint-size(ms-small) {
-                height: 85%;
+                height: 42.5%;
+            }
+
+            @include breakpoint-size(ms-medium) {
+                height: 80%;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+                height: 80%;
+            }
+        }
+
+        &--form-below {
+            @include breakpoint-size(ms-extra-small) {
+                height: 90%;
+            }
+
+            @include breakpoint-size(ms-small) {
+                height: 42.5%;
             }
 
             @include breakpoint-size(ms-medium) {

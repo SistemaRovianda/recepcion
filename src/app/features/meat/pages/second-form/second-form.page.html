@@ -6,9 +6,16 @@
 
 <ion-content>
   <ion-grid fixed class="container">
-    <ion-row class="container container__row container__row--form">
+    <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
-        <second-form></second-form>
+        <app-basic-form #tempForm [titleForm]="'Temperatura'" [infoOne]="'Fresco Max. 4C°'"
+          [infoTwo]="'Congelado Max. -18C°'" (onSubmit)="onSubmitTemperature($event)"></app-basic-form>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--form-below">
+      <ion-col class="container container__column" size="12">
+        <app-basic-form #weightForm [titleForm]="'Peso'" [infoOne]="'Segun el empaque'"
+          (onSubmit)="onSubmitWeight($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">

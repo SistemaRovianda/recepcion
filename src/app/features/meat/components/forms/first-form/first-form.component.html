@@ -1,40 +1,47 @@
-<ion-grid fixed class="container">
-  <ion-row class="container container__row container__row--date">
-    <ion-col class="container container__column" size="6">
-      <ion-item class="container container__item">
-        <ion-label class="container container__label">Date</ion-label>
-        <ion-datetime class="container container__datetime" display-format="D M YYYY"></ion-datetime>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row class="container container__row container__row--provedor">
-    <ion-col class="container container__column" size="12">
-      <ion-item class="container container__item">
-        <ion-label class="container container__label" position="stacked">Provedor</ion-label>
-        <ion-input class="container container__input" type="text" placeholder="Ingrese nombre de provedor"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row class="container container__row container__row--lotes">
-    <ion-col class="container container__column" size="6">
-      <ion-item class="container container__item">
-        <ion-label class="container container__label" position="stacked">Lote provedor</ion-label>
-        <ion-input class="cotainer container__input" type="text" placeholder="Ingrese lote provedor"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col class="container container__column" size="6">
-      <ion-item class="container container__item">
-        <ion-label class="container container__label" position="stacked">Lote interno</ion-label>
-        <ion-input class="container container__input" type="text" placeholder="Ingrese lote interno"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row class="container container__row container__row--materia">
-    <ion-col class="container container__column" size="12">
-      <ion-item class="container container__item">
-        <ion-label class="container container__label" position="stacked">Materia prima</ion-label>
-        <ion-input class="container container__input" type="text" placeholder="Ingrese materia prima"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<form [formGroup]="form" class="container">
+  <ion-grid fixed class="container container__grid">
+    <ion-row class="container container__row container__row--date">
+      <ion-col class="container container__column" size="6">
+        <ion-item class="container container__item">
+          <ion-label class="container container__label">Date</ion-label>
+          <ion-datetime class="container container__datetime" display-format="D M YYYY"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--provedor">
+      <ion-col class="container container__column" size="12">
+        <ion-item class="container container__item">
+          <ion-label class="container container__label" position="stacked">Provedor</ion-label>
+          <ion-input class="container container__input" type="text" placeholder="Ingrese nombre de provedor"
+            formControlName="proveedor">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--lotes">
+      <ion-col class="container container__column" size="6">
+        <ion-item class="container container__item">
+          <ion-label class="container container__label" position="stacked">Lote provedor</ion-label>
+          <ion-input class="cotainer container__input" type="text" placeholder="Ingrese lote provedor"
+            formControlName="lotProveedor"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="container container__column" size="6">
+        <ion-item class="container container__item">
+          <ion-label class="container container__label" position="stacked">Lote interno</ion-label>
+          <ion-input class="container container__input" type="text" placeholder="Ingrese lote interno"
+            formControlName="lotInternal"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--materia">
+      <ion-col class="container container__column" size="12">
+        <ion-item class="container container__item">
+          <ion-label class="container container__label" position="stacked">Materia prima</ion-label>
+          <ion-input class="container container__input" type="text" placeholder="Ingrese materia prima"
+            formControlName="rawMaterial"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
