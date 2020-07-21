@@ -42,16 +42,4 @@ export class SeventhFormComponent implements OnInit {
       })
       .catch((err) => console.error('Error en la toma de fotografia'));
   }
-
-  getGallery() {
-    this.camera
-      .getPicture({
-        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-        destinationType: this.camera.DestinationType.DATA_URL,
-      })
-      .then((res) => {
-        this.imgURL = 'data:image|jpeg;base64,' + res;
-      })
-      .catch((err) => console.error('Error en la carga de galeria'));
-  }
 }
