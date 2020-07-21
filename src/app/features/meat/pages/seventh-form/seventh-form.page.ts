@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SeventhFormComponent } from '../../components/forms/seventh-form/seventh-form.component';
 
 @Component({
   selector: 'app-seventh-form',
@@ -6,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seventh-form.page.scss'],
 })
 export class SeventhFormPage implements OnInit {
+  @ViewChild('seventhForm', { static: false })
+  seventhForm: SeventhFormComponent;
+
   constructor() {}
 
   ngOnInit() {}
 
-  openCamera() {
-    console.log('Tomar foto');
+  onSubmitSeventh(evt) {
+    console.info('seventh: ', evt);
+  }
+
+  onGenerateReport() {
+    this.seventhForm.onSubmit();
+    console.log('Generar reporte');
   }
 }

@@ -8,12 +8,13 @@
   <ion-grid fixed class="container">
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
-        <app-basic-form></app-basic-form>
+        <app-basic-form [titleForm]="'Fecha de matanza'" #slaughterDateForm (onSubmit)="onSubmitSlaughterDate($event)">
+        </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
-        <app-basic-form></app-basic-form>
+
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">

@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'seventh-form',
@@ -6,7 +13,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seventh-form.component.scss'],
 })
 export class SeventhFormComponent implements OnInit {
-  constructor() {}
+  form: FormGroup;
+
+  @Output('onSubmit') submit = new EventEmitter();
+
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      photo: ['', Validators.required],
+      qualityInspector: ['', Validators.required],
+      job: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.submit.emit(this.form.value);
+  }
+
+  openCamera() {
+    console.log('Abrir camara');
+  }
 }

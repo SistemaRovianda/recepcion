@@ -8,12 +8,14 @@
   <ion-grid fixed class="container">
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
-        <app-basic-form></app-basic-form>
+        <app-basic-form [titleForm]="'Empaque'" [infoOne]="'Sin daños y limpio'" #packingForm
+          (onSubmit)="onSubmitPacking($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
-        <app-basic-form></app-basic-form>
+        <app-basic-form [titleForm]="'Olor'" [infoOne]="'Característico'" #odorForm (onSubmit)="onSubmitOdor($event)">
+        </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
