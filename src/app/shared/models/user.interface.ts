@@ -6,3 +6,17 @@ export interface User {
   email?: string;
   rol?: string;
 }
+
+export interface UserRegistered {
+  userId: string;
+  fullName: string;
+  rol: string;
+  job: string;
+}
+
+export interface UsersCheckers {
+  nameElaborated: string;
+  jobElaborated: string;
+  nameVerify: string;
+  jobVerify: string;
+}

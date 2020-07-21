@@ -15,6 +15,8 @@ import { FourthFormPageModule } from './pages/fourth-form/fourth-form.module';
 import { FifthFormPageModule } from './pages/fifth-form/fifth-form.module';
 import { SeventhFormPageModule } from './pages/seventh-form/seventh-form.module';
 import { SixthFormPageModule } from './pages/sixth-form/sixth-form.module';
+import { FridgesResolve } from '../../shared/resolvers/fridges.resolver';
+import { UsersResolve } from 'src/app/shared/resolvers/users.resolver';
 
 const routes: Routes = [
   {
@@ -39,10 +41,16 @@ const routes: Routes = [
   },
   {
     path: 'sixth-form-meat',
+    resolve: {
+      fridges: FridgesResolve,
+    },
     component: SixthFormPage,
   },
   {
     path: 'seventh-form-meat',
+    resolve: {
+      users: UsersResolve,
+    },
     component: SeventhFormPage,
   },
 ];
@@ -60,6 +68,6 @@ const routes: Routes = [
     SeventhFormPageModule,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [FridgesResolve, UsersResolve],
 })
 export class MeatRoutingModule {}

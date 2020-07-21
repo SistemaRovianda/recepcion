@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicFormComponent } from '../../components/forms/basic-form/basic-form.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { addPackingData, addOdorData } from '../../store/meat/meat.actions';
+import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
 
 @Component({
   selector: 'app-fourth-form',
@@ -12,16 +16,18 @@ export class FourthFormPage implements OnInit {
 
   @ViewChild('odorForm', { static: false }) odorForm: BasicFormComponent;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _store: Store<AppState>) {}
 
   ngOnInit() {}
 
-  onSubmitPacking(evt) {
+  onSubmitPacking(evt: AdditionalInformation) {
     console.info('packing: ', evt);
+    this._store.dispatch(addPackingData({ packing: evt }));
   }
 
-  onSubmitOdor(evt) {
+  onSubmitOdor(evt: AdditionalInformation) {
     console.info('Odor: ', evt);
+    this._store.dispatch(addOdorData({ odor: evt }));
   }
 
   onNextPage(evt) {

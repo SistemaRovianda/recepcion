@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form">
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
@@ -18,8 +18,13 @@
     <ion-row>
       <ion-col size="12">
         <ion-item>
-          <ion-label position="stacked">Inspector de caliad</ion-label>
-          <ion-input type="text" placeholder="Ingrese nombre del inspector"></ion-input>
+          <ion-label position="floating">Verifico*</ion-label>
+
+          <ion-select interface="action-sheet" placeholder="Seleccione nombre" formControlName="qualityInspector"
+            (ionChange)="onUserSelected($event)">
+            <ion-select-option *ngFor="let user of users$ | async" [value]="user">{{ user.fullName }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -27,7 +32,8 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Puesto</ion-label>
-          <ion-input type="text" placeholder="Ingrese puesto"></ion-input>
+          <ion-input type="text" disabled="true" formControlName="job" value="{{userJob}}" placeholder="{{userJob}}">
+          </ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

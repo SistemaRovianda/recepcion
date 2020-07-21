@@ -2,6 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicFormComponent } from '../../components/forms/basic-form/basic-form.component';
 import { FridgeFormComponent } from '../../components/forms/fridge-form/fridge-form.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
+import {
+  addSlaughterDateData,
+  addFridgeData,
+} from '../../store/meat/meat.actions';
 
 @Component({
   selector: 'app-sixth-form',
@@ -15,16 +22,22 @@ export class SixthFormPage implements OnInit {
   @ViewChild('fridgeForm', { static: false })
   fridgeForm: FridgeFormComponent;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _store: Store<AppState>) {}
 
   ngOnInit() {}
 
-  onSubmitSlaughterDate(evt) {
+  onSubmitSlaughterDate(evt: AdditionalInformation) {
     console.info('slaughterDate: ', evt);
+    this._store.dispatch(addSlaughterDateData({ slaughterDate: evt }));
   }
 
-  onSubmitFridge(evt) {
+  onSubmitFridge(evt: AdditionalInformation) {
     console.info('fridge: ', evt);
+    this._store.dispatch(
+      addFridgeData({
+        fridge: { ...evt, fridgeId: +evt.fridgeId, accepted: true },
+      })
+    );
   }
 
   onNextPage(evt) {

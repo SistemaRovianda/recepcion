@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
+import { BasicInformation } from 'src/app/shared/models/meat.interface';
 
 // import * as moment from 'moment';
 
@@ -19,13 +21,23 @@ export class FirstFormComponent implements OnInit {
       lotProveedor: ['', Validators.required],
       lotInternal: ['', Validators.required],
       rawMaterial: ['', Validators.required],
+      date: [
+        {
+          value: moment(new Date()).format('DD/MM/YYYY'),
+          disabled: true,
+        },
+      ],
     });
   }
 
   ngOnInit() {}
 
   onSubmitForm() {
-    this.submit.emit(this.form.value);
+    let firstForm: BasicInformation = {
+      ...this.form.value,
+      date: moment(new Date()).format('DD/MM/YYYY'),
+    };
+    this.submit.emit(firstForm);
   }
 
   get proveedor() {

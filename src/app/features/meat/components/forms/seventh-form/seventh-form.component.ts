@@ -2,6 +2,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Camera } from '@ionic-native/camera/ngx';
+import { Observable } from 'rxjs';
+import { UserRegistered } from 'src/app/shared/models/user.interface';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { Store } from '@ngrx/store';
+import { SELECT_USERS_REGISTERED } from 'src/app/shared/store/usersRegistered/users-registered.selectors';
+import { finalInformation } from 'src/app/shared/models/meat.interface';
 
 @Component({
   selector: 'seventh-form',
@@ -13,9 +19,17 @@ export class SeventhFormComponent implements OnInit {
 
   imgURL: string;
 
+  users$: Observable<UserRegistered[]>;
+
+  userJob: string;
+
   @Output('onSubmit') submit = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private camera: Camera) {
+  constructor(
+    private fb: FormBuilder,
+    private camera: Camera,
+    private _store: Store<AppState>
+  ) {
     this.form = fb.group({
       photo: ['', Validators.required],
       qualityInspector: ['', Validators.required],
@@ -23,10 +37,24 @@ export class SeventhFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.users$ = this._store.select(SELECT_USERS_REGISTERED);
+  }
+
+  onUserSelected(evt) {
+    console.log('selecciono usuario: ', evt);
+    this.userJob = evt.detail.value.job;
+  }
 
   onSubmit() {
-    this.submit.emit(this.form.value);
+    console.log('ultimo', this.form.value);
+    this.form.get('photo').setValue('imagen');
+
+    let finalForm: finalInformation = {
+      ...this.form.value,
+      qualityInspector: this.form.get('qualityInspector').value.fullName,
+    };
+    this.submit.emit(finalForm);
   }
 
   getCamera() {
@@ -39,6 +67,7 @@ export class SeventhFormComponent implements OnInit {
       })
       .then((res) => {
         this.imgURL = 'data:image/jpeg;base64,' + res;
+        this.form.get('photo').setValue(this.imgURL);
       })
       .catch((err) => console.error('Error en la toma de fotografia'));
   }
