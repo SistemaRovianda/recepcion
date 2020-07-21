@@ -1,11 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Camera } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'seventh-form',
@@ -15,9 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SeventhFormComponent implements OnInit {
   form: FormGroup;
 
+  imgURL: string;
+
   @Output('onSubmit') submit = new EventEmitter();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private camera: Camera) {
     this.form = fb.group({
       photo: ['', Validators.required],
       qualityInspector: ['', Validators.required],
@@ -31,7 +29,29 @@ export class SeventhFormComponent implements OnInit {
     this.submit.emit(this.form.value);
   }
 
-  openCamera() {
-    console.log('Abrir camara');
+  getCamera() {
+    this.camera
+      .getPicture({
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+      })
+      .then((res) => {
+        this.imgURL = 'data:image/jpeg;base64,' + res;
+      })
+      .catch((err) => console.error('Error en la toma de fotografia'));
+  }
+
+  getGallery() {
+    this.camera
+      .getPicture({
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: this.camera.DestinationType.DATA_URL,
+      })
+      .then((res) => {
+        this.imgURL = 'data:image|jpeg;base64,' + res;
+      })
+      .catch((err) => console.error('Error en la carga de galeria'));
   }
 }

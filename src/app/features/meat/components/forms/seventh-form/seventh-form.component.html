@@ -6,11 +6,11 @@
       </ion-col>
       <ion-col size="12">
         <ion-item>
-          <img src="{{imageURL}}" width="150px" height="150px">
+          <img *ngIf="imgURL" [src]="imgURL" width="200" height="200" />
         </ion-item>
       </ion-col>
       <ion-col size="12">
-        <ion-button (click)="openCamera()" expand="block" fill="clear" shape="round">
+        <ion-button (click)="getCamera()" expand="block" fill="clear" shape="round">
           Tomar foto
         </ion-button>
       </ion-col>

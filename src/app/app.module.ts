@@ -18,6 +18,7 @@ import { effects } from './shared/store/effects/effects.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { AppProvidersModule } from './providers/app-providers.module';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AppProvidersModule,
   ],
