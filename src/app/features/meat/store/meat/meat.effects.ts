@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MeatService } from 'src/app/shared/services/meat.service';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { saveEntryMeat, generateReportEntryMeat } from './meat.actions';
+import {
+  saveEntryMeat,
+  generateReportEntryMeat,
+  clearEntryMeat,
+} from './meat.actions';
 import { exhaustMap, switchMap, catchError } from 'rxjs/operators';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
@@ -39,7 +43,7 @@ export class MeatEffects {
       exhaustMap((action) =>
         this.meatService.generateReport(action.entryMeatId).pipe(
           switchMap((_) => {
-            return [];
+            return [clearEntryMeat()];
           })
         )
       )

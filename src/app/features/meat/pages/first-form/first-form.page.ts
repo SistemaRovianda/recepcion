@@ -20,7 +20,6 @@ export class FirstFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmit(evt: BasicInformation) {
-    console.info('firstForm: ', evt);
     this._store.dispatch(addBasicInformation({ basicInformation: evt }));
   }
 

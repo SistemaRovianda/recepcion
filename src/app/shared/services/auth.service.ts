@@ -54,7 +54,6 @@ export class AuthService {
   isAuth(): Observable<any> {
     return from(
       this._storage.get('token').then((token) => {
-        console.log('Token: ', token);
         if (token) return Promise.resolve(true);
         return false;
       })
@@ -64,7 +63,6 @@ export class AuthService {
   verifyRole(): Observable<boolean> {
     return from(
       this._storage.get('role').then((role) => {
-        console.log('rol: ', role);
         if (role != null && role == 'RECEPTION') return Promise.resolve(true);
         return Promise.resolve(false);
       })
@@ -85,9 +83,7 @@ export class AuthService {
   }
 
   signOut(): Observable<any> {
-    this._storage.clear().then((res) => {
-      console.log('Clear Storage');
-    });
+    this._storage.clear().then((res) => {});
     return from(
       this.auth.signOut().then(() => {
         this._router.navigate(['/'], { replaceUrl: true });

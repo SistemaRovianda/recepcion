@@ -42,14 +42,10 @@ export class SeventhFormComponent implements OnInit {
   }
 
   onUserSelected(evt) {
-    console.log('selecciono usuario: ', evt);
     this.userJob = evt.detail.value.job;
   }
 
   onSubmit() {
-    console.log('ultimo', this.form.value);
-    this.form.get('photo').setValue('imagen');
-
     let finalForm: finalInformation = {
       ...this.form.value,
       qualityInspector: this.form.get('qualityInspector').value.fullName,

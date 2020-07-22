@@ -21,12 +21,10 @@ export class FourthFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitPacking(evt: AdditionalInformation) {
-    console.info('packing: ', evt);
     this._store.dispatch(addPackingData({ packing: evt }));
   }
 
   onSubmitOdor(evt: AdditionalInformation) {
-    console.info('Odor: ', evt);
     this._store.dispatch(addOdorData({ odor: evt }));
   }
 

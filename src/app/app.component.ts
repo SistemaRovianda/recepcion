@@ -43,7 +43,6 @@ export class AppComponent {
           )
           .subscribe((res) => {
             if (res) {
-              console.log('product/list');
               this._router.navigate(['menu', 'reception']);
             } else {
               console.log('login');

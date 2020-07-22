@@ -27,12 +27,10 @@ export class SixthFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitSlaughterDate(evt: AdditionalInformation) {
-    console.info('slaughterDate: ', evt);
     this._store.dispatch(addSlaughterDateData({ slaughterDate: evt }));
   }
 
   onSubmitFridge(evt: AdditionalInformation) {
-    console.info('fridge: ', evt);
     this._store.dispatch(
       addFridgeData({
         fridge: { ...evt, fridgeId: +evt.fridgeId, accepted: true },

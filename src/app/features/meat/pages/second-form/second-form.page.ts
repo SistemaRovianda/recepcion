@@ -26,7 +26,6 @@ export class SecondFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitTemperature(evt: AdditionalInformation) {
-    console.info('Temperature: ', evt);
     let temperature: AdditionalInformation = {
       value: evt.value,
       description: evt.observations,
@@ -36,7 +35,6 @@ export class SecondFormPage implements OnInit {
   }
 
   onSubmitWeight(evt: AdditionalInformation) {
-    console.info('Weight: ', evt);
     this._store.dispatch(addWeightData({ weight: evt }));
   }
 

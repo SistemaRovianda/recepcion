@@ -34,6 +34,8 @@ const SAVE_ENTRY_MEAT = '[Meat] Save Entry Meat';
 
 const GENERATE_REPORT_ENTRY_MEAT = '[Meat] Generate Report Entry Meat';
 
+const CLEAR_ENTRY_MEAT = '[Meat] Clear Entry Meat';
+
 export const addBasicInformation = createAction(
   ADD_BASIC_INFORMATION,
   props<{ basicInformation: BasicInformation }>()
@@ -103,3 +105,5 @@ export const generateReportEntryMeat = createAction(
   GENERATE_REPORT_ENTRY_MEAT,
   props<{ entryMeatId: string }>()
 );
+
+export const clearEntryMeat = createAction(CLEAR_ENTRY_MEAT);

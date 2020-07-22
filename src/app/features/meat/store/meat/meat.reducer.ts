@@ -13,6 +13,7 @@ import {
   addFridgeData,
   addSlaughterDateData,
   addFinalData,
+  clearEntryMeat,
 } from './meat.actions';
 
 export interface MeatState {
@@ -296,6 +297,11 @@ const _meatReducer = createReducer<MeatState>(
       },
       ...final,
     },
+  })),
+  on(clearEntryMeat, (state) => ({
+    ...state,
+    entryMeat: null,
+    error: null,
   }))
 );
 

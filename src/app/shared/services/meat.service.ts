@@ -18,7 +18,8 @@ export class MeatService {
   }
 
   generateReport(meatId: string): Observable<any> {
-    console.log('Generando reporte');
+    /**Aqui va la logica para generarlo y abrirlo, pero falta instalar el plugin y dependencia */
+    console.log('Servicio de generación de reporte....');
     return of(1);
   }
 }

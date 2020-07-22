@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { BasicInformation } from 'src/app/shared/models/meat.interface';
 
-// import * as moment from 'moment';
-
 @Component({
   selector: 'first-form',
   templateUrl: './first-form.component.html',

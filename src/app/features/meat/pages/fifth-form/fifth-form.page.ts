@@ -25,12 +25,10 @@ export class FifthFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitTransport(evt: AdditionalInformation) {
-    console.info('transport: ', evt);
     this._store.dispatch(addTransportData({ transport: evt }));
   }
 
   onSubmitTexture(evt: AdditionalInformation) {
-    console.info('texture: ', evt);
     this._store.dispatch(addTextureData({ texture: evt }));
   }
 

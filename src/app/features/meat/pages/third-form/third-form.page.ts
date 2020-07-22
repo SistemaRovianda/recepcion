@@ -26,12 +26,10 @@ export class ThirdFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitStrageMaterial(evt: AdditionalInformation) {
-    console.info('strangeMaterial: ', evt);
     this._store.dispatch(addStrageMaterialData({ strageMaterial: evt }));
   }
 
   onSubmitStrageExpiration(evt: AdditionalInformation) {
-    console.info('expiration: ', evt);
     this._store.dispatch(addExpirationData({ expiration: evt }));
   }
 
