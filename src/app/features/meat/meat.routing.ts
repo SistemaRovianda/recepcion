@@ -17,6 +17,8 @@ import { SeventhFormPageModule } from './pages/seventh-form/seventh-form.module'
 import { SixthFormPageModule } from './pages/sixth-form/sixth-form.module';
 import { FridgesResolve } from '../../shared/resolvers/fridges.resolver';
 import { UsersResolve } from 'src/app/shared/resolvers/users.resolver';
+import { PrintReportPageComponent } from './pages/print-report/print-report.page';
+import { PrintReportPageModule } from './pages/print-report/print-report.module';
 
 const routes: Routes = [
   {
@@ -53,6 +55,10 @@ const routes: Routes = [
     },
     component: SeventhFormPage,
   },
+  {
+    path: 'print-report/:id',
+    component: PrintReportPageComponent,
+  },
 ];
 
 @NgModule({
@@ -66,6 +72,7 @@ const routes: Routes = [
     FifthFormPageModule,
     SixthFormPageModule,
     SeventhFormPageModule,
+    PrintReportPageModule,
   ],
   exports: [RouterModule],
   providers: [FridgesResolve, UsersResolve],

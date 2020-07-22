@@ -6,8 +6,9 @@ import {
   generateReportEntryMeat,
   clearEntryMeat,
 } from './meat.actions';
-import { exhaustMap, switchMap, catchError } from 'rxjs/operators';
+import { exhaustMap, switchMap, catchError, tap } from 'rxjs/operators';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,26 +16,31 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 export class MeatEffects {
   constructor(
     private actions$: Actions,
+    private router: Router,
     private meatService: MeatService,
     private toastService: ToastService
   ) {}
 
-  saveEntryMeatEffect$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(saveEntryMeat),
-      exhaustMap((action) =>
-        this.meatService.saveEntryMeat(action.entryMeat).pipe(
-          switchMap((action) => {
-            this.toastService.onSuccess();
-            return [generateReportEntryMeat(action.meatId)];
-          }),
-          catchError((error) => {
-            this.toastService.onError();
-            return [];
-          })
+  saveEntryMeatEffect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(saveEntryMeat),
+        exhaustMap((action) =>
+          this.meatService.saveEntryMeat(action.entryMeat).pipe(
+            tap((action) => {
+              this.toastService.onSuccess();
+              this.router.navigate(['meat/print-report', `${action.meatId}`]);
+            }),
+            catchError((error) => {
+              this.toastService.onError();
+              return [];
+            })
+          )
         )
-      )
-    )
+      ),
+    {
+      dispatch: false,
+    }
   );
 
   generateReportEntryMeatEffect$ = createEffect(() =>

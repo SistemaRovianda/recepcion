@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT_PROVIDER } from 'src/app/providers/tokens';
 import { EntryMeat } from '../models/meat.interface';
 import { Observable, from, of } from 'rxjs';
+import { File } from '@ionic-native/file/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +15,10 @@ import { Observable, from, of } from 'rxjs';
 export class MeatService {
   constructor(
     private http: HttpClient,
+    private file: File,
+    private fileTransfer: FileTransfer,
+    private fileOpener: FileOpener,
+    private documentViewer: DocumentViewer,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {}
 
@@ -18,8 +27,20 @@ export class MeatService {
   }
 
   generateReport(meatId: string): Observable<any> {
-    /**Aqui va la logica para generarlo y abrirlo, pero falta instalar el plugin y dependencia */
-    console.log('Servicio de generación de reporte....');
-    return of(1);
+    const transfer = this.fileTransfer.create();
+
+    return from(
+      transfer
+        .download(
+          `${this.endpoint}/entry/meat/${meatId}`,
+          `${this.file.dataDirectory}report-${meatId}.pdf`
+        )
+        .then((entry) => {
+          let url = entry.toURL();
+          this.fileOpener.open(url, 'application/pdf');
+          return Promise.resolve(true);
+        })
+        .catch((error) => console.error('Error opening file ', error))
+    ).pipe(map((res) => res));
   }
 }

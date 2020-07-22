@@ -20,6 +20,11 @@ import { AppProvidersModule } from './providers/app-providers.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera/ngx';
 
+import { File } from '@ionic-native/file/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -46,6 +51,10 @@ import { Camera } from '@ionic-native/camera/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    File,
+    FileTransfer,
+    FileOpener,
+    DocumentViewer,
     Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AppProvidersModule,
