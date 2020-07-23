@@ -19,6 +19,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/meat/meat.routing').then((m) => m.MeatRoutingModule),
   },
+  {
+    path: 'packaging',
+    loadChildren: () =>
+      import('./features/packaging/packaging.routing').then(
+        (m) => m.PackagingRountingModule
+      ),
+  },
 ];
 
 @NgModule({
