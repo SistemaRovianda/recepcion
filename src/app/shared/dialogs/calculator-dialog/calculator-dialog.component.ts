@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { FormControl } from '@angular/forms';
+import { type } from 'os';
 
 @Component({
   selector: 'app-calculator-dialog',
@@ -6,9 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculator-dialog.component.scss'],
 })
 export class CalculatorDialogComponent implements OnInit {
+  @Input() typeCalc: string;
 
-  constructor() { }
+  value: string;
+
+  constructor(private modalCtrl: ModalController) {
+    this.value = '';
+  }
 
   ngOnInit() {}
 
+  pressNumber(num?: number) {
+    this.value += num;
+  }
+
+  onCancel() {
+    this.modalCtrl.dismiss();
+  }
+
+  clearScreen() {
+    this.value = '';
+  }
+
+  onAcceptKg() {
+    this.modalCtrl.dismiss({
+      quantity: this.generateCalc(+this.value, 'kg'),
+    });
+  }
+
+  onAcceptPz() {
+    this.modalCtrl.dismiss({
+      quantity: this.generateCalc(+this.value, 'pz'),
+    });
+  }
+
+  generateCalc(value: number, typeCalc?: string): number {
+    return typeCalc == 'kg' ? value : value;
+  }
 }

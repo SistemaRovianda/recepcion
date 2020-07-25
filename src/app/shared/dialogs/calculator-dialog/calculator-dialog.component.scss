@@ -5,15 +5,17 @@
 
     &__row {
         &--screen {
-            height: 10%;
+            height: 12%;
         }
 
         &--actions {
-            height: 90%;
+            height: 88%;
         }
     }
 
     &__button {
+        border: 0.5px solid #c0c0c0;
+        box-shadow: 0 0 30px 2px rgba(0, 0, 0, 0.16);
         @include breakpoint-size(ms-small) {
             font-size: var(--fs-text-sm);
         }
@@ -22,7 +24,11 @@
     &__input {
         color: #000;
         @include breakpoint-size(ms-small) {
-            font-size: var(--fs-text-sm);
+            text-align: right;
+            font-size: 2.3rem;
+            --placeholder-color: #000;
+            --placeholder-opacity: 1;
+            --placeholder-font-weight: 900;
         }
     }
 }

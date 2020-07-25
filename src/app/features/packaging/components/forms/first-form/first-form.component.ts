@@ -38,12 +38,10 @@ export class FirstFormComponent implements OnInit {
   }
 
   calcKG() {
-    console.log('Calculadora de kg');
     this.openModalCalculator('kg');
   }
 
   calcPZ() {
-    console.log('Calculadora de Pz');
     this.openModalCalculator('pz');
   }
 
@@ -54,6 +52,13 @@ export class FirstFormComponent implements OnInit {
       componentProps: {
         typeCalc: typeCalc,
       },
+    });
+
+    modal.onDidDismiss().then((valueReturn) => {
+      if (valueReturn !== null) {
+        if (valueReturn.data !== undefined)
+          this.form.get('quantity').setValue(valueReturn.data.quantity);
+      }
     });
 
     return await modal.present();

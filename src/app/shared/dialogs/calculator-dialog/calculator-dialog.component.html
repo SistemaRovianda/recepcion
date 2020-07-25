@@ -2,7 +2,9 @@
   <ion-row class="container container__row container__row--screen">
     <ion-col size="12">
       <ion-item>
-        <ion-input class="container container__input" type="text" disabled="true" placeholder="0000 Pz"></ion-input>
+        <ion-input class="container container__input" type="text" disabled="true"
+          placeholder="{{typeCalc == 'kg'? '0000 Kg' : '0000 Pz'}}" [value]="value">
+        </ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
@@ -16,46 +18,46 @@
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(2)" expand="block" fill="clear">
               2
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(3)" expand="block" fill="clear">
               3
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row class="buttons buttons__row">
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberOne()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(4)" expand="block" fill="clear">
               4
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(5)" expand="block" fill="clear">
               5
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(6)" expand="block" fill="clear">
               6
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row class="buttons buttons__row">
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberOne()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(7)" expand="block" fill="clear">
               7
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(8)" expand="block" fill="clear">
               8
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+            <ion-button class="container container__button" (click)="pressNumber(9)" expand="block" fill="clear">
               9
             </ion-button>
           </ion-col>
@@ -67,7 +69,8 @@
             </ion-button>
           </ion-col>
           <ion-col size="4">
-            <ion-button class="container container__button" (click)="clearScreen()" expand="block" fill="clear">
+            <ion-button class="container container__button container__button--clear" (click)="clearScreen()"
+              expand="block" fill="clear">
               Borrar
             </ion-button>
           </ion-col>
@@ -78,14 +81,20 @@
       <ion-grid class="actions" fixed>
         <ion-row class="actions actions__row">
           <ion-col size="12">
-            <ion-button class="container container__button" (click)="onCancel()" expand="block" fill="clear">
+            <ion-button class="container container__button container__button--cancel" (click)="onCancel()"
+              expand="block" fill="clear">
               Cancelar
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row class="actions__row">
           <ion-col size="12">
-            <ion-button class="container container__button" (click)="onAccept()" expand="block" fill="clear">
+            <ion-button *ngIf="typeCalc == 'kg'" class="container container__button container__button--accept"
+              (click)="onAcceptKg()" expand="block" color="primary">
+              Aceptar
+            </ion-button>
+            <ion-button *ngIf="typeCalc == 'pz'" class="container container__button container__button--accept"
+              (click)="onAcceptPz()" expand="block" color="primary">
               Aceptar
             </ion-button>
           </ion-col>
