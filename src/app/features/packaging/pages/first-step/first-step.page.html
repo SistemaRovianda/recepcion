@@ -5,5 +5,24 @@
 </ion-header>
 
 <ion-content>
-  <app-first-form></app-first-form>
+  <ion-grid class="container container--all" fixed>
+    <ion-row class="container container__row container__row--first">
+      <ion-col class="container container__column" size="12">
+        <h1 class="container container__title">Información principal</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--second">
+      <ion-col class="container container__column" size="12">
+        <app-first-form #form (onSubmit)="onSubmit($event)"></app-first-form>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--third">
+      <ion-col class="container container__column" size="12">
+        <ion-button class="container container__button" (click)="toNavigate()" color="primary" expand="block"
+          shape="round">
+          Siguiente
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

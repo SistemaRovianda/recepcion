@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content>
-  <app-second-form></app-second-form>
+  <ion-grid class="container" fixed>
+    <ion-row class="container container__row">
+      <ion-col class="container container__row" size="12">
+        <app-second-form #form (onSubmit)="onSubmit($event)"></app-second-form>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--actions">
+      <ion-col class="container container__column" size="12">
+        <ion-button class="container container__button" (click)="onSave()" expand="block" fill="clear" shape="round">
+          Siguiente
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

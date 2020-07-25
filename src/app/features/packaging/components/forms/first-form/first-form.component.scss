@@ -1,0 +1,32 @@
+@import "../../../../../../theme/mixins.scss";
+
+.form {
+    height: 100%;
+    &__row {
+        @include breakpoint-size(ms-small) {
+            height: 20%;
+        }
+    }
+
+    &__label {
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+    }
+
+    &__item {
+        height: auto;
+    }
+
+    &__actions {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__button {
+        width: 100px;
+        height: 100px;
+    }
+}

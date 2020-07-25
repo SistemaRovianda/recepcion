@@ -1,3 +1,96 @@
-<p>
-  calculator-dialog works!
-</p>
+<ion-grid class="container" fixed>
+  <ion-row class="container container__row container__row--screen">
+    <ion-col size="12">
+      <ion-item>
+        <ion-input class="container container__input" type="text" disabled="true" placeholder="0000 Pz"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="container container__row container__row--actions">
+    <ion-col size="8">
+      <ion-grid class="buttons">
+        <ion-row class="buttons buttons__row">
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="pressNumber(1)" expand="block" fill="clear">
+              1
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              2
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              3
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="buttons buttons__row">
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberOne()" expand="block" fill="clear">
+              4
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              5
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              6
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="buttons buttons__row">
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberOne()" expand="block" fill="clear">
+              7
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              8
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="numberTwo()" expand="block" fill="clear">
+              9
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="buttons buttons__row">
+          <ion-col size="8">
+            <ion-button class="container container__button" (click)="pressNumber(0)" expand="block" fill="clear">
+              0
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button class="container container__button" (click)="clearScreen()" expand="block" fill="clear">
+              Borrar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+    <ion-col size="4">
+      <ion-grid class="actions" fixed>
+        <ion-row class="actions actions__row">
+          <ion-col size="12">
+            <ion-button class="container container__button" (click)="onCancel()" expand="block" fill="clear">
+              Cancelar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="actions__row">
+          <ion-col size="12">
+            <ion-button class="container container__button" (click)="onAccept()" expand="block" fill="clear">
+              Aceptar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>

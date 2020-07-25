@@ -1,0 +1,63 @@
+<form [formGroup]="form" class="form">
+  <ion-grid class="form form__grid" fixed>
+    <ion-row class="form form__row">
+      <ion-col class="form form__column" size="6">
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Proveedor*</ion-label>
+          <ion-input class="form form__input" type="text" formControlName="proveedor" placeholder="Ingrese proveedor">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="form form__column" size="6">
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Lote proveedor*</ion-label>
+          <ion-input class="form form__input" type="text" formControlName="lotProveedor" placeholder="Ingrese lote">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="form__row">
+      <ion-col class="form form__column" size="6">
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Producto*</ion-label>
+          <ion-select class="form form__select select" interface="action-sheet" formControlName="productId"
+            placeholder="Seleccione un producto">
+            <ion-select-option class="select select__item" [value]="pizza">pizza.name</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col class="form form__column" size="6">
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Fecha</ion-label>
+          <ion-input type="text" formControlName="date"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="form form__row">
+      <ion-col class="form form__column" size="12">
+
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Cantidad</ion-label>
+          <ion-input type="text" disabled="true"></ion-input>
+        </ion-item>
+        <div class="form form__actions">
+          <ion-button (click)="calcKG()" class="form form__button" expand="block" color="secondary">
+            Kg
+          </ion-button>
+          <ion-button (click)="calcPZ()" class="form form__button" expand="block" color="secondary">
+            Pz
+          </ion-button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-row class="form form__row">
+      <ion-col class="form form__column" size="12">
+        <ion-item class="form form__item">
+          <ion-label class="form form__label" position="stacked">Observaciones</ion-label>
+          <ion-textarea class="form form__textarea" formControlName="observations"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

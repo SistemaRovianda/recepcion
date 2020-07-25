@@ -1,0 +1,28 @@
+<form [formGroup]="form" class="form">
+    <ion-grid class="form form__grid" fixed>
+        <ion-row class="form form__row">
+            <ion-col class="form form__column" size="12">
+                <app-check-form #qualityForm [title]="'Certificado de calidad'" [subtitle]="'Entrega de certificado'"
+                    (submitCheck)="onQualitySubmit($event)"></app-check-form>
+                <app-check-form #strageMaterialForm [title]="'Materia extraña'" [subtitle]="'Ausente'"
+                    (submitCheck)="onStrageMaterialSubmit($event)"></app-check-form>
+                <app-check-form #transportForm [title]="'Transporte'" [subtitle]="'Limpio'"
+                    (submitCheck)="onTransportSubmit($event)"></app-check-form>
+                <app-check-form #isPzForm [title]="'isPz'" [subtitle]="'-'" (submitCheck)="onIsPzSubmit($event)">
+                </app-check-form>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label>Verifico</ion-label>
+                    <ion-select formControlName="verifitId" interface="action-sheet"
+                        placeholder="Selecciona verificador">
+                        <ion-select-option [value]="peperoni">Verificador 1</ion-select-option>
+                        <ion-select-option [value]="hawaii">Verificador 2</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</form>

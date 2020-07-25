@@ -1,0 +1,43 @@
+@import "../../../../../theme/mixins.scss";
+
+.container {
+    height: 100%;
+
+    &--all {
+        @include breakpoint-size(ms-small) {
+            min-height: 1000px;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            min-height: 800px;
+        }
+    }
+
+    &__row {
+        &--first {
+            @include breakpoint-size(ms-small) {
+                height: 5%;
+            }
+        }
+
+        &--second {
+            @include breakpoint-size(ms-small) {
+                height: 90%;
+            }
+        }
+
+        &--third {
+            @include breakpoint-size(ms-small) {
+                height: 5%;
+            }
+        }
+    }
+
+    &__item {
+        height: auto;
+    }
+
+    &__button {
+        height: 65px;
+    }
+}

@@ -1,0 +1,43 @@
+@import "../../../../theme/mixins.scss";
+
+.container {
+    height: 100%;
+
+    &__row {
+        &--screen {
+            height: 10%;
+        }
+
+        &--actions {
+            height: 90%;
+        }
+    }
+
+    &__button {
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+    }
+
+    &__input {
+        color: #000;
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+    }
+}
+
+.buttons {
+    height: 100%;
+    &__row {
+        height: 25%;
+    }
+}
+
+.actions {
+    height: 100%;
+
+    &__row {
+        height: 50%;
+    }
+}

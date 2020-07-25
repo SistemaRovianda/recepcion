@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SecondFormComponent } from '../../components/forms/second-form/second-form.component';
 
 @Component({
   selector: 'app-second-step',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second-step.page.scss'],
 })
 export class SecondStepPage implements OnInit {
+  @ViewChild('form', { static: false }) form: SecondFormComponent;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onSubmit(evt) {
+    console.log('formulario: ', evt);
   }
 
+  onSave() {
+    this.form.onSubmitForm();
+  }
 }
