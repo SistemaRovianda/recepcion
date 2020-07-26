@@ -9,6 +9,7 @@ import {
 import { exhaustMap, switchMap, catchError, tap } from 'rxjs/operators';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { Router } from '@angular/router';
+import { ReportService } from 'src/app/shared/services/report.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class MeatEffects {
     private actions$: Actions,
     private router: Router,
     private meatService: MeatService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private reportService: ReportService
   ) {}
 
   saveEntryMeatEffect$ = createEffect(
@@ -47,7 +49,7 @@ export class MeatEffects {
     this.actions$.pipe(
       ofType(generateReportEntryMeat),
       exhaustMap((action) =>
-        this.meatService.generateReport(action.entryMeatId).pipe(
+        this.reportService.generateReport(action.entryMeatId, 'meat').pipe(
           switchMap((_) => {
             return [clearEntryMeat()];
           })

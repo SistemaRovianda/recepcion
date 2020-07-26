@@ -17,7 +17,9 @@ export interface SelectionInformation {
   quality?: boolean;
   strageMaterial?: boolean;
   transport?: boolean;
-  isPz?: boolean;
+  isPz?: true;
+  makeId?: string;
+  verifitId?: string;
 }
 
 export interface ReviewersInformation {

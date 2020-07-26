@@ -9,6 +9,7 @@ import { Product } from 'src/app/shared/models/product.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { SELECT_PRODUCTS } from 'src/app/shared/store/products/products.selectors';
+import { BasicInformation } from 'src/app/shared/models/meat.interface';
 
 @Component({
   selector: 'app-first-form',
@@ -33,7 +34,7 @@ export class FirstFormComponent implements OnInit {
       productId: ['', Validators.required],
       date: [
         {
-          value: moment(new Date()).format('DD/MM/YYYY'),
+          value: moment(new Date()).format('YYYY-MM-DD'),
           disabled: true,
         },
       ],
@@ -47,7 +48,11 @@ export class FirstFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submit.emit(this.form.value);
+    let basicInformation: BasicInformation = {
+      ...this.form.value,
+      date: moment(new Date()).format('YYYY-MM-DD'),
+    };
+    this.submit.emit(basicInformation);
   }
 
   calcKG() {

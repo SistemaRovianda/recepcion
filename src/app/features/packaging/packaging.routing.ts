@@ -6,6 +6,8 @@ import { SecondStepPage } from './pages/second-step/second-step.page';
 import { SecondStepPageModule } from './pages/second-step/second-step.module';
 import { FirstStepPageModule } from './pages/first-step/first-step.module';
 import { ProductsResolve } from 'src/app/shared/resolvers/products.resolver';
+import { PrintReportPageComponent } from './pages/print-report/print-report.page';
+import { PrintReportPageModule } from './pages/print-report/print-report.module';
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
     path: 'second-step',
     component: SecondStepPage,
   },
+  {
+    path: 'print-report/:id',
+    component: PrintReportPageComponent,
+  },
 ];
 
 @NgModule({
@@ -26,6 +32,7 @@ const routes: Routes = [
     CommonModule,
     FirstStepPageModule,
     SecondStepPageModule,
+    PrintReportPageModule,
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],

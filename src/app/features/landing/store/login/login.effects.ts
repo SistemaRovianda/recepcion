@@ -48,7 +48,8 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getTokenCurrentUser().pipe(
           switchMap(({ currentToken }) => {
-            this._storage.set("token", currentToken);
+            this._storage.set('token', currentToken);
+            localStorage.setItem('token', currentToken);
             return [
               fromAuthenticationUser.loadUser({ currentToken }),
               fromLoginActions.signAuthSuccess({ uid: action.uid }),
@@ -71,8 +72,8 @@ export class LogginEffects {
       exhaustMap((action) =>
         this.authService.getUserData(action.uid).pipe(
           switchMap(({ email, name, rol }) => {
-            this._storage.set("role", rol);
-            this._storage.set("uid", action.uid);
+            this._storage.set('role', rol);
+            this._storage.set('uid', action.uid);
             return [
               fromAuthenticationUser.loadUser({
                 email,

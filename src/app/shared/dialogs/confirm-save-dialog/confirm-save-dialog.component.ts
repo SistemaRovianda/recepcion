@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../models/app-state.interface';
 import { saveEntryMeat } from 'src/app/features/meat/store/meat/meat.actions';
 import { ModalController } from '@ionic/angular';
+import { saveEntryPackaging } from 'src/app/features/packaging/store/packaging/packaging.actions';
 
 @Component({
   selector: 'app-confirm-save-dialog',
@@ -31,8 +32,12 @@ export class ConfirmSaveDialogComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  onAcceptSaveEntryPackaging() {
+  onAcceptSavePackaging() {
     console.log('entry packaging: ', this.entryPackaging);
+    this._store.dispatch(
+      saveEntryPackaging({ entryPackaging: this.entryPackaging })
+    );
+    this.modalCtrl.dismiss();
   }
 
   onCancel() {
