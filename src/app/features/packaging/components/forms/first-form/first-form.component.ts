@@ -4,6 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { ModalController } from '@ionic/angular';
 import { CalculatorDialogComponent } from 'src/app/shared/dialogs/calculator-dialog/calculator-dialog.component';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/shared/models/product.interface';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { SELECT_PRODUCTS } from 'src/app/shared/store/products/products.selectors';
 
 @Component({
   selector: 'app-first-form',
@@ -13,9 +18,15 @@ import { CalculatorDialogComponent } from 'src/app/shared/dialogs/calculator-dia
 export class FirstFormComponent implements OnInit {
   form: FormGroup;
 
+  products$: Observable<Product[]>;
+
   @Output('onSubmit') submit = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private modalCtrl: ModalController) {
+  constructor(
+    private fb: FormBuilder,
+    private modalCtrl: ModalController,
+    private _store: Store<AppState>
+  ) {
     this.form = fb.group({
       proveedor: ['', Validators.required],
       lotProveedor: ['', Validators.required],
@@ -31,7 +42,9 @@ export class FirstFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.products$ = this._store.select(SELECT_PRODUCTS);
+  }
 
   onSubmit() {
     this.submit.emit(this.form.value);

@@ -17,6 +17,8 @@ export class ConfirmSaveDialogComponent implements OnInit {
 
   @Input() entryMeat: EntryMeat;
 
+  @Input() entryPackaging: any;
+
   constructor(
     private _store: Store<AppState>,
     private modalCtrl: ModalController
@@ -27,6 +29,10 @@ export class ConfirmSaveDialogComponent implements OnInit {
   onAcceptSaveEntryMeat() {
     this._store.dispatch(saveEntryMeat({ entryMeat: this.entryMeat }));
     this.modalCtrl.dismiss();
+  }
+
+  onAcceptSaveEntryPackaging() {
+    console.log('entry packaging: ', this.entryPackaging);
   }
 
   onCancel() {

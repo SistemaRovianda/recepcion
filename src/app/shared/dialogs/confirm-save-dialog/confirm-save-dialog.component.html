@@ -1,19 +1,24 @@
-<ion-grid fixed>
-  <ion-row>
-    <ion-col size="12">
-      <h4>
+<ion-grid class="container" fixed>
+  <ion-row class="container container__row">
+    <ion-col class="container container__column" size="12">
+      <h4 class="container container__message">
         {{message}}
       </h4>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-col size="6">
-      <ion-button (click)="onAcceptSaveEntryMeat()" expand="block" fill="clear" shape="round">
+  <ion-row class="container container__row">
+    <ion-col class="container container__column" size="6">
+      <ion-button *ngIf="area == 'meat'" class="container container__button" (click)="onAcceptSaveEntryMeat()"
+        expand="block" fill="clear" shape="round">
+        Aceptar
+      </ion-button>
+      <ion-button *ngIf="area == 'packaging'" (click)="onAcceptSavePackaging()" expand="block" fill="clear"
+        shape="round">
         Aceptar
       </ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button (click)="onCancel()" expand="block" fill="clear" shape="round">
+      <ion-button class="container container__button" (click)="onCancel()" expand="block" fill="clear" shape="round">
         Cancelar
       </ion-button>
     </ion-col>

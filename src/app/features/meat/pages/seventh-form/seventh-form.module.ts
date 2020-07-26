@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SeventhFormPage } from './seventh-form.page';
 import { RouterModule } from '@angular/router';
 import { SeventhFormModule } from '../../components/forms/seventh-form/seventh-form.module';
+import { ConfirmSaveDialogModule } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { SeventhFormModule } from '../../components/forms/seventh-form/seventh-f
     IonicModule,
     RouterModule,
     SeventhFormModule,
+    ConfirmSaveDialogModule,
   ],
   declarations: [SeventhFormPage],
 })

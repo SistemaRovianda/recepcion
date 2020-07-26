@@ -5,6 +5,7 @@ import { authenticationReducer } from 'src/app/features/landing/store/authentica
 import { fridgesReducer } from '../fridges/fridges.reducer';
 import { meatReducer } from 'src/app/features/meat/store/meat/meat.reducer';
 import { usersRegisteredReducer } from '../usersRegistered/users-registered.reducer';
+import { productsReducer } from '../products/products.reducer';
 
 export const reducers: ActionReducerMap<AppState> = {
   login: loginReducer,
@@ -12,6 +13,7 @@ export const reducers: ActionReducerMap<AppState> = {
   fridges: fridgesReducer,
   meat: meatReducer,
   users: usersRegisteredReducer,
+  products: productsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [];

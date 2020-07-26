@@ -22,7 +22,9 @@
           <ion-label class="form form__label" position="stacked">Producto*</ion-label>
           <ion-select class="form form__select select" interface="action-sheet" formControlName="productId"
             placeholder="Seleccione un producto">
-            <ion-select-option class="select select__item" [value]="pizza">pizza.name</ion-select-option>
+            <ion-select-option class="select select__item" *ngFor="let product of products$ | async"
+              [value]="product.id">
+              {{product.name}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>

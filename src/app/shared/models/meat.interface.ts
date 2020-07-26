@@ -20,11 +20,13 @@ export interface EntryMeat {
 }
 
 export interface BasicInformation {
-  proveedor: string;
-  lotProveedor: string;
-  lotInternal: string;
-  rawMaterial: string;
-  date: string;
+  proveedor?: string;
+  lotProveedor?: string;
+  productId?: number;
+  quantity?: string;
+  lotInternal?: string;
+  rawMaterial?: string;
+  date?: string;
 }
 
 export interface AdditionalInformation {
