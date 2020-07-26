@@ -27,7 +27,7 @@ export class FirstFormComponent implements OnInit {
         },
       ],
       quantity: ['', Validators.required],
-      observations: ['', Validators.required],
+      observations: [''],
     });
   }
 

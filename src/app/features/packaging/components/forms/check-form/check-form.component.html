@@ -1,26 +1,16 @@
-<ion-list>
-  <ion-radio-group [formControl]="form">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="4">
-          <ion-list-header style="display: flex; flex-direction: column;">
-            <ion-label>{{title}}</ion-label>
-            <ion-label>{{subtitle}}</ion-label>
-          </ion-list-header>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item>
-            <ion-label>Aceptado</ion-label>
-            <ion-radio [value]="true"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item>
-            <ion-label>Rechezado</ion-label>
-            <ion-radio [value]="false"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-list class="container">
+  <ion-radio-group class="container container__group" (ionChange)="onFocus($event)" [formControl]="form">
+    <ion-list-header class="container container__header" style="display: flex; flex-direction: column;">
+      <ion-label class="container container__label container__title">{{title}}</ion-label>
+      <ion-label class="container container__label container__subtitle">{{subtitle}}</ion-label>
+    </ion-list-header>
+    <ion-item class="container container__item">
+      <ion-label class="container container__label">Aceptado</ion-label>
+      <ion-radio class="container container__radio" [value]="true"></ion-radio>
+    </ion-item>
+    <ion-item class="container container__item">
+      <ion-label class="container container__label">Rechezado</ion-label>
+      <ion-radio class="container container__radio" [value]="false"></ion-radio>
+    </ion-item>
   </ion-radio-group>
 </ion-list>

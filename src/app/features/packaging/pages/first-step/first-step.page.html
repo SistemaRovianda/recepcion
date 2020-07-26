@@ -18,8 +18,8 @@
     </ion-row>
     <ion-row class="container container__row container__row--third">
       <ion-col class="container container__column" size="12">
-        <ion-button class="container container__button" (click)="toNavigate()" color="primary" expand="block"
-          shape="round">
+        <ion-button class="container container__button" [disabled]="form.form.invalid" (click)="toNavigate()"
+          color="primary" expand="block" shape="round">
           Siguiente
         </ion-button>
       </ion-col>

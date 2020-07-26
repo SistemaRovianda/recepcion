@@ -39,34 +39,32 @@ export class SecondFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setUser();
+  }
 
   onQualitySubmit(evt) {
-    console.info('QualityForm: ', evt);
     this.form.get('quality').setValue(evt);
   }
 
   onStrageMaterialSubmit(evt) {
-    console.log('StrageMaterialForm: ', evt);
     this.form.get('strageMaterial').setValue(evt);
   }
 
   onTransportSubmit(evt) {
-    console.log('TransportForm: ', evt);
     this.form.get('transport').setValue(evt);
   }
 
   onIsPzSubmit(evt) {
-    console.log('isPzForm: ', evt);
     this.form.get('isPz').setValue(evt);
   }
 
   onSubmitForm() {
-    this.qualityForm.onSubmit();
-    this.strageMaterialForm.onSubmit();
-    this.transportForm.onSubmit();
-    this.isPzForm.onSubmit();
     this.submit.emit(this.form.value);
+  }
+
+  setUser() {
+    this.form.get('makeId').setValue('djasdkas');
   }
 
   get quality() {

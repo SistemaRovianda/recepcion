@@ -21,7 +21,7 @@ export class CheckFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
+  onFocus(evt) {
     this.submit.emit(this.form.value);
   }
 }

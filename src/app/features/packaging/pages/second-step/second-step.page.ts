@@ -14,7 +14,7 @@ export class SecondStepPage implements OnInit {
   ngOnInit() {}
 
   onSubmit(evt) {
-    console.log('formulario: ', evt);
+    console.log('Segundo formulario: ', evt);
   }
 
   onSave() {

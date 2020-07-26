@@ -15,7 +15,7 @@ export class FirstStepPage implements OnInit {
   ngOnInit() {}
 
   onSubmit(evt) {
-    console.log('primera parte: ', evt);
+    console.log('Primer formulario: ', evt);
   }
 
   toNavigate() {
