@@ -7,6 +7,11 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CheckFormComponent } from '../check-form/check-form.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { Observable } from 'rxjs';
+import { UserRegistered } from 'src/app/shared/models/user.interface';
+import { SELECT_USERS_REGISTERED } from 'src/app/shared/store/usersRegistered/users-registered.selectors';
 
 @Component({
   selector: 'app-second-form',
@@ -28,7 +33,9 @@ export class SecondFormComponent implements OnInit {
 
   @Output('onSubmit') submit = new EventEmitter();
 
-  constructor(private fb: FormBuilder) {
+  users$: Observable<UserRegistered[]>;
+
+  constructor(private fb: FormBuilder, private store: Store<AppState>) {
     this.form = fb.group({
       quality: ['', Validators.required],
       strageMaterial: ['', Validators.required],
@@ -41,6 +48,7 @@ export class SecondFormComponent implements OnInit {
 
   ngOnInit() {
     this.setUser();
+    this.users$ = this.store.select(SELECT_USERS_REGISTERED);
   }
 
   onQualitySubmit(evt) {

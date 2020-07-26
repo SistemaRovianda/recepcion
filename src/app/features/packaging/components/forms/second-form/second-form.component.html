@@ -18,8 +18,9 @@
                     <ion-label>Verifico</ion-label>
                     <ion-select formControlName="verifitId" interface="action-sheet"
                         placeholder="Selecciona verificador">
-                        <ion-select-option [value]="peperoni">Verificador 1</ion-select-option>
-                        <ion-select-option [value]="hawaii">Verificador 2</ion-select-option>
+                        <ion-select-option *ngFor="let user of users$ | async " [value]="user.userId">{{user.fullName}}
+                        </ion-select-option>
+                        <!-- <ion-select-option [value]="hawaii">Verificador 2</ion-select-option> -->
                     </ion-select>
                 </ion-item>
             </ion-col>

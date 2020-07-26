@@ -8,6 +8,7 @@ import { FirstStepPageModule } from './pages/first-step/first-step.module';
 import { ProductsResolve } from 'src/app/shared/resolvers/products.resolver';
 import { PrintReportPageComponent } from './pages/print-report/print-report.page';
 import { PrintReportPageModule } from './pages/print-report/print-report.module';
+import { UsersResolve } from 'src/app/shared/resolvers/users.resolver';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
   },
   {
     path: 'second-step',
+    resolve: {
+      users: UsersResolve,
+    },
     component: SecondStepPage,
   },
   {
@@ -36,6 +40,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  providers: [ProductsResolve],
+  providers: [ProductsResolve, UsersResolve],
 })
 export class PackagingRountingModule {}
