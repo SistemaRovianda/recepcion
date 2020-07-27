@@ -26,6 +26,13 @@ const routes: Routes = [
         (m) => m.PackagingRountingModule
       ),
   },
+  {
+    path: 'dried',
+    loadChildren: () =>
+      import('./features/dried/dried.routing').then(
+        (m) => m.DriedRoutingModule
+      ),
+  },
 ];
 
 @NgModule({

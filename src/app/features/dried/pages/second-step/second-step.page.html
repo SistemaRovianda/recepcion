@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>second-step</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="container" fixed>
+    <ion-row class="container container__row">
+      <ion-col class="container container__row" size="12">
+        <app-second-form #form (onSubmit)="onSubmit($event)"></app-second-form>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--actions">
+      <ion-col class="container container__column" size="12">
+        <ion-button class="container container__button" [disabled]="form.form.invalid" (click)="toNavigate()"
+          expand="block" shape="round" color="primary">
+          Siguiente
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
