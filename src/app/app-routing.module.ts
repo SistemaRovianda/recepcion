@@ -25,7 +25,11 @@ const routes: Routes = [
       import('./features/packaging/packaging.routing').then(
         (m) => m.PackagingRountingModule
       ),
+  },  {
+    path: 'ingredient-form',
+    loadChildren: () => import('./features/ingredient/page/ingredient-form/ingredient-form.module').then( m => m.IngredientFormPageModule)
   },
+
 ];
 
 @NgModule({
