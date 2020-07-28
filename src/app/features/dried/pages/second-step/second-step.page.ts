@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SecondFormComponent } from '../../components/second-form/second-form.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { addFirstAdditionalInformationDried } from '../../store/dried/dried.actions';
 
 @Component({
   selector: 'app-second-step',
@@ -10,12 +13,15 @@ import { SecondFormComponent } from '../../components/second-form/second-form.co
 export class SecondStepPage implements OnInit {
   @ViewChild('form', { static: false }) form: SecondFormComponent;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit() {}
 
   onSubmit(evt) {
     console.log('SecondForm: ', evt);
+    this.store.dispatch(
+      addFirstAdditionalInformationDried({ firstAdditionalInformation: evt })
+    );
   }
 
   toNavigate() {

@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
+import { addSecondAdditionalInformationDried } from '../../store/dried/dried.actions';
+import { entryDriedSelector } from '../../store/dried/dried.selectos';
 
 @Component({
   selector: 'app-third-step',
@@ -22,6 +24,9 @@ export class ThirdStepPage implements OnInit {
 
   onSubmit(evt) {
     console.log('thirdForm: ', evt);
+    this.store.dispatch(
+      addSecondAdditionalInformationDried({ secondAdditionalInformation: evt })
+    );
     this.openConfirmSaveModal();
   }
 
@@ -32,16 +37,16 @@ export class ThirdStepPage implements OnInit {
   async openConfirmSaveModal() {
     let entryDrief;
 
-    // this.store
-    //   .select(entryPackagingSelector)
-    //   .subscribe((packing) => (entryPacking = packing));
+    this.store
+      .select(entryDriedSelector)
+      .subscribe((packing) => (entryDrief = packing));
 
     const modal = await this.modalCtrl.create({
       component: ConfirmSaveDialogComponent,
       cssClass: 'confirm-dialog',
       componentProps: {
         message: '“Una vez que se genere el reporte no podrá ser modificado',
-        area: 'packing',
+        area: 'drief',
         entryPackaging: entryDrief,
       },
     });

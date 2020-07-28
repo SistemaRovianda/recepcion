@@ -4,6 +4,7 @@ import { MeatEffects } from 'src/app/features/meat/store/meat/meat.effects';
 import { UsersRegisteredEffects } from '../usersRegistered/users-registered.effects';
 import { ProductsEffects } from '../products/products.effects';
 import { PackagingEffects } from 'src/app/features/packaging/store/packaging/packaging.effects';
+import { DriedEffects } from 'src/app/features/dried/store/dried/dried.effects';
 
 export const effects = [
   LogginEffects,
@@ -12,4 +13,5 @@ export const effects = [
   UsersRegisteredEffects,
   ProductsEffects,
   PackagingEffects,
+  DriedEffects,
 ];

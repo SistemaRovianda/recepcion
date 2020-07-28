@@ -3,6 +3,7 @@ import { FirstFormComponent } from 'src/app/features/packaging/components/forms/
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
+import { addBasicInformationDried } from '../../store/dried/dried.actions';
 // import { addBasicInformationPackaging } from 'src/app/features/packaging/store/packaging/packaging.actions';
 
 @Component({
@@ -19,9 +20,7 @@ export class FirstStepPage implements OnInit {
 
   onSubmit(evt) {
     console.log('Primer formulario: ', evt);
-    // this.store.dispatch(
-    //   addBasicInformationPackaging({ basicInformation: evt })
-    // );
+    this.store.dispatch(addBasicInformationDried({ basicInformation: evt }));
   }
 
   toNavigate() {

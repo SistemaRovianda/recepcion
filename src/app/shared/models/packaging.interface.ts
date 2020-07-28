@@ -3,7 +3,7 @@ export interface Packaging {
   lotProveedor?: string;
   productId?: number;
   date?: string;
-  osbervations?: string;
+  obervations?: string;
   quantity?: string;
   quality?: boolean;
   strageMaterial?: boolean;
@@ -15,9 +15,14 @@ export interface Packaging {
 
 export interface SelectionInformation {
   quality?: boolean;
+  // rawMaterial?: boolean;
+  // expiration?: boolean;
   strageMaterial?: boolean;
+  //strangeMaterial?: boolean; //error de sintaxis provoca que realice una propiedad separada
   transport?: boolean;
-  isPz?: true;
+  // isPz?: boolean;
+  // odor?: boolean;
+  // paking?: boolean;
   makeId?: string;
   verifitId?: string;
 }
