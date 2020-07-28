@@ -40,7 +40,7 @@ export class SecondFormComponent implements OnInit {
       quality: ['', Validators.required],
       strageMaterial: ['', Validators.required],
       transport: ['', Validators.required],
-      isPz: ['', Validators.required],
+      paking: ['', Validators.required],
       makeId: ['', Validators.required],
       verifitId: ['', Validators.required],
     });
@@ -63,8 +63,8 @@ export class SecondFormComponent implements OnInit {
     this.form.get('transport').setValue(evt);
   }
 
-  onIsPzSubmit(evt) {
-    this.form.get('isPz').setValue(evt);
+  onPakingSubmit(evt) {
+    this.form.get('paking').setValue(evt);
   }
 
   onSubmitForm() {
@@ -87,8 +87,8 @@ export class SecondFormComponent implements OnInit {
     return this.form.get('transport');
   }
 
-  get isPz() {
-    return this.form.get('isPz');
+  get paking() {
+    return this.form.get('paking');
   }
 
   get makeId() {

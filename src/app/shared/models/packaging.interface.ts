@@ -20,6 +20,7 @@ export interface SelectionInformation {
   strageMaterial?: boolean;
   //strangeMaterial?: boolean; //error de sintaxis provoca que realice una propiedad separada
   transport?: boolean;
+  paking?: boolean;
   // isPz?: boolean;
   // odor?: boolean;
   // paking?: boolean;

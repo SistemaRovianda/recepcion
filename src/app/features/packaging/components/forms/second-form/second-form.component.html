@@ -8,7 +8,8 @@
                     (submitCheck)="onStrageMaterialSubmit($event)"></app-check-form>
                 <app-check-form #transportForm [title]="'Transporte'" [subtitle]="'Limpio'"
                     (submitCheck)="onTransportSubmit($event)"></app-check-form>
-                <app-check-form #isPzForm [title]="'isPz'" [subtitle]="'-'" (submitCheck)="onIsPzSubmit($event)">
+                <app-check-form #pakingForm [title]="'Empaque'" [subtitle]="'Sin daños y limpio'"
+                    (submitCheck)="onPakingSubmit($event)">
                 </app-check-form>
             </ion-col>
         </ion-row>

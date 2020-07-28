@@ -39,6 +39,7 @@ export class FirstFormComponent implements OnInit {
         },
       ],
       quantity: ['', Validators.required],
+      isPz: ['', Validators.required],
       observations: [''],
     });
   }
@@ -74,8 +75,12 @@ export class FirstFormComponent implements OnInit {
 
     modal.onDidDismiss().then((valueReturn) => {
       if (valueReturn !== null) {
-        if (valueReturn.data !== undefined)
+        if (valueReturn.data !== undefined) {
           this.form.get('quantity').setValue(valueReturn.data.quantity);
+          this.form
+            .get('isPz')
+            .setValue(valueReturn.data.typeCalc == 'kg' ? true : false);
+        }
       }
     });
 

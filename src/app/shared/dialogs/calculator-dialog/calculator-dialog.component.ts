@@ -34,12 +34,14 @@ export class CalculatorDialogComponent implements OnInit {
   onAcceptKg() {
     this.modalCtrl.dismiss({
       quantity: this.generateCalc(+this.value, 'kg'),
+      typeCalc: 'kg',
     });
   }
 
   onAcceptPz() {
     this.modalCtrl.dismiss({
       quantity: this.generateCalc(+this.value, 'pz'),
+      typeCalc: 'pz',
     });
   }
 
