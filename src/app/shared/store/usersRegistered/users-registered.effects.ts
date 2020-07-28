@@ -7,10 +7,7 @@ import {
   fetchUsersRegisteredFailured,
 } from './users-registered.actions';
 import { exhaustMap, switchMap, catchError } from 'rxjs/operators';
-import {
-  UsersCheckers,
-  UserRegistered,
-} from 'src/app/shared/models/user.interface';
+import { UserRegistered } from 'src/app/shared/models/user.interface';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -23,7 +20,7 @@ export class UsersRegisteredEffects {
     this.actions$.pipe(
       ofType(fetchUsersRegistered),
       exhaustMap((action) =>
-        this.usersService.getUsers().pipe(
+        this.usersService.getUsersByRol('quality').pipe(
           switchMap((usersRegistered: UserRegistered[]) => [
             fetchUsersRegisteredSuccess({ usersRegistered: usersRegistered }),
           ]),

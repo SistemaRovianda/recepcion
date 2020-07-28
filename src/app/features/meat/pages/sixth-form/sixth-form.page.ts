@@ -10,6 +10,8 @@ import {
   addFridgeData,
 } from '../../store/meat/meat.actions';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-sixth-form',
   templateUrl: './sixth-form.page.html',
@@ -27,7 +29,14 @@ export class SixthFormPage implements OnInit {
   ngOnInit() {}
 
   onSubmitSlaughterDate(evt: AdditionalInformation) {
-    this._store.dispatch(addSlaughterDateData({ slaughterDate: evt }));
+    let slaughterDate = {
+      ...evt,
+      value: moment(new Date()).format('YYYY-MM-DD'),
+    };
+    console.log('Fecha de matanza: ', slaughterDate);
+    this._store.dispatch(
+      addSlaughterDateData({ slaughterDate: slaughterDate })
+    );
   }
 
   onSubmitFridge(evt: AdditionalInformation) {

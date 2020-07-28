@@ -15,7 +15,9 @@
     <ion-row>
       <ion-col size="12">
         <ion-item>
-          <ion-input type="text" formControlName="value" placeholder="Ingrese temperatura"></ion-input>
+          <ion-input *ngIf="titleForm != 'Fecha de matanza'" type="text" formControlName="value"
+            placeholder="{{placeholderMessage}}"></ion-input>
+          <ion-input *ngIf="titleForm == 'Fecha de matanza'" [disabled]="true" placeholder="{{date}}"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

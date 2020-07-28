@@ -48,7 +48,7 @@ export class SeventhFormComponent implements OnInit {
   onSubmit() {
     let finalForm: finalInformation = {
       ...this.form.value,
-      qualityInspector: this.form.get('qualityInspector').value.fullName,
+      qualityInspector: this.form.get('qualityInspector').value.userId,
     };
     this.submit.emit(finalForm);
   }

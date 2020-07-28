@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-basic-form',
@@ -15,9 +16,14 @@ export class BasicFormComponent implements OnInit {
 
   @Input() infoTwo: string;
 
+  @Input() placeholderMessage: string;
+
   @Output('onSubmit') submit = new EventEmitter();
 
+  date: string;
+
   constructor(private fb: FormBuilder) {
+    this.date = moment(new Date()).format('YYYY-MM-DD');
     this.form = fb.group({
       value: ['', Validators.required],
       observations: ['', Validators.required],
