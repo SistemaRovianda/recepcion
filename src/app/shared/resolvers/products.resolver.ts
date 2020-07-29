@@ -17,7 +17,7 @@ export class ProductsResolve implements Resolve<boolean> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | import('rxjs').Observable<boolean> | Promise<boolean> {
-    this._store.dispatch(loadProducts());
+    this._store.dispatch(loadProducts({ area: route.paramMap.get('area') }));
     return true;
   }
 }

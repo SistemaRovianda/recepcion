@@ -79,7 +79,7 @@ export class FirstFormComponent implements OnInit {
           this.form.get('quantity').setValue(valueReturn.data.quantity);
           this.form
             .get('isPz')
-            .setValue(valueReturn.data.typeCalc == 'kg' ? true : false);
+            .setValue(valueReturn.data.typeCalc == 'pz' ? true : false);
         }
       }
     });

@@ -13,7 +13,7 @@ import { ProductsResolve } from 'src/app/shared/resolvers/products.resolver';
 
 const routes: Routes = [
   {
-    path: 'first-step',
+    path: 'first-step/:area',
     resolve: {
       products: ProductsResolve,
     },

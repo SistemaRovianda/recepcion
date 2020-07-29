@@ -24,7 +24,7 @@
             placeholder="Seleccione un producto">
             <ion-select-option class="select select__item" *ngFor="let product of products$ | async"
               [value]="product.id">
-              {{product.name}}</ion-select-option>
+              {{product.nameProduct}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>

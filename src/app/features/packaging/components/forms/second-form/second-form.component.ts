@@ -12,6 +12,7 @@ import { AppState } from 'src/app/shared/models/app-state.interface';
 import { Observable } from 'rxjs';
 import { UserRegistered } from 'src/app/shared/models/user.interface';
 import { SELECT_USERS_REGISTERED } from 'src/app/shared/store/usersRegistered/users-registered.selectors';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-second-form',
@@ -35,7 +36,11 @@ export class SecondFormComponent implements OnInit {
 
   users$: Observable<UserRegistered[]>;
 
-  constructor(private fb: FormBuilder, private store: Store<AppState>) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+    private _storage: Storage
+  ) {
     this.form = fb.group({
       quality: ['', Validators.required],
       strageMaterial: ['', Validators.required],
@@ -72,7 +77,10 @@ export class SecondFormComponent implements OnInit {
   }
 
   setUser() {
-    this.form.get('makeId').setValue('djasdkas');
+    this._storage.get('uid').then((res) => {
+      this.form.get('makeId').setValue(res);
+    });
+    // this.form.get('makeId').setValue('djasdkas');
   }
 
   get quality() {

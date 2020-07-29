@@ -1,5 +1,6 @@
 export interface Dried {
   proveedor?: string;
+  proveedorid?: string;
   lotProveedor?: string;
   productId?: number;
   date?: string;

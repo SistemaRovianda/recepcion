@@ -37,9 +37,9 @@ export class ThirdStepPage implements OnInit {
   async openConfirmSaveModal() {
     let entryDrief;
 
-    this.store
-      .select(entryDriedSelector)
-      .subscribe((packing) => (entryDrief = packing));
+    this.store.select(entryDriedSelector).subscribe((drief) => {
+      entryDrief = drief;
+    });
 
     const modal = await this.modalCtrl.create({
       component: ConfirmSaveDialogComponent,
@@ -47,7 +47,7 @@ export class ThirdStepPage implements OnInit {
       componentProps: {
         message: '“Una vez que se genere el reporte no podrá ser modificado',
         area: 'drief',
-        entryPackaging: entryDrief,
+        entryDrief: entryDrief,
       },
     });
 

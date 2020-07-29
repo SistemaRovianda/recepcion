@@ -63,7 +63,7 @@ export class SeventhFormComponent implements OnInit {
       })
       .then((res) => {
         this.imgURL = 'data:image/jpeg;base64,' + res;
-        this.form.get('photo').setValue(this.imgURL);
+        this.form.get('photo').setValue(res);
       })
       .catch((err) => console.error('Error en la toma de fotografia'));
   }

@@ -22,8 +22,8 @@ export class ProductsEffects {
   loadProductsEffect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadProducts),
-      exhaustMap((_) =>
-        this.productsService.getProducts().pipe(
+      exhaustMap((action) =>
+        this.productsService.getProducts(action.area).pipe(
           switchMap((products: Product[]) => [
             loadProductsSuccess({ products: products }),
           ]),

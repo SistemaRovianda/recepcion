@@ -45,7 +45,7 @@ export class ConfirmSaveDialogComponent implements OnInit {
   }
 
   onAcceptSaveDried() {
-    console.log('entry dried');
+    console.log('entry dried---> ', this.entryDrief);
     this._store.dispatch(saveEntryDried({ entryDried: this.entryDrief }));
 
     this.modalCtrl.dismiss();

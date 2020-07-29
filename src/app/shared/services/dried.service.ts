@@ -15,6 +15,25 @@ export class DriedService {
   ) {}
 
   saveEntryDried(dried: Dried): Observable<any> {
-    return this.http.post<any>(`${this.endpoint}/entry/drief`, dried);
+    let drief: Dried = {
+      proveedorid: dried.proveedor,
+      lotProveedor: dried.lotProveedor,
+      productId: dried.productId,
+      date: dried.date,
+      quantity: dried.quantity,
+      observations: dried.observations,
+      quality: dried.quality,
+      rawMaterial: dried.rawMaterial,
+      expiration: dried.expiration,
+      transport: dried.transport,
+      strangeMaterial: dried.strangeMaterial,
+      odor: dried.odor,
+      paking: dried.paking,
+      color: dried.color,
+      texture: dried.texture,
+      weight: dried.weight,
+      isPz: dried.isPz,
+    };
+    return this.http.post<any>(`${this.endpoint}/entry/drief`, drief);
   }
 }
