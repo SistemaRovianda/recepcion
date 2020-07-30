@@ -23,6 +23,10 @@ export class FirstStepPage implements OnInit {
     this.store.dispatch(addBasicInformationDried({ basicInformation: evt }));
   }
 
+  onBack(evt) {
+    this.router.navigate(['menu', 'reception']);
+  }
+
   toNavigate() {
     this.form.onSubmit();
     this.router.navigate(['dried', 'second-step']);

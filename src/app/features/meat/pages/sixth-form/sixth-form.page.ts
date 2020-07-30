@@ -47,6 +47,10 @@ export class SixthFormPage implements OnInit {
     );
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/fifth-form-meat']);
+  }
+
   onNextPage(evt) {
     this.slaughterDateForm.onSubmitForm();
     this.fridgeForm.onSubmitForm();

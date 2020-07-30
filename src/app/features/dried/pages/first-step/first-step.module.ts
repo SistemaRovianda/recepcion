@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FirstStepPage } from './first-step.page';
 import { FirstFormModule } from 'src/app/features/packaging/components/forms/first-form/first-form.module';
 import { CalculatorDialogModule } from 'src/app/shared/dialogs/calculator-dialog/calculator-dialog.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { CalculatorDialogModule } from 'src/app/shared/dialogs/calculator-dialog
     IonicModule,
     FirstFormModule,
     CalculatorDialogModule,
+    TitleHeaderModule,
   ],
   declarations: [FirstStepPage],
 })

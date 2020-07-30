@@ -7,6 +7,7 @@ import { addFinalData, saveEntryMeat } from '../../store/meat/meat.actions';
 import { meatSelector } from '../../store/meat/meat.selectors';
 import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seventh-form',
@@ -19,6 +20,7 @@ export class SeventhFormPage implements OnInit {
 
   constructor(
     private _store: Store<AppState>,
+    private _router: Router,
     private _modalCtrl: ModalController
   ) {}
 
@@ -34,6 +36,10 @@ export class SeventhFormPage implements OnInit {
     console.log(
       'Generar reporte. Esto es una prueba, aun me falta esta madre...'
     );
+  }
+
+  onBack(evt) {
+    this._router.navigate(['/meat/sixth-form-meat']);
   }
 
   async openConfirmSaveModal() {

@@ -30,6 +30,10 @@ export class PrintReportPageComponent implements OnInit {
     );
   }
 
+  onBack(evt) {
+    this.returnToMenu();
+  }
+
   returnToMenu() {
     this.router.navigate(['menu', 'reception']);
   }

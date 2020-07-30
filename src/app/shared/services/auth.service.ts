@@ -82,6 +82,10 @@ export class AuthService {
     ).pipe(map(([currentToken]) => ({ currentToken })));
   }
 
+  getUID() {
+    return this.auth.currentUser.uid;
+  }
+
   signOut(): Observable<any> {
     this._storage.clear().then((res) => {});
     return from(

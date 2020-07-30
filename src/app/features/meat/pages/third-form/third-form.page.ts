@@ -33,6 +33,10 @@ export class ThirdFormPage implements OnInit {
     this._store.dispatch(addExpirationData({ expiration: evt }));
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/second-form-meat']);
+  }
+
   onNextPage(evt) {
     this.strageMaterialForm.onSubmitForm();
     this.expirationForm.onSubmitForm();

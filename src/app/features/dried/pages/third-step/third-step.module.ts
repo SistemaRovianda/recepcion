@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ThirdStepPage } from './third-step.page';
 import { ThirdFormModule } from '../../components/third-form/third-form.module';
 import { ConfirmSaveDialogModule } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ConfirmSaveDialogModule } from 'src/app/shared/dialogs/confirm-save-dia
     IonicModule,
     ConfirmSaveDialogModule,
     ThirdFormModule,
+    TitleHeaderModule,
   ],
   declarations: [ThirdStepPage],
 })

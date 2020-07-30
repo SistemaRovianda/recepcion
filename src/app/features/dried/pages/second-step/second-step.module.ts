@@ -6,9 +6,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { SecondStepPage } from './second-step.page';
 import { SecondFormModule } from '../../components/second-form/second-form.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SecondFormModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SecondFormModule,
+    TitleHeaderModule,
+  ],
   declarations: [SecondStepPage],
 })
 export class SecondStepPageModule {}

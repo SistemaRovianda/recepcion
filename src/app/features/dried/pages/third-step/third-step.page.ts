@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { addSecondAdditionalInformationDried } from '../../store/dried/dried.actions';
 import { entryDriedSelector } from '../../store/dried/dried.selectos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-third-step',
@@ -17,6 +18,7 @@ export class ThirdStepPage implements OnInit {
 
   constructor(
     private store: Store<AppState>,
+    private router: Router,
     private modalCtrl: ModalController
   ) {}
 
@@ -32,6 +34,10 @@ export class ThirdStepPage implements OnInit {
 
   onSaveForm() {
     this.form.onSubmitForm();
+  }
+
+  onBack(evt) {
+    this.router.navigate(['dried', 'second-step']);
   }
 
   async openConfirmSaveModal() {

@@ -33,7 +33,7 @@ export class PackagingEffects {
               this.toastService.onSuccess();
               this.router.navigate([
                 'packaging/print-report',
-                `${entryPackagingId}`,
+                `${entryPackagingId.packingId}`,
               ]);
             }),
             catchError((error) => {

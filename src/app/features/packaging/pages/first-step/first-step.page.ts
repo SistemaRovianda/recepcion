@@ -24,6 +24,10 @@ export class FirstStepPage implements OnInit {
     );
   }
 
+  onBack(evt) {
+    this.router.navigate(['/menu/reception']);
+  }
+
   toNavigate() {
     this.form.onSubmit();
     this.router.navigate(['packaging', 'second-step']);

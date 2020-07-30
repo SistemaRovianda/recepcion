@@ -38,6 +38,10 @@ export class SecondFormPage implements OnInit {
     this._store.dispatch(addWeightData({ weight: evt }));
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/first-form-meat']);
+  }
+
   onNextPage(evt) {
     this.basicTemperatureForm.onSubmitForm();
     this.basicWeightForm.onSubmitForm();

@@ -31,7 +31,10 @@ export class DriedEffects {
           this.driedService.saveEntryDried(action.entryDried).pipe(
             tap((driefId) => {
               this.toastService.onSuccess();
-              this.router.navigate(['dried/print-report', `${driefId}`]);
+              this.router.navigate([
+                'dried/print-report',
+                `${driefId.driefId}`,
+              ]);
             }),
             catchError((error) => {
               this.toastService.onError();

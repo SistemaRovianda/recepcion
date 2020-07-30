@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { Packaging } from 'src/app/shared/models/packaging.interface';
 import { entryPackagingSelector } from '../../store/packaging/packaging.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-second-step',
@@ -18,6 +19,7 @@ export class SecondStepPage implements OnInit {
 
   constructor(
     private store: Store<AppState>,
+    private router: Router,
     private modalCtrl: ModalController
   ) {}
 
@@ -33,6 +35,10 @@ export class SecondStepPage implements OnInit {
 
   onSave() {
     this.form.onSubmitForm();
+  }
+
+  onBack(evt) {
+    this.router.navigate(['/packaging/first-step/PACKING']);
   }
 
   async openConfirmSaveModal() {

@@ -24,6 +24,10 @@ export class SecondStepPage implements OnInit {
     );
   }
 
+  onBack(evt) {
+    this.router.navigate(['dried', 'first-step/DRIEF']);
+  }
+
   toNavigate() {
     this.form.onSubmitForm();
     this.router.navigate(['dried', 'third-step']);
