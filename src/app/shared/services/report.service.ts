@@ -32,7 +32,7 @@ export class ReportService {
         .download(
           `${
             this.endpoint
-          }/entry/${typeEntry}/${meatId}?uid=${this.authService.getUID()}`,
+          }/report/entry/${typeEntry}/${meatId}?uid=${this.authService.getUID()}`,
           `${this.file.dataDirectory}report-${meatId}.pdf`
         )
         .then((entry) => {
