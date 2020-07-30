@@ -20,8 +20,9 @@
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button"
+          [disabled]="slaughterDateForm.form.invalid || fridgeForm.form.invalid" (click)="onNextPage()" expand="block"
+          shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

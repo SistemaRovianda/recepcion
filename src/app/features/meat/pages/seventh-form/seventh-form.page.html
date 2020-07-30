@@ -13,8 +13,8 @@
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onGenerateReport()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button" [disabled]="seventhForm.form.invalid"
+          (click)="onGenerateReport()" expand="block" shape="round" color="primary">
           Generar reporte
         </ion-button>
       </ion-col>

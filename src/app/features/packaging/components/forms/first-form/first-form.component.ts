@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { SELECT_PRODUCTS } from 'src/app/shared/store/products/products.selectors';
 import { BasicInformation } from 'src/app/shared/models/meat.interface';
+import { CustomValidators } from 'src/app/shared/validators/numbers.validators';
 
 @Component({
   selector: 'app-first-form',
@@ -29,8 +30,11 @@ export class FirstFormComponent implements OnInit {
     private _store: Store<AppState>
   ) {
     this.form = fb.group({
-      proveedor: ['', Validators.required],
-      lotProveedor: ['', Validators.required],
+      proveedor: ['', [Validators.required, CustomValidators.text]],
+      lotProveedor: [
+        '',
+        [Validators.required, CustomValidators.textAndNumbers],
+      ],
       productId: ['', Validators.required],
       date: [
         {
@@ -38,9 +42,9 @@ export class FirstFormComponent implements OnInit {
           disabled: true,
         },
       ],
-      quantity: ['', Validators.required],
+      quantity: ['', [Validators.required, CustomValidators.integerNumber]],
       isPz: ['', Validators.required],
-      observations: [''],
+      observations: ['', CustomValidators.textAndNumbers],
     });
   }
 

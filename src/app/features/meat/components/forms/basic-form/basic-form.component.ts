@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { CustomValidators } from 'src/app/shared/validators/numbers.validators';
 
 @Component({
   selector: 'app-basic-form',
@@ -18,6 +19,8 @@ export class BasicFormComponent implements OnInit {
 
   @Input() placeholderMessage: string;
 
+  @Input() typeValue: string;
+
   @Output('onSubmit') submit = new EventEmitter();
 
   date: string;
@@ -26,12 +29,44 @@ export class BasicFormComponent implements OnInit {
     this.date = moment(new Date()).format('YYYY-MM-DD');
     this.form = fb.group({
       value: ['', Validators.required],
-      observations: ['', Validators.required],
+      observations: ['', CustomValidators.textAndNumbers],
       accepted: ['', Validators.required],
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setValidatorByTypeValue();
+  }
+
+  setValidatorByTypeValue() {
+    if (this.typeValue == 'numberT') {
+      this.form.get('value').clearValidators();
+      this.form
+        .get('value')
+        .setValidators([
+          Validators.required,
+          Validators.max(4),
+          Validators.min(-18),
+        ]);
+    }
+    if (this.typeValue == 'numberW') {
+      console.log('numberW...');
+      this.form.get('value').clearValidators();
+      this.form
+        .get('value')
+        .setValidators([
+          Validators.required,
+          CustomValidators.integerForWeight,
+        ]);
+    }
+
+    if (this.typeValue == 'text') {
+      this.form.get('value').clearValidators();
+      this.form
+        .get('value')
+        .setValidators([Validators.required, CustomValidators.textAndNumbers]);
+    }
+  }
 
   onSubmitForm() {
     this.submit.emit(this.form.value);

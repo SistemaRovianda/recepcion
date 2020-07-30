@@ -9,19 +9,20 @@
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Materia extraña'" [infoOne]="'Ausente'" [placeholderMessage]="'Ingrese materia'"
-          #strageMaterialForm (onSubmit)="onSubmitStrageMaterial($event)"></app-basic-form>
+          [typeValue]="'text'" #strageMaterialForm (onSubmit)="onSubmitStrageMaterial($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Caducidad'" [infoOne]="'Vigente'" [placeholderMessage]="'Ingrese caducidad'"
-          #expirationForm (onSubmit)="onSubmitStrageExpiration($event)"></app-basic-form>
+          [typeValue]="'text'" #expirationForm (onSubmit)="onSubmitStrageExpiration($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button"
+          [disabled]="strageMaterialForm.form.invalid || expirationForm.form.invalid" (click)="onNextPage()"
+          expand="block" shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

@@ -7,6 +7,14 @@
           <ion-input class="form form__input" type="text" formControlName="proveedor" placeholder="Ingrese proveedor">
           </ion-input>
         </ion-item>
+        <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)">
+          <div *ngIf="proveedor.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="proveedor.errors.invalidText">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
       <ion-col class="form form__column" size="6">
         <ion-item class="form form__item">
@@ -14,6 +22,14 @@
           <ion-input class="form form__input" type="text" formControlName="lotProveedor" placeholder="Ingrese lote">
           </ion-input>
         </ion-item>
+        <div *ngIf="lotProveedor.invalid && (lotProveedor.dirty || lotProveedor.touched)">
+          <div *ngIf="lotProveedor.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="lotProveedor.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row class="form__row">
@@ -27,6 +43,9 @@
               {{product.nameProduct}}</ion-select-option>
           </ion-select>
         </ion-item>
+        <div *ngIf="productId.invalid && (productId.dirty || productId.touched)">
+          El campo es requerido
+        </div>
       </ion-col>
       <ion-col class="form form__column" size="6">
         <ion-item class="form form__item">
@@ -59,6 +78,11 @@
           <ion-label class="form form__label" position="stacked">Observaciones</ion-label>
           <ion-textarea class="form form__textarea" formControlName="observations"></ion-textarea>
         </ion-item>
+        <div *ngIf="observations.dirty">
+          <div *ngIf="observations.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

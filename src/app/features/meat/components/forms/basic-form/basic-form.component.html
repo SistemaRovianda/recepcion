@@ -15,9 +15,32 @@
     <ion-row>
       <ion-col size="12">
         <ion-item>
-          <ion-input *ngIf="titleForm != 'Fecha de matanza'" type="text" formControlName="value"
+          <ion-input *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberT'" type="text" inputmode="text"
+            formControlName="value" placeholder="{{placeholderMessage}}"></ion-input>
+          <ion-input *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberW'" type="text" inputmode="text"
+            formControlName="value" placeholder="{{placeholderMessage}}"></ion-input>
+          <ion-input *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'text'" type="text" formControlName="value"
             placeholder="{{placeholderMessage}}"></ion-input>
-          <ion-input *ngIf="titleForm == 'Fecha de matanza'" [disabled]="true" placeholder="{{date}}"></ion-input>
+          <div *ngIf="value.invalid && (value.dirty || value.touched)">
+            <div *ngIf="value.errors?.required">
+              El campo es requerido
+            </div>
+            <div *ngIf="value.errors?.invalidCharacters">
+              Caracteres invalidos
+            </div>
+            <div *ngIf="value.errors?.invalidWeight">
+              Peso invalido
+            </div>
+            <div *ngIf="value.errors?.max">
+              La máxima es de 4°C
+            </div>
+            <div *ngIf="value.errors?.min">
+              El minimo es de -18°C
+            </div>
+          </div>
+          <!-- <ion-input *ngIf="titleForm == 'Fecha de matanza'" placeholder="{{date}}"></ion-input> -->
+          <ion-datetime *ngIf="titleForm == 'Fecha de matanza'" placeholder="{{date}}" formControlName="value"
+            display-format="YYYY-MM-DD"></ion-datetime>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -28,13 +51,17 @@
           <ion-label position="stacked">Observaciones</ion-label>
           <ion-textarea formControlName="observations"></ion-textarea>
         </ion-item>
+        <div *ngIf="observations.dirty">
+          <div *ngIf="observations.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col size="12">
         <ion-list>
-          <ion-radio-group name="auto" value="tesla" formControlName="accepted">
+          <ion-radio-group name="auto" formControlName="accepted">
             <ion-list-header>
               <ion-label>Materia Prima</ion-label>
             </ion-list-header>

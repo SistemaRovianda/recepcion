@@ -67,4 +67,16 @@ export class SeventhFormComponent implements OnInit {
       })
       .catch((err) => console.error('Error en la toma de fotografia'));
   }
+
+  get photo() {
+    return this.form.get('photo');
+  }
+
+  get qualityInspector() {
+    return this.form.get('qualityInspector');
+  }
+
+  get job() {
+    return this.form.get('job');
+  }
 }

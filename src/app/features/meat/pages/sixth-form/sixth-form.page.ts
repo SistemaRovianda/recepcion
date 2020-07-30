@@ -31,7 +31,7 @@ export class SixthFormPage implements OnInit {
   onSubmitSlaughterDate(evt: AdditionalInformation) {
     let slaughterDate = {
       ...evt,
-      value: moment(new Date()).format('YYYY-MM-DD'),
+      value: new Date(evt.value).toISOString().split('T')[0],
     };
     console.log('Fecha de matanza: ', slaughterDate);
     this._store.dispatch(

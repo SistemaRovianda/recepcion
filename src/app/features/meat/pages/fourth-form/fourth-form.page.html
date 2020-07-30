@@ -9,20 +9,21 @@
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Empaque'" [infoOne]="'Sin daños y limpio'"
-          [placeholderMessage]="'Ingrese empaque'" #packingForm (onSubmit)="onSubmitPacking($event)"></app-basic-form>
+          [placeholderMessage]="'Ingrese empaque'" [typeValue]="'text'" #packingForm
+          (onSubmit)="onSubmitPacking($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Olor'" [infoOne]="'Característico'" [placeholderMessage]="'Ingrese olor'"
-          #odorForm (onSubmit)="onSubmitOdor($event)">
+          [typeValue]="'text'" #odorForm (onSubmit)="onSubmitOdor($event)">
         </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button" [disabled]="packingForm.form.invalid || odorForm.form.invalid"
+          (click)="onNextPage()" expand="block" shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

@@ -9,20 +9,21 @@
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
         <app-basic-form #tempForm [titleForm]="'Temperatura'" [infoOne]="'Fresco Max. 4C°'"
-          [infoTwo]="'Congelado Max. -18C°'" [placeholderMessage]="'Ingrese temperatura'"
+          [infoTwo]="'Congelado Max. -18C°'" [placeholderMessage]="'Ingrese temperatura'" [typeValue]="'numberT'"
           (onSubmit)="onSubmitTemperature($event)"></app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
         <app-basic-form #weightForm [titleForm]="'Peso'" [infoOne]="'Segun el empaque'"
-          [placeholderMessage]="'Ingrese peso'" (onSubmit)="onSubmitWeight($event)"></app-basic-form>
+          [placeholderMessage]="'Ingrese peso'" [typeValue]="'numberW'" (onSubmit)="onSubmitWeight($event)">
+        </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button" [disabled]="tempForm.form.invalid || weightForm.form.invalid"
+          (click)="onNextPage()" expand="block" shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

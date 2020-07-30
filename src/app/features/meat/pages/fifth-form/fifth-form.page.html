@@ -9,21 +9,23 @@
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Transporte'" [infoOne]="'Limpio, sin olores, sin material ajeno, sin plagas'"
-          [placeholderMessage]="'Ingrese transporte'" #transportForm (onSubmit)="onSubmitTransport($event)">
+          [placeholderMessage]="'Ingrese transporte'" [typeValue]="'text'" #transportForm
+          (onSubmit)="onSubmitTransport($event)">
         </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
-        <app-basic-form [titleForm]="'Textura'" [infoOne]="Firme" [placeholderMessage]="'Ingrese textura'" #textureForm
-          (onSubmit)="onSubmitTexture($event)">
+        <app-basic-form [titleForm]="'Textura'" [infoOne]="Firme" [placeholderMessage]="'Ingrese textura'"
+          [typeValue]="'text'" #textureForm (onSubmit)="onSubmitTexture($event)">
         </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button"
+          [disabled]="transportForm.form.invalid || textureForm.form.invalid" (click)="onNextPage()" expand="block"
+          shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>
