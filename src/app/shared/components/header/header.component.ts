@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class TitleHeaderComponent implements OnInit {
-  @Input() titlePath: string;
+  @Input() titlePath: string; //title of button
   @Input() title: string;
   @Output('onBack') back = new EventEmitter();
 

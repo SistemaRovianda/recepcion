@@ -1,0 +1,51 @@
+<title-header [titlePath]="'Regresar'" [title]="'Listado de ingredientes'" (onBack)="onBack($event)"></title-header>
+
+<ion-content>
+  <div class="content">
+    <div class="contentInputs">
+      <ion-item>
+        <ion-label>Buscar: </ion-label>
+        <ion-select #selected value="DRIEF" multiple="false" okText="Aceptar" cancelText="Cancelar" (ionChange)="search(selected.value)">
+          <ion-select-option value="DRIEF">Secos</ion-select-option>
+          <ion-select-option value="PACKING">Empaques</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button class="addButton" color="warning" (click)="navigateAdd()">+</ion-button> 
+    </div>
+    <div class="contentTable">
+      <mat-table [dataSource]="infoIngredients" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> Consecutivo </mat-header-cell>
+          <mat-cell *matCellDef="let i= index"> {{i+1}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="nameProduct">
+          <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nameProduct}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="mark">
+          <mat-header-cell *matHeaderCellDef> Marca </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.mark}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="variant">
+          <mat-header-cell *matHeaderCellDef> Variante </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.variant}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="presentation">
+          <mat-header-cell *matHeaderCellDef> Presentación </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.presentation}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="accions">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <ion-button color="danger" #submitButton (click)="deleteIngredient(element.id, element.category); submitButton.disabled = true" >Eliminar</ion-button> 
+            </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</ion-content>

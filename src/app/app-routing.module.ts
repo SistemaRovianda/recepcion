@@ -25,10 +25,16 @@ const routes: Routes = [
       import('./features/packaging/packaging.routing').then(
         (m) => m.PackagingRountingModule
       ),
-  },  {
-    path: 'ingredient-form',
+  },
+  {
+    path: 'addingredient',
     loadChildren: () => import('./features/ingredient/page/ingredient-form/ingredient-form.module').then( m => m.IngredientFormPageModule)
   },
+  {
+    path: 'list-ingredient',
+    loadChildren: () => import('./features/ingredient/page/list-ingredient/list-ingredient.module').then( m => m.ListIngredientPageModule)
+  },
+
 
 ];
 

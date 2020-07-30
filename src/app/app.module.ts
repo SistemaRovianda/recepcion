@@ -24,6 +24,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +48,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
     }),
     HttpClientModule,
     AppProvidersModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     StatusBar,

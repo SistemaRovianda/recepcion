@@ -1,9 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ingredient-form</ion-title>
-  </ion-toolbar>
-</ion-header>
+<title-header [titlePath]="'Regresar'" [title]="'Agregar ingredientes'" (onBack)="onBack($event)"></title-header>
 
-<ion-content>
 
+<ion-content [formGroup]="form">
+  <div class="contentForm">
+    <div class="contentInput">
+      <ion-item class="inputText">
+        <ion-label position="floating">Producto</ion-label>
+        <ion-input matInput type="text" formControlName="product"></ion-input>
+      </ion-item>
+      <mat-error *ngIf="form.controls.product.invalid">
+        {{getErrorProduct()}}
+      </mat-error>
+    </div>
+    <div class="contentInput">
+      <ion-item class="inputText">
+        <ion-label position="floating">Marca</ion-label>
+        <ion-input matInput type="text" formControlName="mark"></ion-input>
+      </ion-item>
+      <mat-error *ngIf="form.controls.mark.invalid">
+        {{getErrorMark()}}
+      </mat-error>
+    </div>
+    <div class="contentInput">
+      <ion-item class="inputText">
+        <ion-label position="floating">Variante</ion-label>
+        <ion-input matInput type="text" formControlName="variant"></ion-input>
+      </ion-item>
+    </div>
+    <div class="contentInput">
+      <ion-item class="inputText">
+        <ion-label position="floating">Presentación</ion-label>
+        <ion-input matInput type="text" formControlName="presentation"></ion-input>
+      </ion-item>
+    </div>
+    <div class="contentInput">
+      <ion-list>
+        <ion-item>
+          <ion-label>tipo de ingrediente</ion-label>
+          <ion-select multiple="false" cancelText="Cancelar" okText="Aceptar" formControlName="category">
+            <ion-select-option value="DRIEF">Secos</ion-select-option>
+            <ion-select-option value="PACKING">Empaques</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+  
+    <div class="contentButton">
+      <ion-button color="secondary" (click)="onBack()">Regresar</ion-button>
+      <ion-button color="primary" #disableButton [disabled]="form.invalid" (click)="addIngredient(); disableButton.disabled = true">Agregar</ion-button>
+    </div>
+  </div>
 </ion-content>
