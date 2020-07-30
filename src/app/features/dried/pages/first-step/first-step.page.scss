@@ -5,7 +5,7 @@
 
     &--all {
         @include breakpoint-size(ms-small) {
-            min-height: 1000px;
+            min-height: 1050px;
         }
 
         @include breakpoint-size(ms-extra-large) {
@@ -22,7 +22,7 @@
 
         &--second {
             @include breakpoint-size(ms-small) {
-                height: 90%;
+                height: 85%;
             }
         }
 

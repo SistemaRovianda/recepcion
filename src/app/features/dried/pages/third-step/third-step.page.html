@@ -1,8 +1,8 @@
 <title-header [titlePath]="'Regresar'" [title]="'Entrada Secos'" (onBack)="onBack($event)"></title-header>
 
 <ion-content>
-  <ion-grid class="container" fixed>
-    <ion-row class="container container__row">
+  <ion-grid class="container container--all" fixed>
+    <ion-row class="container container__row container__row--form">
       <ion-col class="container container__row" size="12">
         <app-third-form #form (onSubmit)="onSubmit($event)"></app-third-form>
       </ion-col>
