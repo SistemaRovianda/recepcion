@@ -7,6 +7,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { map } from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +19,21 @@ export class ReportService {
     private fileTransfer: FileTransfer,
     private fileOpener: FileOpener,
     private authService: AuthService,
+    private storage: Storage,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {}
 
   generateReport(meatId: string, typeEntry?: string): Observable<any> {
     const transfer = this.fileTransfer.create();
 
+    let token;
+
+    this.storage.get('token').then((res) => (token = res));
+
     console.log(
-      `Datos para reporte. MeatId: ${meatId} typeEntry: ${typeEntry} uid: ${this.authService.getUID()}`
+      `Datos para reporte. MeatId: ${meatId} typeEntry: ${typeEntry} uid: ${this.authService.getUID()} token: ${localStorage.getItem(
+        'token'
+      )}`
     );
     return from(
       transfer
@@ -33,7 +41,13 @@ export class ReportService {
           `${
             this.endpoint
           }/report/entry/${typeEntry}/${meatId}?uid=${this.authService.getUID()}`,
-          `${this.file.dataDirectory}report-${meatId}.pdf`
+          `${this.file.dataDirectory}report-${meatId}.pdf`,
+          false,
+          {
+            headers: {
+              Authorization: localStorage.getItem('token'),
+            },
+          }
         )
         .then((entry) => {
           let url = entry.toURL();
