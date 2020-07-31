@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/shared/models/app-state.interface';
+import { signOut } from 'src/app/features/landing/store/login/login.action';
 
 @Component({
   selector: 'app-reception-menu',
@@ -9,11 +11,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./reception-menu.component.scss'],
 })
 export class ReceptionMenuComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
 
   logout(evt) {
-    console.log('Cerrando sesión...');
+    this.store.dispatch(signOut());
   }
 }
