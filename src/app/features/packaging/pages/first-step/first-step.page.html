@@ -8,7 +8,7 @@
     </ion-row>
     <ion-row class="container container__row container__row--second">
       <ion-col class="container container__column" size="12">
-        <app-first-form #form (onSubmit)="onSubmit($event)"></app-first-form>
+        <app-first-form #form [area]="'packing'" (onSubmit)="onSubmit($event)"></app-first-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--third">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as moment from 'moment';
@@ -21,6 +21,8 @@ export class FirstFormComponent implements OnInit {
   form: FormGroup;
 
   products$: Observable<Product[]>;
+
+  @Input() area: string;
 
   @Output('onSubmit') submit = new EventEmitter();
 
@@ -61,19 +63,20 @@ export class FirstFormComponent implements OnInit {
   }
 
   calcKG() {
-    this.openModalCalculator('kg');
+    this.openModalCalculator('kg', this.area);
   }
 
   calcPZ() {
-    this.openModalCalculator('pz');
+    this.openModalCalculator('pz', this.area);
   }
 
-  async openModalCalculator(typeCalc?: string) {
+  async openModalCalculator(typeCalc?: string, area?: string) {
     const modal = await this.modalCtrl.create({
       component: CalculatorDialogComponent,
       cssClass: 'calculator-dialog',
       componentProps: {
         typeCalc: typeCalc,
+        area: area,
       },
     });
 

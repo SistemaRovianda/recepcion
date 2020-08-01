@@ -2,9 +2,12 @@
   <ion-row class="container container__row container__row--screen">
     <ion-col size="12">
       <ion-item>
-        <ion-input class="container container__input" type="text" disabled="true"
-          placeholder="{{typeCalc == 'kg'? '0000 Kg' : '0000 Pz'}}" [value]="value">
+        <ion-input class="container container__input" type="text" disabled="true" placeholder="{{valueExist()}}"
+          [value]="value">
         </ion-input>
+
+        <!-- <ion-input *ngIf="area != null || area != undefined" class="container container__input" type="text"
+          disabled="true" placeholder="{{value$ | async}}"></ion-input> -->
       </ion-item>
     </ion-col>
   </ion-row>

@@ -40,7 +40,8 @@
             placeholder="Seleccione un producto">
             <ion-select-option class="select select__item" *ngFor="let product of products$ | async"
               [value]="product.id">
-              {{product.nameProduct}}</ion-select-option>
+              {{product.nameProduct}} - {{product.mark}} - {{product.variant}} - {{product.presentation}}
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <div *ngIf="productId.invalid && (productId.dirty || productId.touched)">
@@ -59,7 +60,7 @@
 
         <ion-item class="form form__item">
           <ion-label class="form form__label" position="stacked">Cantidad</ion-label>
-          <ion-input type="text" disabled="true"></ion-input>
+          <!-- <ion-input type="text" disabled="true"></ion-input> -->
         </ion-item>
         <div class="form form__actions">
           <ion-button (click)="calcKG()" class="form form__button" expand="block" color="secondary">
