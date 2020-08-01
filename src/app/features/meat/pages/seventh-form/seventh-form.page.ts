@@ -52,7 +52,7 @@ export class SeventhFormPage implements OnInit {
 
     let modal = await this._modalCtrl.create({
       component: ConfirmSaveDialogComponent,
-      cssClass: 'confirm-modal',
+      cssClass: 'confirm-dialog',
       componentProps: {
         message: '“Una vez que se genere el reporte no podrá ser modificado',
         area: 'meat',

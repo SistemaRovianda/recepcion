@@ -17,9 +17,13 @@
     }
 
     &__column {
+        text-align: center;
         @include breakpoint-size(ms-small) {
             font-size: var(--fs-text-sm);
-            text-align: center;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xlg);
         }
     }
 }
