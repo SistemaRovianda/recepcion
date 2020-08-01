@@ -1,9 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>first-step</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<title-header [titlePath]="'Regresar'" [title]="'Entrada Empaques'" (onBack)="onBack($event)"></title-header>
 <ion-content>
   <ion-grid class="container container--all" fixed>
     <ion-row class="container container__row container__row--first">
@@ -13,7 +8,7 @@
     </ion-row>
     <ion-row class="container container__row container__row--second">
       <ion-col class="container container__column" size="12">
-        <app-first-form #form (onSubmit)="onSubmit($event)"></app-first-form>
+        <app-first-form #form [area]="'packing'" (onSubmit)="onSubmit($event)"></app-first-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--third">

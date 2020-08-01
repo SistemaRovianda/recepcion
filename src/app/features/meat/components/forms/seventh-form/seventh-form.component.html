@@ -25,6 +25,11 @@
             <ion-select-option *ngFor="let user of users$ | async" [value]="user">{{ user.fullName }}
             </ion-select-option>
           </ion-select>
+          <div *ngIf="qualityInspector.invalid && (qualityInspector.dirty || qualityInspector.touched)">
+            <div *ngIf="qualityInspector.errors?.required">
+              El campo es requerido
+            </div>
+          </div>
         </ion-item>
       </ion-col>
     </ion-row>

@@ -1,0 +1,22 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <app-check-form #colorForm [title]="'Color'" [subtitle]="'Característico'" (submitCheck)="onColorSubmit($event)">
+      </app-check-form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+      <app-check-form #textureForm [title]="'Textura'" [subtitle]="'Característico'"
+        (submitCheck)="onTextureSubmit($event)"></app-check-form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12">
+      <app-check-form #weightForm [title]="'Peso'" [subtitle]="'Según empaque'" (submitCheck)="onWeightSubmit($event)">
+      </app-check-form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

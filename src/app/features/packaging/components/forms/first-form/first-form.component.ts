@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as moment from 'moment';
@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { SELECT_PRODUCTS } from 'src/app/shared/store/products/products.selectors';
 import { BasicInformation } from 'src/app/shared/models/meat.interface';
+import { CustomValidators } from 'src/app/shared/validators/numbers.validators';
 
 @Component({
   selector: 'app-first-form',
@@ -21,6 +22,8 @@ export class FirstFormComponent implements OnInit {
 
   products$: Observable<Product[]>;
 
+  @Input() area: string;
+
   @Output('onSubmit') submit = new EventEmitter();
 
   constructor(
@@ -29,8 +32,11 @@ export class FirstFormComponent implements OnInit {
     private _store: Store<AppState>
   ) {
     this.form = fb.group({
-      proveedor: ['', Validators.required],
-      lotProveedor: ['', Validators.required],
+      proveedor: ['', [Validators.required, CustomValidators.text]],
+      lotProveedor: [
+        '',
+        [Validators.required, CustomValidators.textAndNumbers],
+      ],
       productId: ['', Validators.required],
       date: [
         {
@@ -38,8 +44,9 @@ export class FirstFormComponent implements OnInit {
           disabled: true,
         },
       ],
-      quantity: ['', Validators.required],
-      observations: [''],
+      quantity: ['', [Validators.required, CustomValidators.integerNumber]],
+      isPz: ['', Validators.required],
+      observations: ['', CustomValidators.textAndNumbers],
     });
   }
 
@@ -56,26 +63,31 @@ export class FirstFormComponent implements OnInit {
   }
 
   calcKG() {
-    this.openModalCalculator('kg');
+    this.openModalCalculator('kg', this.area);
   }
 
   calcPZ() {
-    this.openModalCalculator('pz');
+    this.openModalCalculator('pz', this.area);
   }
 
-  async openModalCalculator(typeCalc?: string) {
+  async openModalCalculator(typeCalc?: string, area?: string) {
     const modal = await this.modalCtrl.create({
       component: CalculatorDialogComponent,
       cssClass: 'calculator-dialog',
       componentProps: {
         typeCalc: typeCalc,
+        area: area,
       },
     });
 
     modal.onDidDismiss().then((valueReturn) => {
       if (valueReturn !== null) {
-        if (valueReturn.data !== undefined)
+        if (valueReturn.data !== undefined) {
           this.form.get('quantity').setValue(valueReturn.data.quantity);
+          this.form
+            .get('isPz')
+            .setValue(valueReturn.data.typeCalc == 'pz' ? true : false);
+        }
       }
     });
 

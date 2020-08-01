@@ -7,6 +7,7 @@ import { addFinalData, saveEntryMeat } from '../../store/meat/meat.actions';
 import { meatSelector } from '../../store/meat/meat.selectors';
 import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seventh-form',
@@ -19,6 +20,7 @@ export class SeventhFormPage implements OnInit {
 
   constructor(
     private _store: Store<AppState>,
+    private _router: Router,
     private _modalCtrl: ModalController
   ) {}
 
@@ -36,6 +38,10 @@ export class SeventhFormPage implements OnInit {
     );
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/sixth-form-meat']);
+  }
+
   async openConfirmSaveModal() {
     let entryMeat;
     this._store.select(meatSelector).subscribe((meat) => {
@@ -46,7 +52,7 @@ export class SeventhFormPage implements OnInit {
 
     let modal = await this._modalCtrl.create({
       component: ConfirmSaveDialogComponent,
-      cssClass: 'confirm-modal',
+      cssClass: 'confirm-dialog',
       componentProps: {
         message: '“Una vez que se genere el reporte no podrá ser modificado',
         area: 'meat',

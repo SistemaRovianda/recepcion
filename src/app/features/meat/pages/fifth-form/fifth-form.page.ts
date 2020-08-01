@@ -32,6 +32,10 @@ export class FifthFormPage implements OnInit {
     this._store.dispatch(addTextureData({ texture: evt }));
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/fourth-form-meat']);
+  }
+
   onNextPage(evt) {
     this.transportForm.onSubmitForm();
     this.textureForm.onSubmitForm();

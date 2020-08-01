@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { BasicInformation } from 'src/app/shared/models/meat.interface';
+import { CustomValidators } from 'src/app/shared/validators/numbers.validators';
 
 @Component({
   selector: 'first-form',
@@ -15,10 +16,13 @@ export class FirstFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
-      proveedor: ['', Validators.required],
-      lotProveedor: ['', Validators.required],
-      lotInternal: ['', Validators.required],
-      rawMaterial: ['', Validators.required],
+      proveedor: ['', [Validators.required, CustomValidators.text]],
+      lotProveedor: [
+        '',
+        [Validators.required, CustomValidators.textAndNumbers],
+      ],
+      lotInternal: ['', [Validators.required, CustomValidators.textAndNumbers]],
+      rawMaterial: ['', [Validators.required, CustomValidators.textAndNumbers]],
       date: [
         {
           value: moment(new Date()).format('DD/MM/YYYY'),

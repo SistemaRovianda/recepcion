@@ -16,4 +16,8 @@ export class UsersService {
   getUsers(): Observable<UserRegistered[]> {
     return this.http.get<UserRegistered[]>(`${this.endpoint}/user`);
   }
+
+  getUsersByRol(rol: string): Observable<UserRegistered[]> {
+    return this.http.get<UserRegistered[]>(`${this.endpoint}/user/rol/${rol}`);
+  }
 }

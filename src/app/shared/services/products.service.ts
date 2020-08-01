@@ -14,7 +14,9 @@ export class ProductsService {
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.endpoint}/products-rovianda`);
+  getProducts(area?: string): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      `${this.endpoint}/list/ingredients?type=${area}`
+    );
   }
 }

@@ -5,6 +5,7 @@ import { AppState } from 'src/app/shared/models/app-state.interface';
 import { Fridge } from 'src/app/shared/models/fridge.interface';
 import { Observable } from 'rxjs';
 import { fridgesSelector } from 'src/app/shared/store/fridges/fridges.selectors';
+import { CustomValidators } from 'src/app/shared/validators/numbers.validators';
 
 @Component({
   selector: 'app-fridge-form',
@@ -23,7 +24,7 @@ export class FridgeFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private _store: Store<AppState>) {
     this.form = fb.group({
       fridgeId: ['', Validators.required],
-      observations: ['', Validators.required],
+      observations: ['', CustomValidators.textAndNumbers],
     });
   }
 

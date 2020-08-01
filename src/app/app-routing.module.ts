@@ -28,14 +28,26 @@ const routes: Routes = [
   },
   {
     path: 'addingredient',
-    loadChildren: () => import('./features/ingredient/page/ingredient-form/ingredient-form.module').then( m => m.IngredientFormPageModule)
+    loadChildren: () =>
+      import(
+        './features/ingredient/page/ingredient-form/ingredient-form.module'
+      ).then((m) => m.IngredientFormPageModule),
   },
   {
     path: 'list-ingredient',
-    loadChildren: () => import('./features/ingredient/page/list-ingredient/list-ingredient.module').then( m => m.ListIngredientPageModule)
+    loadChildren: () =>
+      import(
+        './features/ingredient/page/list-ingredient/list-ingredient.module'
+      ).then((m) => m.ListIngredientPageModule),
   },
 
-
+  {
+    path: 'dried',
+    loadChildren: () =>
+      import('./features/dried/dried.routing').then(
+        (m) => m.DriedRoutingModule
+      ),
+  },
 ];
 
 @NgModule({

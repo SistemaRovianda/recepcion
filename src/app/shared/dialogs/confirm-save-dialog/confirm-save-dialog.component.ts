@@ -5,6 +5,8 @@ import { AppState } from '../../models/app-state.interface';
 import { saveEntryMeat } from 'src/app/features/meat/store/meat/meat.actions';
 import { ModalController } from '@ionic/angular';
 import { saveEntryPackaging } from 'src/app/features/packaging/store/packaging/packaging.actions';
+import { Dried } from '../../models/dried.interface';
+import { saveEntryDried } from 'src/app/features/dried/store/dried/dried.actions';
 
 @Component({
   selector: 'app-confirm-save-dialog',
@@ -19,6 +21,8 @@ export class ConfirmSaveDialogComponent implements OnInit {
   @Input() entryMeat: EntryMeat;
 
   @Input() entryPackaging: any;
+
+  @Input() entryDrief: Dried;
 
   constructor(
     private _store: Store<AppState>,
@@ -37,6 +41,13 @@ export class ConfirmSaveDialogComponent implements OnInit {
     this._store.dispatch(
       saveEntryPackaging({ entryPackaging: this.entryPackaging })
     );
+    this.modalCtrl.dismiss();
+  }
+
+  onAcceptSaveDried() {
+    console.log('entry dried---> ', this.entryDrief);
+    this._store.dispatch(saveEntryDried({ entryDried: this.entryDrief }));
+
     this.modalCtrl.dismiss();
   }
 

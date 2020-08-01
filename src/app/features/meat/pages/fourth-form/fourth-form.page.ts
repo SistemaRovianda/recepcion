@@ -28,6 +28,10 @@ export class FourthFormPage implements OnInit {
     this._store.dispatch(addOdorData({ odor: evt }));
   }
 
+  onBack(evt) {
+    this._router.navigate(['/meat/third-form-meat']);
+  }
+
   onNextPage(evt) {
     this.packingForm.onSubmitForm();
     this.odorForm.onSubmitForm();

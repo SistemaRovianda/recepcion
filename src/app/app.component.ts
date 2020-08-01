@@ -45,7 +45,6 @@ export class AppComponent {
             if (res) {
               this._router.navigate(['menu', 'reception']);
             } else {
-              console.log('login');
               this._router.navigate(['login']);
             }
             splash.SplashScreen.hide();

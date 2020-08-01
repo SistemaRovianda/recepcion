@@ -82,11 +82,16 @@ export class AuthService {
     ).pipe(map(([currentToken]) => ({ currentToken })));
   }
 
+  getUID() {
+    return this.auth.currentUser.uid;
+  }
+
   signOut(): Observable<any> {
+    console.log('Cerrar sesion service');
     this._storage.clear().then((res) => {});
     return from(
       this.auth.signOut().then(() => {
-        this._router.navigate(['/'], { replaceUrl: true });
+        this._router.navigate(['/login'], { replaceUrl: true });
       })
     );
   }

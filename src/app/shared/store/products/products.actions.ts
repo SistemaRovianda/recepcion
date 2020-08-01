@@ -7,7 +7,10 @@ const LOAD_PRODUCTS_SUCCESS = '[Products] Load Products Success';
 
 const LOAD_PRODUCTS_ERROR = '[Products] Load Products Error';
 
-export const loadProducts = createAction(LOAD_PRODUCTS);
+export const loadProducts = createAction(
+  LOAD_PRODUCTS,
+  props<{ area: string }>()
+);
 
 export const loadProductsSuccess = createAction(
   LOAD_PRODUCTS,

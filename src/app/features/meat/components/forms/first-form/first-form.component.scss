@@ -22,7 +22,11 @@
     }
 
     &__item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         height: auto;
+        width: 100%;
     }
 
     &__label {

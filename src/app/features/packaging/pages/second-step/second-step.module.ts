@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { SecondStepPage } from './second-step.page';
 import { SecondFormModule } from '../../components/forms/second-form/second-form.module';
 import { ConfirmSaveDialogModule } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { ConfirmSaveDialogModule } from 'src/app/shared/dialogs/confirm-save-dia
     IonicModule,
     SecondFormModule,
     ConfirmSaveDialogModule,
+    TitleHeaderModule,
   ],
   declarations: [SecondStepPage],
 })

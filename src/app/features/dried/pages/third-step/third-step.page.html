@@ -1,0 +1,19 @@
+<title-header [titlePath]="'Regresar'" [title]="'Entrada Secos'" (onBack)="onBack($event)"></title-header>
+
+<ion-content>
+  <ion-grid class="container container--all" fixed>
+    <ion-row class="container container__row container__row--form">
+      <ion-col class="container container__row" size="12">
+        <app-third-form #form (onSubmit)="onSubmit($event)"></app-third-form>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container container__row container__row--actions">
+      <ion-col class="container container__column" size="12">
+        <ion-button class="container container__button" [disabled]="form.form.invalid" (click)="onSaveForm()"
+          expand="block" shape="round" color="primary">
+          Siguiente
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

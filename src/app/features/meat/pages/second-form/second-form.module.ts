@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SecondFormPage } from './second-form.page';
 import { RouterModule } from '@angular/router';
 import { BasicFormModule } from '../../components/forms/basic-form/basic-form.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { BasicFormModule } from '../../components/forms/basic-form/basic-form.mo
     IonicModule,
     RouterModule,
     BasicFormModule,
+    TitleHeaderModule,
   ],
   declarations: [SecondFormPage],
 })

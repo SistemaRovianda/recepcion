@@ -1,27 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fifth-form</ion-title>
-  </ion-toolbar>
-</ion-header>
+<title-header [titlePath]="'Regresar'" [title]="'Entrada Carnes'" (onBack)="onBack($event)"></title-header>
+
 
 <ion-content>
-  <ion-grid fixed class="container">
+  <ion-grid fixed class="container container--all">
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
         <app-basic-form [titleForm]="'Transporte'" [infoOne]="'Limpio, sin olores, sin material ajeno, sin plagas'"
-          #transportForm (onSubmit)="onSubmitTransport($event)"></app-basic-form>
+          [placeholderMessage]="'Ingrese transporte'" [typeValue]="'text'" #transportForm
+          (onSubmit)="onSubmitTransport($event)">
+        </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
       <ion-col class="container container__column" size="12">
-        <app-basic-form [titleForm]="'Textura'" [infoOne]="Firme" #textureForm (onSubmit)="onSubmitTexture($event)">
+        <app-basic-form [titleForm]="'Textura'" [infoOne]="Firme" [placeholderMessage]="'Ingrese textura'"
+          [typeValue]="'text'" #textureForm (onSubmit)="onSubmitTexture($event)">
         </app-basic-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" (click)="onNextPage()" expand="block" shape="round"
-          color="primary">
+        <ion-button class="container container__button"
+          [disabled]="transportForm.form.invalid || textureForm.form.invalid" (click)="onNextPage()" expand="block"
+          shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SixthFormPage } from './sixth-form.page';
 import { RouterModule } from '@angular/router';
 import { BasicFormModule } from '../../components/forms/basic-form/basic-form.module';
-import { FridgeFormModule } from "../../components/forms/fridge-form/fridge-form.module"; 
+import { FridgeFormModule } from '../../components/forms/fridge-form/fridge-form.module';
+import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { FridgeFormModule } from "../../components/forms/fridge-form/fridge-form
     IonicModule,
     RouterModule,
     BasicFormModule,
-    FridgeFormModule
+    FridgeFormModule,
+    TitleHeaderModule,
   ],
   declarations: [SixthFormPage],
 })

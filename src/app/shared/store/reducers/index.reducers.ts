@@ -7,6 +7,7 @@ import { meatReducer } from 'src/app/features/meat/store/meat/meat.reducer';
 import { usersRegisteredReducer } from '../usersRegistered/users-registered.reducer';
 import { ProductsReducer } from '../products/products.reducer';
 import { packagingReducer } from '../../../features/packaging/store/packaging/packaging.reducer';
+import { driedReducer } from 'src/app/features/dried/store/dried/dried.reducer';
 
 export const reducers: ActionReducerMap<AppState> = {
   login: loginReducer,
@@ -16,6 +17,7 @@ export const reducers: ActionReducerMap<AppState> = {
   users: usersRegisteredReducer,
   products: ProductsReducer,
   packaging: packagingReducer,
+  dried: driedReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [];

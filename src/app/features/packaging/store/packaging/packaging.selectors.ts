@@ -7,3 +7,8 @@ export const entryPackagingSelector = createSelector(
   ENTRY_PACKAGING_STATE,
   (state) => state.entryPackaging
 );
+
+export const valuePackingQuantitySelector = createSelector(
+  ENTRY_PACKAGING_STATE,
+  (state) => state.entryPackaging.quantity
+);

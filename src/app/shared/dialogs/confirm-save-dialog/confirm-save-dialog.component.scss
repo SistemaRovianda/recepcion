@@ -1,0 +1,29 @@
+@import "../../../../theme/mixins.scss";
+
+.container {
+    &__row {
+        &--message {
+            @include breakpoint-size(ms-small) {
+                font-size: var(--fs-text-sm);
+                height: 45%;
+            }
+        }
+
+        &--actions {
+            @include breakpoint-size(ms-small) {
+                height: 55%;
+            }
+        }
+    }
+
+    &__message {
+        text-align: center;
+        @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xlg);
+        }
+    }
+}

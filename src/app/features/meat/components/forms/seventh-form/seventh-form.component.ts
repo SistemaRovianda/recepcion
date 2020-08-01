@@ -48,7 +48,7 @@ export class SeventhFormComponent implements OnInit {
   onSubmit() {
     let finalForm: finalInformation = {
       ...this.form.value,
-      qualityInspector: this.form.get('qualityInspector').value.fullName,
+      qualityInspector: this.form.get('qualityInspector').value.userId,
     };
     this.submit.emit(finalForm);
   }
@@ -63,8 +63,20 @@ export class SeventhFormComponent implements OnInit {
       })
       .then((res) => {
         this.imgURL = 'data:image/jpeg;base64,' + res;
-        this.form.get('photo').setValue(this.imgURL);
+        this.form.get('photo').setValue(res);
       })
       .catch((err) => console.error('Error en la toma de fotografia'));
+  }
+
+  get photo() {
+    return this.form.get('photo');
+  }
+
+  get qualityInspector() {
+    return this.form.get('qualityInspector');
+  }
+
+  get job() {
+    return this.form.get('job');
   }
 }

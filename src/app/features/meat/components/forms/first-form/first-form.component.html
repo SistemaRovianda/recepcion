@@ -13,10 +13,19 @@
       <ion-col class="container container__column" size="12">
         <ion-item class="container container__item">
           <ion-label class="container container__label" position="stacked">Provedor</ion-label>
-          <ion-input class="container container__input" type="text" placeholder="Ingrese nombre de provedor"
+          <ion-input class="container container__input" type="text" required placeholder="Ingrese nombre de provedor"
             formControlName="proveedor">
           </ion-input>
         </ion-item>
+        <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)">
+          <div *ngIf="proveedor.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="proveedor.errors.invalidText">
+            Caracteres invalidos
+          </div>
+        </div>
+
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--lotes">
@@ -26,6 +35,14 @@
           <ion-input class="cotainer container__input" type="text" placeholder="Ingrese lote provedor"
             formControlName="lotProveedor"></ion-input>
         </ion-item>
+        <div *ngIf="lotProveedor.invalid && (lotProveedor.dirty || lotProveedor.touched)">
+          <div *ngIf="lotProveedor.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="lotProveedor.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
       <ion-col class="container container__column" size="6">
         <ion-item class="container container__item">
@@ -33,6 +50,14 @@
           <ion-input class="container container__input" type="text" placeholder="Ingrese lote interno"
             formControlName="lotInternal"></ion-input>
         </ion-item>
+        <div *ngIf="lotInternal.invalid && (lotInternal.dirty || lotInternal.touched)">
+          <div *ngIf="lotInternal.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="lotInternal.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--materia">
@@ -42,6 +67,14 @@
           <ion-input class="container container__input" type="text" placeholder="Ingrese materia prima"
             formControlName="rawMaterial"></ion-input>
         </ion-item>
+        <div *ngIf="rawMaterial.invalid && (rawMaterial.dirty || rawMaterial.touched)">
+          <div *ngIf="rawMaterial.errors.required">
+            El campo es requerido
+          </div>
+          <div *ngIf="rawMaterial.errors?.invalidCharacters">
+            Caracteres invalidos
+          </div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

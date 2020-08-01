@@ -3,6 +3,16 @@
 .container {
     height: 100%;
 
+    &--all {
+        @include breakpoint-size(ms-small) {
+            height: 1050px;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+            height: 800px;
+        }
+    }
+
     &__row {
         &--title {
             @include breakpoint-size(ms-extra-small) {
