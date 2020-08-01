@@ -5,12 +5,13 @@
     <div class="contentInputs">
       <ion-item>
         <ion-label>Buscar: </ion-label>
-        <ion-select #selected value="DRIEF" multiple="false" okText="Aceptar" cancelText="Cancelar" (ionChange)="search(selected.value)">
+        <ion-select #selected value="DRIEF" multiple="false" interface="action-sheet"
+          (ionChange)="search(selected.value)">
           <ion-select-option value="DRIEF">Secos</ion-select-option>
           <ion-select-option value="PACKING">Empaques</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button class="addButton" color="warning" (click)="navigateAdd()">+</ion-button> 
+      <ion-button class="addButton" color="warning" (click)="navigateAdd()">+</ion-button>
     </div>
     <div class="contentTable">
       <mat-table [dataSource]="infoIngredients" class="mat-elevation-z8">
@@ -35,14 +36,16 @@
           <mat-header-cell *matHeaderCellDef> Presentación </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.presentation}} </mat-cell>
         </ng-container>
-    
+
         <ng-container matColumnDef="accions">
           <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <ion-button color="danger" #submitButton (click)="deleteIngredient(element.id, element.category); submitButton.disabled = true" >Eliminar</ion-button> 
-            </mat-cell>
+            <ion-button color="danger" #submitButton
+              (click)="deleteIngredient(element.id, element.category); submitButton.disabled = true">Eliminar
+            </ion-button>
+          </mat-cell>
         </ng-container>
-    
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
