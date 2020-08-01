@@ -55,4 +55,12 @@ export class CancelProcessDialogComponent implements OnInit {
       onClearForm: true,
     });
   }
+
+  acceptBackFromEntryIngredient() {
+    this.router.navigate([`${this.pathBack}`]);
+
+    this.modalCtrl.dismiss({
+      onClearForm: true,
+    });
+  }
 }

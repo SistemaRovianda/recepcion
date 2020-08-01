@@ -25,6 +25,11 @@
         expand="block" color="primary" shape="round">
         Aceptar
       </ion-button>
+
+      <ion-button class="container container__button" *ngIf="area == 'ingredient'" (click)="acceptBackFromEntryIngredient()"
+      expand="block" color="primary" shape="round">
+      Aceptar
+    </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>

@@ -5,10 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { IngredientFormPageRoutingModule } from './ingredient-form-routing.module';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { IngredientFormPage } from './ingredient-form.page';
 import { HttpClientModule } from '@angular/common/http';
 import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
+import { CancelProcessDialogModule } from 'src/app/shared/dialogs/cancel-process-dialog/cancel-process-dialog.module';
 // import { InputBasicModule } from '../../component/input-basic/input-basic.module';
 
 @NgModule({
@@ -21,8 +22,9 @@ import { TitleHeaderModule } from 'src/app/shared/components/header/header.modul
     MatInputModule,
     HttpClientModule,
     TitleHeaderModule,
-    IngredientFormPageRoutingModule
+    IngredientFormPageRoutingModule,
+    CancelProcessDialogModule,
   ],
-  declarations: [IngredientFormPage]
+  declarations: [IngredientFormPage],
 })
 export class IngredientFormPageModule {}
