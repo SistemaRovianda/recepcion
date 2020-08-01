@@ -1,0 +1,30 @@
+<ion-grid class="container" fixed>
+  <ion-row class="container container__row container__row--message">
+    <ion-col class="container container__column" size="12">
+      {{message}}
+    </ion-col>
+  </ion-row>
+  <ion-row class="container container__row container container__row--actions">
+    <ion-col class="container container__column" size="6">
+      <ion-button class="container container__button" (click)="onCancel()" expand="block" fill="outline" shape="round">
+        Cancelar
+      </ion-button>
+    </ion-col>
+    <ion-col class="container container__column" size="6">
+      <ion-button class="container container__button" *ngIf="area == 'meat'" (click)="acceptBackFromEntryMeat()"
+        expand="block" color="primary" shape="round">
+        Aceptar
+      </ion-button>
+
+      <ion-button class="container container__button" *ngIf="area == 'packing'" (click)="acceptBackFromEntryPacking()"
+        expand="block" color="primary" shape="round">
+        Aceptar
+      </ion-button>
+
+      <ion-button class="container container__button" *ngIf="area == 'drief'" (click)="acceptBackFromEntryDrief()"
+        expand="block" color="primary" shape="round">
+        Aceptar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -3,7 +3,12 @@ import { FirstFormComponent } from 'src/app/features/packaging/components/forms/
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
-import { addBasicInformationDried } from '../../store/dried/dried.actions';
+import {
+  addBasicInformationDried,
+  clearEntryDried,
+} from '../../store/dried/dried.actions';
+import { ModalController } from '@ionic/angular';
+import { CancelProcessDialogComponent } from 'src/app/shared/dialogs/cancel-process-dialog/cancel-process-dialog.component';
 // import { addBasicInformationPackaging } from 'src/app/features/packaging/store/packaging/packaging.actions';
 
 @Component({
@@ -14,7 +19,11 @@ import { addBasicInformationDried } from '../../store/dried/dried.actions';
 export class FirstStepPage implements OnInit {
   @ViewChild('form', { static: false }) form: FirstFormComponent;
 
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(
+    private router: Router,
+    private store: Store<AppState>,
+    private modalCtrl: ModalController
+  ) {}
 
   ngOnInit() {}
 
@@ -24,11 +33,35 @@ export class FirstStepPage implements OnInit {
   }
 
   onBack(evt) {
-    this.router.navigate(['menu', 'reception']);
+    if (this.form.form.invalid) this.cancelRegister();
   }
 
   toNavigate() {
     this.form.onSubmit();
     this.router.navigate(['dried', 'second-step']);
+  }
+
+  async cancelRegister() {
+    const modal = await this.modalCtrl.create({
+      component: CancelProcessDialogComponent,
+      cssClass: 'cancel-dialog',
+      componentProps: {
+        message: '¿Tienes datos en curso, seguro deseas regresar?',
+        area: 'drief',
+        pathBack: '/menu/reception',
+      },
+    });
+
+    modal.onDidDismiss().then((valueReturn) => {
+      if (valueReturn !== null) {
+        if (valueReturn.data.onClearForm) {
+          console.log('limpiar estado de drief');
+          this.form.form.reset();
+          this.store.dispatch(clearEntryDried());
+        }
+      }
+    });
+
+    return await modal.present();
   }
 }
