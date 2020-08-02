@@ -25,7 +25,7 @@ export class FirstFormComponent implements OnInit {
       rawMaterial: ['', [Validators.required, CustomValidators.textAndNumbers]],
       date: [
         {
-          value: moment(new Date()).format('DD/MM/YYYY'),
+          value: moment(new Date()).format('YYYY-MM-DD'),
           disabled: true,
         },
       ],
@@ -37,8 +37,9 @@ export class FirstFormComponent implements OnInit {
   onSubmitForm() {
     let firstForm: BasicInformation = {
       ...this.form.value,
-      date: moment(new Date()).format('DD/MM/YYYY'),
+      date: moment(new Date()).format('YYYY-MM-DD'),
     };
+    console.log('primer formulario: ', firstForm);
     this.submit.emit(firstForm);
   }
 
