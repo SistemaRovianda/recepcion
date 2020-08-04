@@ -31,6 +31,7 @@ export class PackagingEffects {
           this.packagingService.saveEntryPackaging(action.entryPackaging).pipe(
             tap((entryPackagingId) => {
               this.toastService.onSuccess();
+              localStorage.removeItem('objQuantity');
               this.router.navigate([
                 'packaging/print-report',
                 `${entryPackagingId.packingId}`,
