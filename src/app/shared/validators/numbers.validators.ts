@@ -4,7 +4,7 @@ export class CustomValidators {
   constructor() {}
 
   static textAndNumbers(control: FormControl): { [key: string]: boolean } {
-    const regex = /^[A-Z0-9ÑÁÉÍÓÚa-zñáéíóú,.]*((\s)?([A-Z0-9ÑÁÉÍÓÚa-z-ñáéíóú,.])+)*$/g;
+    const regex = /^[A-Z0-9ÑÁÉÍÓÚa-zñáéíóú,.-:/]*((\s)?([A-Z0-9ÑÁÉÍÓÚa-z-ñáéíóú,.-:/])+)*$/g;
     if (!regex.test(control.value)) {
       return {
         invalidCharacters: true,
@@ -14,7 +14,7 @@ export class CustomValidators {
   }
 
   static text(control: FormControl): { [key: string]: boolean } {
-    const regex = /^[A-ZÑÁÉÍÓÚa-zñáéíóú,.]+((\s)?([A-ZÑÁÉÍÓÚa-z-ñáéíóú,.])+)*$/g;
+    const regex = /^[A-ZÑÁÉÍÓÚa-zñáéíóú,.-:/]+((\s)?([A-ZÑÁÉÍÓÚa-z-ñáéíóú,.-:/])+)*$/g;
 
     if (!regex.test(control.value)) {
       return {
