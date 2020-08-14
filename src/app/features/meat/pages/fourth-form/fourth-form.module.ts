@@ -8,6 +8,7 @@ import { FourthFormPage } from './fourth-form.page';
 import { RouterModule } from '@angular/router';
 import { BasicFormModule } from '../../components/forms/basic-form/basic-form.module';
 import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
+import { BasicCheckFormModule } from '../../components/forms/basic-check-form/basic-check-form.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { TitleHeaderModule } from 'src/app/shared/components/header/header.modul
     IonicModule,
     RouterModule,
     BasicFormModule,
+    BasicCheckFormModule,
     TitleHeaderModule,
   ],
   declarations: [FourthFormPage],

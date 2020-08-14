@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { addPackingData, addOdorData } from '../../store/meat/meat.actions';
 import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
+import { BasicCheckFormComponent } from '../../components/forms/basic-check-form/basic-check-form.component';
 
 @Component({
   selector: 'app-fourth-form',
@@ -12,7 +13,7 @@ import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
   styleUrls: ['./fourth-form.page.scss'],
 })
 export class FourthFormPage implements OnInit {
-  @ViewChild('packingForm', { static: false }) packingForm: BasicFormComponent;
+  @ViewChild('strangeMaterialForm', { static: false }) strangeMaterialForm: BasicCheckFormComponent;
 
   @ViewChild('odorForm', { static: false }) odorForm: BasicFormComponent;
 
@@ -20,8 +21,9 @@ export class FourthFormPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmitPacking(evt: AdditionalInformation) {
-    this._store.dispatch(addPackingData({ packing: evt }));
+  onSubmitStrageMaterial(evt: AdditionalInformation) {
+    console.log("materia extra ", evt);
+    // this._store.dispatch(addPackingData({ packing: evt }));
   }
 
   onSubmitOdor(evt: AdditionalInformation) {
@@ -33,7 +35,7 @@ export class FourthFormPage implements OnInit {
   }
 
   onNextPage(evt) {
-    this.packingForm.onSubmitForm();
+    this.strangeMaterialForm.onSubmitForm();
     this.odorForm.onSubmitForm();
     this._router.navigate(['meat', 'fifth-form-meat']);
   }

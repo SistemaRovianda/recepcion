@@ -1,0 +1,42 @@
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4">
+        <h3>{{title}}</h3>
+        <h6>{{subtitle}}</h6>
+      </ion-col>
+      <ion-col size="8">
+        <ion-row>
+         <ion-col size="8">
+           <form [formGroup]="form">
+            <ion-list class="container container__list">
+              <ion-radio-group name="auto" formControlName="accepted">
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label>Aceptado</ion-label>
+                      <ion-radio [value]="true"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label>Rechazado</ion-label>
+                      <ion-radio [value]="false"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-list>
+           </form>
+           
+      
+         </ion-col>
+         <ion-col size="4" class="actions">
+            <ion-button (click)="addObservations()" expand="block" color="primary">
+              Observaciones
+            </ion-button>
+         </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>

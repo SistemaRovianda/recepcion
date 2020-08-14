@@ -1,0 +1,26 @@
+<ion-grid fixed style="width: 100%; height: 100%; padding: 8px;">
+  <ion-row style="height: 10%;">
+    <ion-col size="12">
+      <h1>Agregar observaciones</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row style="height: 80%;">
+    <ion-col size="12">
+      <ion-textarea [formControl]="observationForm" style="font-size: 1.2rem; background-color: #ededed; height: 100%;">
+
+      </ion-textarea>
+    </ion-col>
+  </ion-row>
+  <ion-row class="row-actions">
+    <ion-col size="4">
+      <ion-button (click)="onCancel()" expand="block" fill="clear" shape="round">
+        Cancelar
+      </ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button (click)="onAccept()" [disabled]="observationForm.invalid" expand="block" fill="clear" color="primary">
+        Aceptar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

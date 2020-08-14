@@ -30,7 +30,7 @@ export interface BasicInformation {
 }
 
 export interface AdditionalInformation {
-  value: string;
+  value?: string;
   fridgeId?: number;
   observations?: string;
   description?: string;

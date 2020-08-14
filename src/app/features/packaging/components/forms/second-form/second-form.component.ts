@@ -57,14 +57,17 @@ export class SecondFormComponent implements OnInit {
   }
 
   onQualitySubmit(evt) {
+    console.log('se coloca quantity en formulario');
     this.form.get('quality').setValue(evt);
   }
 
   onStrageMaterialSubmit(evt) {
+    console.log('se coloca strageMaterial en formulario');
     this.form.get('strageMaterial').setValue(evt);
   }
 
   onTransportSubmit(evt) {
+    console.log('se coloca onTransport en formulario');
     this.form.get('transport').setValue(evt);
   }
 
@@ -73,6 +76,7 @@ export class SecondFormComponent implements OnInit {
   }
 
   onSubmitForm() {
+    console.log('se emite formulario completo: ', this.form.value);
     this.submit.emit(this.form.value);
   }
 

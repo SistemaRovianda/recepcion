@@ -5,9 +5,9 @@
   <ion-grid fixed class="container container--all">
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
-        <app-basic-form [titleForm]="'Empaque'" [infoOne]="'Sin daños y limpio'"
-          [placeholderMessage]="'Ingrese empaque'" [typeValue]="'text'" #packingForm
-          (onSubmit)="onSubmitPacking($event)"></app-basic-form>
+        <app-basic-check-form [title]="'Materia extraña'" [subtitle]="'Ausente'"
+         #strangeMaterialForm
+          (onSubmit)="onSubmitStrageMaterial($event)"></app-basic-check-form>
       </ion-col>
     </ion-row>
     <ion-row class="container container__row container__row--form-below">
@@ -19,7 +19,7 @@
     </ion-row>
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" [disabled]="packingForm.form.invalid || odorForm.form.invalid"
+        <ion-button class="container container__button" [disabled]="strangeMaterialForm.form.invalid || odorForm.form.invalid"
           (click)="onNextPage()" expand="block" shape="round" color="primary">
           Siguiente
         </ion-button>

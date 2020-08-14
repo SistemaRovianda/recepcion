@@ -1,0 +1,16 @@
+h3 {
+    margin: 0;
+}
+
+h6{
+    margin: 10px 0;
+    padding: 0 10px;
+    color: var(--ion-color-medium);
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}

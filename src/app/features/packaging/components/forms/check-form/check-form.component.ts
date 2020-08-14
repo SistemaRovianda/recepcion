@@ -22,6 +22,7 @@ export class CheckFormComponent implements OnInit {
   ngOnInit() {}
 
   onFocus(evt) {
+    console.log('evento activado: ', this.form.value);
     this.submit.emit(this.form.value);
   }
 }
