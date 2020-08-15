@@ -14,41 +14,43 @@
     }
 
     &__row {
-        &--form-above {
-            @include breakpoint-size(ms-extra-small) {
-                height: 90%;
-            }
+        height: auto;
 
-            @include breakpoint-size(ms-small) {
-                height: 42.5%;
-            }
+        //     &--form-above {
+        //         @include breakpoint-size(ms-extra-small) {
+        //             height: 90%;
+        //         }
 
-            @include breakpoint-size(ms-medium) {
-                height: 80%;
-            }
+        //         @include breakpoint-size(ms-small) {
+        //             height: 42.5%;
+        //         }
 
-            @include breakpoint-size(ms-extra-large) {
-                height: 80%;
-            }
-        }
+        //         @include breakpoint-size(ms-medium) {
+        //             height: 80%;
+        //         }
 
-        &--form-below {
-            @include breakpoint-size(ms-extra-small) {
-                height: 90%;
-            }
+        //         @include breakpoint-size(ms-extra-large) {
+        //             height: 80%;
+        //         }
+        //     }
 
-            @include breakpoint-size(ms-small) {
-                height: 42.5%;
-            }
+        //     &--form-below {
+        //         @include breakpoint-size(ms-extra-small) {
+        //             height: 90%;
+        //         }
 
-            @include breakpoint-size(ms-medium) {
-                height: 80%;
-            }
+        //         @include breakpoint-size(ms-small) {
+        //             height: 42.5%;
+        //         }
 
-            @include breakpoint-size(ms-extra-large) {
-                height: 80%;
-            }
-        }
+        //         @include breakpoint-size(ms-medium) {
+        //             height: 80%;
+        //         }
+
+        //         @include breakpoint-size(ms-extra-large) {
+        //             height: 80%;
+        //         }
+        //     }
 
         &--action {
             @include breakpoint-size(ms-extra-small) {

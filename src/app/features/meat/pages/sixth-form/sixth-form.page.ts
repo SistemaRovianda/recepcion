@@ -48,7 +48,7 @@ export class SixthFormPage implements OnInit {
   }
 
   onBack(evt) {
-    this._router.navigate(['/meat/fifth-form-meat']);
+    this._router.navigate(['/meat/fourth-form-meat']);
   }
 
   onNextPage(evt) {

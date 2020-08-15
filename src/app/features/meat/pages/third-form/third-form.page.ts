@@ -18,8 +18,7 @@ export class ThirdFormPage implements OnInit {
   @ViewChild('strageMaterialForm', { static: false })
   strageMaterialForm: BasicFormComponent;
 
-  @ViewChild('expirationForm', { static: false })
-  expirationForm: BasicFormComponent;
+ 
 
   constructor(private _router: Router, private _store: Store<AppState>) {}
 
@@ -29,9 +28,7 @@ export class ThirdFormPage implements OnInit {
     this._store.dispatch(addStrageMaterialData({ strageMaterial: evt }));
   }
 
-  onSubmitStrageExpiration(evt: AdditionalInformation) {
-    this._store.dispatch(addExpirationData({ expiration: evt }));
-  }
+ 
 
   onBack(evt) {
     this._router.navigate(['/meat/second-form-meat']);
@@ -39,7 +36,6 @@ export class ThirdFormPage implements OnInit {
 
   onNextPage(evt) {
     this.strageMaterialForm.onSubmitForm();
-    this.expirationForm.onSubmitForm();
     this._router.navigate(['meat', 'fourth-form-meat']);
   }
 }

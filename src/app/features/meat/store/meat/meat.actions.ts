@@ -81,6 +81,11 @@ export const addTextureData = createAction(
   props<{ texture: AdditionalInformation }>()
 );
 
+export const addColorData = createAction(
+  '[Meat] Add Color Data',
+  props<{ color: AdditionalInformation }>()
+);
+
 export const addFridgeData = createAction(
   ADD_FRIDGE_DATA,
   props<{ fridge: AdditionalInformation }>()

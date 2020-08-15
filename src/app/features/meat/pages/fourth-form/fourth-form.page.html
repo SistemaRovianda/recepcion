@@ -5,22 +5,73 @@
   <ion-grid fixed class="container container--all">
     <ion-row class="container container__row container__row--form-above">
       <ion-col class="container container__column" size="12">
-        <app-basic-check-form [title]="'Materia extraña'" [subtitle]="'Ausente'"
-         #strangeMaterialForm
+        <app-basic-check-form [title]="'Materia extraña'" [subtitle]="'Ausente'" #strangeMaterialForm
           (onSubmit)="onSubmitStrageMaterial($event)"></app-basic-check-form>
       </ion-col>
     </ion-row>
-    <ion-row class="container container__row container__row--form-below">
+
+    <ion-row class="container container__row">
       <ion-col class="container container__column" size="12">
-        <app-basic-form [titleForm]="'Olor'" [infoOne]="'Característico'" [placeholderMessage]="'Ingrese olor'"
-          [typeValue]="'text'" #odorForm (onSubmit)="onSubmitOdor($event)">
-        </app-basic-form>
+        <app-basic-check-form [title]="'Caducidad'" [subtitle]="'Vigente'" #expirationForm
+          (onSubmit)="onSubmitExpiration($event)"></app-basic-check-form>
       </ion-col>
     </ion-row>
+
+    <ion-row class="container container__row">
+      <ion-col class="container container__column" size="12">
+        <app-basic-check-form [title]="'Empaque'" [subtitle]="'Sin daños y limpio'" #packingForm
+          (onSubmit)="onSubmitPacking($event)"></app-basic-check-form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="container container__row container__row--form-below">
+      <ion-col class="container container__column" size="12">
+        <app-basic-check-form [title]="'Olor'" [subtitle]="'Característico'" #odorForm
+          (onSubmit)="onSubmitOdor($event)">
+        </app-basic-check-form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="container container__row">
+      <ion-col class="container container__column" size="12">
+        <app-basic-check-form [title]="'Transporte'" [subtitle]="'Limpio, sin olores, sin material ajeno, sin plagas'"
+          #transportForm (onSubmit)="onSubmitTransport($event)">
+        </app-basic-check-form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="container container__row">
+      <ion-col class="container container__column" size="12">
+        <app-basic-check-form [title]="'Textura'" [subtitle]="'Firme, característico'" #textureForm
+          (onSubmit)="onSubmitTexture($event)">
+        </app-basic-check-form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="container container__row">
+      <ion-col class="container container__column" size="12">
+        <app-basic-check-form [title]="'Color'" [subtitle]="'Característico'" #colorForm
+          (onSubmit)="onSubmitColor($event)">
+        </app-basic-check-form>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row class="container container__row">
+      <ion-col class="container container__column" size="12">
+        <app-fridge-form [titleForm]="'Refrigerador'" #fridgeForm (onSubmit)="onSubmitFridge($event)"></app-fridge-form>
+      </ion-col>
+    </ion-row> -->
+
     <ion-row class="container container__row container__row--action">
       <ion-col class="container container__column ion-justify-content-center ion-align-items-center" size="12">
-        <ion-button class="container container__button" [disabled]="strangeMaterialForm.form.invalid || odorForm.form.invalid"
-          (click)="onNextPage()" expand="block" shape="round" color="primary">
+        <ion-button class="container container__button" [disabled]="
+            strangeMaterialForm.form.invalid 
+            || expirationForm.form.invalid
+            || packingForm.form.invalid
+            || odorForm.form.invalid
+            || transportForm.form.invalid
+            || textureForm.form.invalid
+            || colorForm.form.invalid" (click)="onNextPage()" expand="block" shape="round" color="primary">
           Siguiente
         </ion-button>
       </ion-col>

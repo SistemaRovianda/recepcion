@@ -14,7 +14,9 @@ import {
   addSlaughterDateData,
   addFinalData,
   clearEntryMeat,
+  addColorData,
 } from './meat.actions';
+import { state } from '@angular/animations';
 
 export interface MeatState {
   loadind: boolean;
@@ -192,6 +194,39 @@ const _meatReducer = createReducer<MeatState>(
       },
     },
   })),
+  on(addColorData, (state, { color }) => ({
+    ...state,
+    entryMeat: {
+      ...state.entryMeat,
+      temperature: {
+        ...state.entryMeat.temperature,
+      },
+      weight: {
+        ...state.entryMeat.weight,
+      },
+      strageMaterial: {
+        ...state.entryMeat.strageMaterial,
+      },
+      expiration: {
+        ...state.entryMeat.expiration,
+      },
+      packing: {
+        ...state.entryMeat.packing,
+      },
+      odor: {
+        ...state.entryMeat.odor,
+      },
+      transport: {
+        ...state.entryMeat.transport,
+      },
+      texture: {
+        ...state.entryMeat.texture,
+      },
+      color: {
+        ...color,
+      },
+    },
+  })),
   on(addFridgeData, (state, { fridge }) => ({
     ...state,
     entryMeat: {
@@ -219,6 +254,9 @@ const _meatReducer = createReducer<MeatState>(
       },
       texture: {
         ...state.entryMeat.texture,
+      },
+      color: {
+        ...state.entryMeat.color,
       },
       fridge: {
         ...fridge,
@@ -252,6 +290,9 @@ const _meatReducer = createReducer<MeatState>(
       },
       texture: {
         ...state.entryMeat.texture,
+      },
+      color: {
+        ...state.entryMeat.color,
       },
       fridge: {
         ...state.entryMeat.fridge,
@@ -288,6 +329,9 @@ const _meatReducer = createReducer<MeatState>(
       },
       texture: {
         ...state.entryMeat.texture,
+      },
+      color: {
+        ...state.entryMeat.color,
       },
       fridge: {
         ...state.entryMeat.fridge,

@@ -12,6 +12,7 @@ export interface EntryMeat {
   odor?: AdditionalInformation;
   transport?: AdditionalInformation;
   texture?: AdditionalInformation;
+  color?: AdditionalInformation;
   fridge?: AdditionalInformation;
   slaughterDate?: AdditionalInformation;
   photo?: string;

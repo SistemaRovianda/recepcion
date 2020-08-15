@@ -45,6 +45,6 @@ export class SecondFormPage implements OnInit {
   onNextPage(evt) {
     this.basicTemperatureForm.onSubmitForm();
     this.basicWeightForm.onSubmitForm();
-    this._router.navigate(['meat', 'third-form-meat']);
+    this._router.navigate(['meat', 'fourth-form-meat']);
   }
 }
