@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BasicFormComponent } from '../../components/forms/basic-form/basic-form.component';
-import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import {
   addPackingData,
@@ -9,12 +7,11 @@ import {
   addExpirationData,
   addTransportData,
   addTextureData,
-  addFridgeData,
   addColorData,
 } from '../../store/meat/meat.actions';
 import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
 import { BasicCheckFormComponent } from '../../components/forms/basic-check-form/basic-check-form.component';
-import { FridgeFormComponent } from '../../components/forms/fridge-form/fridge-form.component';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-fourth-form',
@@ -40,9 +37,6 @@ export class FourthFormPage implements OnInit {
   textureForm: BasicCheckFormComponent;
 
   @ViewChild('colorForm', { static: false }) colorForm: BasicCheckFormComponent;
-
-  // @ViewChild('fridgeForm', { static: false })
-  // fridgeForm: FridgeFormComponent;
 
   constructor(private _router: Router, private _store: Store<AppState>) {}
 
@@ -77,14 +71,6 @@ export class FourthFormPage implements OnInit {
     this._store.dispatch(addColorData({ color: evt }));
   }
 
-  // onSubmitFridge(evt: AdditionalInformation) {
-  //   this._store.dispatch(
-  //     addFridgeData({
-  //       fridge: { ...evt, fridgeId: +evt.fridgeId, accepted: true },
-  //     })
-  //   );
-  // }
-
   onBack(evt) {
     this._router.navigate(['/meat/second-form-meat']);
   }
@@ -97,7 +83,6 @@ export class FourthFormPage implements OnInit {
     this.transportForm.onSubmitForm();
     this.textureForm.onSubmitForm();
     this.colorForm.onSubmitForm();
-    // this.fridgeForm.onSubmitForm();
     this._router.navigate(['meat', 'sixth-form-meat']);
   }
 }

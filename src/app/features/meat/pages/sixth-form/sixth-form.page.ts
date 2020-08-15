@@ -10,8 +10,6 @@ import {
   addFridgeData,
 } from '../../store/meat/meat.actions';
 
-import * as moment from 'moment';
-
 @Component({
   selector: 'app-sixth-form',
   templateUrl: './sixth-form.page.html',
