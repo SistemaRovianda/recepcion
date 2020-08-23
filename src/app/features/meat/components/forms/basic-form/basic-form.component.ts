@@ -47,6 +47,7 @@ export class BasicFormComponent implements OnInit {
           Validators.required,
           Validators.max(4),
           Validators.min(-18),
+          CustomValidators.integerForTemperature
         ]);
     }
     if (this.typeValue == 'numberW') {

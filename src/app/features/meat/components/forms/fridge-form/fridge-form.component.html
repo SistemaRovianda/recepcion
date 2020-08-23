@@ -14,8 +14,7 @@
           <ion-label>Refrigerador</ion-label>
           <ion-select interface="action-sheet" placeholder="Seleccione refrigerador" formControlName="fridgeId">
             <ion-select-option *ngFor="let fridge of fridges$ | async" [value]="fridge.fridge_id">ID:
-              {{fridge.fridge_id}} ; temperatura:
-              {{fridge.temp}}
+             temperatura : {{fridge.temp}}
             </ion-select-option>
           </ion-select>
         </ion-item>

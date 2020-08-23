@@ -12,6 +12,7 @@ import {
 import { StoreValidator } from 'src/app/shared/validators/store.validator';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -43,6 +44,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.form.reset();
     this._store
       .select(SELECT_IS_LOADING)
       .subscribe((res) => (this.loading = res));

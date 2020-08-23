@@ -28,9 +28,9 @@ export class CustomValidators {
   static integerForTemperature(
     control: FormControl
   ): { [key: string]: boolean } {
-    const regex = /^[-]?(1?[8]|1?[0-9]|[0-4])$/g;
+    const regex = /1[1,2,3,4,5,6,7]$/g;
 
-    if (!regex.test(control.value)) {
+    if (regex.test(control.value)) {
       return {
         invalidTemp: true,
       };

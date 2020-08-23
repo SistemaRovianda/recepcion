@@ -9,6 +9,7 @@ export const loginReducer = createReducer<LoginState>(
   STATE_INITIAL_LOGIN,
   on(fromLoginActions.signIn, (state) => ({ ...state, loading: true })),
   on(fromLoginActions.finishLoad, (state) => ({ ...state, loading: false })),
+  on(fromLoginActions.signInSuccess, state => ({...state, error: null})),
   on(fromLoginActions.signInFailure, (state, { error }) => ({
     ...state,
     loading: false,
