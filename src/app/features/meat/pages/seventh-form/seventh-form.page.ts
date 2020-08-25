@@ -5,7 +5,7 @@ import { AppState } from 'src/app/shared/models/app-state.interface';
 import { finalInformation } from 'src/app/shared/models/meat.interface';
 import { addFinalData, saveEntryMeat } from '../../store/meat/meat.actions';
 import { meatSelector } from '../../store/meat/meat.selectors';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { Router } from '@angular/router';
 
@@ -26,7 +26,7 @@ export class SeventhFormPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmitSeventh(evt: finalInformation) {
+  async onSubmitSeventh(evt: finalInformation) {
     this._store.dispatch(addFinalData({ final: evt }));
     this.openConfirmSaveModal();
   }

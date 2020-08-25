@@ -4,6 +4,7 @@ import { AppState } from '../../models/app-state.interface';
 import { Store } from '@ngrx/store';
 import { clearEntryMeat } from 'src/app/features/meat/store/meat/meat.actions';
 import { Router } from '@angular/router';
+import { signOut } from 'src/app/features/landing/store/login/login.action';
 
 @Component({
   selector: 'app-cancel-process-dialog',
@@ -30,12 +31,14 @@ export class CancelProcessDialogComponent implements OnInit {
   }
 
   acceptBackFromEntryMeat() {
+  
     this.store.dispatch(clearEntryMeat());
     this.router.navigate([`${this.pathBack}`]);
 
     this.modalCtrl.dismiss({
       onClearForm: true,
     });
+  
   }
 
   acceptBackFromEntryPacking() {
@@ -63,4 +66,10 @@ export class CancelProcessDialogComponent implements OnInit {
       onClearForm: true,
     });
   }
+
+  acceptBackFromHome(){
+  
+    this.store.dispatch(signOut());
+    this.modalCtrl.dismiss();
+  } 
 }

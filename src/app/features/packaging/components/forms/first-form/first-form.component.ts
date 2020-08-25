@@ -46,7 +46,7 @@ export class FirstFormComponent implements OnInit {
       ],
       quantity: ['', [Validators.required, CustomValidators.integerNumber]],
       isPz: ['', Validators.required],
-      observations: ['', CustomValidators.textAndNumbers],
+      observations: [''],
     });
   }
 

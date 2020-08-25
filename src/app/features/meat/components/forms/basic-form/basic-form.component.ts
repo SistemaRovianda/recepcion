@@ -45,8 +45,8 @@ export class BasicFormComponent implements OnInit {
         .get('value')
         .setValidators([
           Validators.required,
-          Validators.max(4),
-          Validators.min(-18),
+          // Validators.max(4),
+          // Validators.min(-18),
           CustomValidators.integerForTemperature
         ]);
     }

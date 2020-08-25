@@ -8,6 +8,7 @@ import {
   addTransportData,
   addTextureData,
   addColorData,
+  addStrageMaterialData,
 } from '../../store/meat/meat.actions';
 import { AdditionalInformation } from 'src/app/shared/models/meat.interface';
 import { BasicCheckFormComponent } from '../../components/forms/basic-check-form/basic-check-form.component';
@@ -44,7 +45,7 @@ export class FourthFormPage implements OnInit {
 
   onSubmitStrageMaterial(evt: AdditionalInformation) {
     console.log('materia extra ', evt);
-    // this._store.dispatch(addPackingData({ packing: evt }));
+    this._store.dispatch(addStrageMaterialData({ strageMaterial: evt }));
   }
 
   onSubmitExpiration(evt: AdditionalInformation) {

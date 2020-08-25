@@ -5,12 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { TitleHeaderModule } from 'src/app/shared/components/header/header.module';
 
 import { ReceptionMenuComponent } from './reception-menu.component';
+import { CancelProcessDialogModule } from 'src/app/shared/dialogs/cancel-process-dialog/cancel-process-dialog.module';
 
 const COMMON_IMPORTS = [
   CommonModule,
   IonicModule,
   TitleHeaderModule,
-  RouterModule,
+  RouterModule,CancelProcessDialogModule
 ];
 
 const COMMON_DECLARATIONS = [ReceptionMenuComponent];

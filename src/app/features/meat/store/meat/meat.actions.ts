@@ -111,4 +111,5 @@ export const generateReportEntryMeat = createAction(
   props<{ entryMeatId: string }>()
 );
 
+
 export const clearEntryMeat = createAction(CLEAR_ENTRY_MEAT);

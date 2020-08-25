@@ -7,13 +7,14 @@ import * as fromLoginActions from './login.action';
 import * as fromAuthenticationUser from '../authentication/authentication.action';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 @Injectable()
 export class LogginEffects {
   constructor(
     private action$: Actions,
     private authService: AuthService,
-    private router: Router,
+    private router: NavController,
     private _storage: Storage
   ) {}
 
@@ -98,7 +99,7 @@ export class LogginEffects {
     this.action$.pipe(
       ofType(fromLoginActions.signInSuccess),
       exhaustMap(() =>
-        from(this.router.navigate(['/menu/reception'])).pipe(
+        from(this.router.navigateRoot(['/menu/reception'])).pipe(
           switchMap((result) =>
             result
               ? [fromLoginActions.finishLoad()]

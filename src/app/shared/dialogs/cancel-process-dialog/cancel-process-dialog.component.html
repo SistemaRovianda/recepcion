@@ -30,6 +30,10 @@
       expand="block" color="primary" shape="round">
       Aceptar
     </ion-button>
+    <ion-button class="container container__button" *ngIf="area == 'reception'" (click)="acceptBackFromHome()"
+      expand="block" color="primary" shape="round">
+      Salir
+    </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>
