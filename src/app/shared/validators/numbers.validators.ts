@@ -39,7 +39,7 @@ export class CustomValidators {
   }
 
   static integerForWeight(control: FormControl): { [key: string]: boolean } {
-    const regex = /^([1-9]{1,5}|[1-9][0-9]{0,4}?.[0-9]{1,2}?)$/g;
+    const regex = /^([1-9][0-9]{1,5}|[1-9][0-9]{0,4}?.[0-9]{1,2}?)$/g;
 
     if (!regex.test(control.value)) {
       return {
