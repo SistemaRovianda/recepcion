@@ -32,6 +32,10 @@ const ADD_FINAL_DATA = '[Meat] Add Final Data';
 
 const SAVE_ENTRY_MEAT = '[Meat] Save Entry Meat';
 
+const SAVE_ENTRY_MEAT_SUCCESS = '[Meat] Save Entry Meat Success';
+
+const SAVE_ENTRY_MEAT_ERROR = '[Meat] Save Entry Meat Error';
+
 const GENERATE_REPORT_ENTRY_MEAT = '[Meat] Generate Report Entry Meat';
 
 const CLEAR_ENTRY_MEAT = '[Meat] Clear Entry Meat';
@@ -104,6 +108,14 @@ export const addFinalData = createAction(
 export const saveEntryMeat = createAction(
   SAVE_ENTRY_MEAT,
   props<{ entryMeat: EntryMeat }>()
+);
+
+export const saveEntryMeatSuccess = createAction(
+  SAVE_ENTRY_MEAT_SUCCESS
+);
+
+export const saveEntryMeatError = createAction(
+  SAVE_ENTRY_MEAT_ERROR
 );
 
 export const generateReportEntryMeat = createAction(

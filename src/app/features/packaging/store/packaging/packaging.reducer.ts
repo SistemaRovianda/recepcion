@@ -5,6 +5,8 @@ import {
   addAdditionalInformationPackaging,
   addReviewersInformationPackaging,
   clearEntryPackaging,
+  saveEntryPackagingSuccess,
+  saveEntryPackagingError,
 } from './packaging.actions';
 
 export interface PackagingState {
@@ -40,6 +42,14 @@ const _packagingReducer = createReducer<PackagingState>(
       ...state.entryPackaging,
       ...reviewersInformation,
     },
+  })),
+  on(saveEntryPackagingSuccess, (state) => ({
+    ...state,
+    loading: true
+  })),
+  on(saveEntryPackagingError, (state) => ({
+    ...state,
+    loading: false
   })),
   on(clearEntryPackaging, (state) => ({
     ...state,

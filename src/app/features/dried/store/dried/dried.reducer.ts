@@ -5,6 +5,8 @@ import {
   addFirstAdditionalInformationDried,
   addSecondAdditionalInformationDried,
   clearEntryDried,
+  saveEntryDriedSuccess,
+  saveEntryDriedError,
 } from './dried.actions';
 
 export interface DriedState {
@@ -45,6 +47,16 @@ const _driedReducer = createReducer<DriedState>(
         ...state.entryDried,
         ...secondAdditionalInformation,
       },
+    })
+  ),
+  on(saveEntryDriedSuccess, (state) => ({
+    ...state,
+    loading: true
+  })),
+  on(
+    saveEntryDriedError, (state) => ({
+      ...state,
+      loading: false
     })
   ),
   on(clearEntryDried, (state) => ({

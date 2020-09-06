@@ -12,3 +12,9 @@ export const valuePackingQuantitySelector = createSelector(
   ENTRY_PACKAGING_STATE,
   (state) => state.entryPackaging.quantity
 );
+
+
+export const packagingLoadingSelector = createSelector(
+  ENTRY_PACKAGING_STATE,
+  (state) => state.loading
+)

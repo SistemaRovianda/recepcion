@@ -15,6 +15,9 @@ import {
   addFinalData,
   clearEntryMeat,
   addColorData,
+  saveEntryMeat,
+  saveEntryMeatSuccess,
+  saveEntryMeatError,
 } from './meat.actions';
 import { state } from '@angular/animations';
 
@@ -341,6 +344,18 @@ const _meatReducer = createReducer<MeatState>(
       },
       ...final,
     },
+  })),
+  on(saveEntryMeat, state => ({
+    ...state,
+    loadind: true
+  })),
+  on(saveEntryMeatSuccess, state => ({
+    ...state,
+    loadind: false
+  })),
+  on(saveEntryMeatError, state => ({
+    ...state,
+    loadind: false
   })),
   on(clearEntryMeat, (state) => ({
     ...state,

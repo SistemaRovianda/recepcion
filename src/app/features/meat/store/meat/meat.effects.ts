@@ -5,6 +5,8 @@ import {
   saveEntryMeat,
   generateReportEntryMeat,
   clearEntryMeat,
+  saveEntryMeatError,
+  saveEntryMeatSuccess,
 } from './meat.actions';
 import { exhaustMap, switchMap, catchError, tap } from 'rxjs/operators';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -29,20 +31,18 @@ export class MeatEffects {
         ofType(saveEntryMeat),
         exhaustMap((action) =>
           this.meatService.saveEntryMeat(action.entryMeat).pipe(
-            tap((action) => {
+            switchMap((action) => {
               this.toastService.onSuccess();
               this.router.navigate(['meat/print-report', `${action.meatId}`]);
+              return [saveEntryMeatSuccess()];
             }),
             catchError((error) => {
               this.toastService.onError();
-              return [];
+              return [saveEntryMeatError()];
             })
           )
         )
-      ),
-    {
-      dispatch: false,
-    }
+      )
   );
 
   generateReportEntryMeatEffect$ = createEffect(() =>

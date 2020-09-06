@@ -7,3 +7,8 @@ export const entryDriedSelector = createSelector(
   ENTRY_DRIED_STATE,
   (state) => state.entryDried
 );
+
+export const entryDriedLoadingSelector = createSelector(
+  ENTRY_DRIED_STATE,
+  (state) => state.loading
+)

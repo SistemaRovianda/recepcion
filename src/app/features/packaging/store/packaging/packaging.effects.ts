@@ -6,6 +6,8 @@ import {
   saveEntryPackaging,
   generateReportEntryPackaging,
   clearEntryPackaging,
+  saveEntryPackagingSuccess,
+  saveEntryPackagingError,
 } from './packaging.actions';
 import { exhaustMap, switchMap, tap, catchError } from 'rxjs/operators';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -29,24 +31,24 @@ export class PackagingEffects {
         ofType(saveEntryPackaging),
         exhaustMap((action) =>
           this.packagingService.saveEntryPackaging(action.entryPackaging).pipe(
-            tap((entryPackagingId) => {
+            switchMap((entryPackagingId) => {
               this.toastService.onSuccess();
               localStorage.removeItem('objQuantity');
               this.router.navigate([
                 'packaging/print-report',
                 `${entryPackagingId.packingId}`,
               ]);
+              return [
+                saveEntryPackagingSuccess()
+              ]
             }),
             catchError((error) => {
               this.toastService.onError();
-              return [];
+              return [saveEntryPackagingError()];
             })
           )
         )
-      ),
-    {
-      dispatch: false,
-    }
+      )
   );
 
   generateReportEntryPackingEffect$ = createEffect(() =>

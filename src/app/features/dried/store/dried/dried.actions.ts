@@ -20,6 +20,10 @@ const ADD_SECOND_ADDITIONAL_INFORMATION_DRIED =
 
 const SAVE_ENTRY_DRIED = '[Dried] Savae Entry Dried';
 
+const SAVE_ENTRY_DRIED_SUCCESS = '[Dried] Savae Entry Dried Success';
+
+const SAVE_ENTRY_DRIED_ERROR = '[Dried] Savae Entry Dried Error';
+
 const GENERATE_REPORT_ENTRY_DRIED = '[Dried] Generate Report Entry Dried';
 
 const CLEAR_ENTRY_DRIED = '[Dried] Clear Entry Dried';
@@ -42,6 +46,14 @@ export const addSecondAdditionalInformationDried = createAction(
 export const saveEntryDried = createAction(
   SAVE_ENTRY_DRIED,
   props<{ entryDried: Dried }>()
+);
+
+export const saveEntryDriedSuccess = createAction(
+  SAVE_ENTRY_DRIED_SUCCESS,
+);
+
+export const saveEntryDriedError = createAction(
+  SAVE_ENTRY_DRIED_ERROR,
 );
 
 export const generateReportEntryDried = createAction(

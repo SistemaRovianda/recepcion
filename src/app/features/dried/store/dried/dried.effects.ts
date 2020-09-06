@@ -4,6 +4,8 @@ import {
   saveEntryDried,
   generateReportEntryDried,
   clearEntryDried,
+  saveEntryDriedSuccess,
+  saveEntryDriedError,
 } from './dried.actions';
 import { exhaustMap, switchMap, tap, catchError } from 'rxjs/operators';
 import { DriedService } from 'src/app/shared/services/dried.service';
@@ -29,23 +31,25 @@ export class DriedEffects {
         ofType(saveEntryDried),
         exhaustMap((action) =>
           this.driedService.saveEntryDried(action.entryDried).pipe(
-            tap((driefId) => {
+            switchMap((driefId) => {
               this.toastService.onSuccess();
               this.router.navigate([
                 'dried/print-report',
                 `${driefId.driefId}`,
               ]);
+              return [
+                saveEntryDriedSuccess()
+              ]
             }),
             catchError((error) => {
               this.toastService.onError();
-              return [];
+              return [
+                saveEntryDriedError()
+              ];
             })
           )
         )
-      ),
-    {
-      dispatch: false,
-    }
+      )
   );
 
   generateReportEntryDriedEffect$ = createEffect(() =>

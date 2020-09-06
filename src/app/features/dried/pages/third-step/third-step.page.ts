@@ -5,8 +5,9 @@ import { AppState } from 'src/app/shared/models/app-state.interface';
 import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { addSecondAdditionalInformationDried } from '../../store/dried/dried.actions';
-import { entryDriedSelector } from '../../store/dried/dried.selectos';
+import { entryDriedSelector, entryDriedLoadingSelector } from '../../store/dried/dried.selectos';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-third-step',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ThirdStepPage implements OnInit {
   @ViewChild('form', { static: false }) form: ThirdFormComponent;
+  public onSaveLoading$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -22,7 +24,10 @@ export class ThirdStepPage implements OnInit {
     private modalCtrl: ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onSaveLoading$ = this.store.select(entryDriedLoadingSelector);
+
+  }
 
   onSubmit(evt) {
     console.log('thirdForm: ', evt);

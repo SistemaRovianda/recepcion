@@ -6,8 +6,9 @@ import { addAdditionalInformationPackaging } from '../../store/packaging/packagi
 import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { Packaging } from 'src/app/shared/models/packaging.interface';
-import { entryPackagingSelector } from '../../store/packaging/packaging.selectors';
+import { entryPackagingSelector, packagingLoadingSelector } from '../../store/packaging/packaging.selectors';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-second-step',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class SecondStepPage implements OnInit {
   @ViewChild('form', { static: false }) form: SecondFormComponent;
+  public onSaveLoading$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -23,7 +25,9 @@ export class SecondStepPage implements OnInit {
     private modalCtrl: ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onSaveLoading$ = this.store.select(packagingLoadingSelector);
+  }
 
   onSubmit(evt) {
     console.log('Segundo formulario: ', evt);

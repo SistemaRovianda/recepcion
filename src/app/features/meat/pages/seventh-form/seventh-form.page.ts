@@ -4,10 +4,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/models/app-state.interface';
 import { finalInformation } from 'src/app/shared/models/meat.interface';
 import { addFinalData, saveEntryMeat } from '../../store/meat/meat.actions';
-import { meatSelector } from '../../store/meat/meat.selectors';
-import { ModalController, LoadingController } from '@ionic/angular';
+import { meatSelector, meatLoadingSelector } from '../../store/meat/meat.selectors';
+import { ModalController } from '@ionic/angular';
 import { ConfirmSaveDialogComponent } from 'src/app/shared/dialogs/confirm-save-dialog/confirm-save-dialog.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-seventh-form',
@@ -17,6 +18,7 @@ import { Router } from '@angular/router';
 export class SeventhFormPage implements OnInit {
   @ViewChild('seventhForm', { static: false })
   seventhForm: SeventhFormComponent;
+  public onSaveLoading$: Observable<boolean>;
 
   constructor(
     private _store: Store<AppState>,
@@ -24,7 +26,9 @@ export class SeventhFormPage implements OnInit {
     private _modalCtrl: ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onSaveLoading$ = this._store.select(meatLoadingSelector);
+  }
 
   async onSubmitSeventh(evt: finalInformation) {
     this._store.dispatch(addFinalData({ final: evt }));

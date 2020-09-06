@@ -17,6 +17,10 @@ const ADD_REVIEWERS_INFORMATION_PACKAGING =
 
 const SAVE_ENTRY_PACKAGING = '[Packaging] Save Entry Packaging';
 
+const SAVE_ENTRY_PACKAGING_SUCCESS = '[Packaging] Save Entry Packaging Success'
+
+const SAVE_ENTRY_PACKAGING_ERROR = '[Packaging] Save Entry Packaging Error'
+
 const GENERATE_REPORT_ENTRY_PACKAGING =
   '[Meat] Generate Report Entry Packaging';
 
@@ -40,6 +44,14 @@ export const addReviewersInformationPackaging = createAction(
 export const saveEntryPackaging = createAction(
   SAVE_ENTRY_PACKAGING,
   props<{ entryPackaging: Packaging }>()
+);
+
+export const saveEntryPackagingSuccess = createAction(
+  SAVE_ENTRY_PACKAGING_SUCCESS
+);
+
+export const saveEntryPackagingError = createAction(
+  SAVE_ENTRY_PACKAGING_ERROR
 );
 
 export const generateReportEntryPackaging = createAction(

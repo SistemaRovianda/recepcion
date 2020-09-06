@@ -7,3 +7,8 @@ export const meatSelector = createSelector(
   MEAT_STATE,
   (state) => state.entryMeat
 );
+
+export const meatLoadingSelector = createSelector(
+  MEAT_STATE,
+  (state) => state.loadind
+);
