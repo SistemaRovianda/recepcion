@@ -55,7 +55,7 @@ export class LoginFormComponent implements OnInit {
       return 'Correo no registrado.';
     }
     if (errorMessage == ERROR_PASSWORD_INVALID) {
-      return 'Contraseña invalida.';
+      return 'Contraseña inválida.';
     }
     return 'Varios intentos fallidos, consulte con el administrador o intente mas tarde';
   }

@@ -1,52 +1,94 @@
 <form [formGroup]="form" class="container">
   <ion-grid class="container container__grid" fixed>
     <ion-row class="container container__row">
-      <ion-col class="container container__column container__column--header" size="12">
+      <ion-col
+        class="container container__column container__column--header"
+        size="12"
+      >
         <ion-item class="container container__item">
-          <h2 class="container container__title">{{titleForm}}</h2>
+          <h2 class="container container__title">{{ titleForm }}</h2>
         </ion-item>
       </ion-col>
-      <ion-col class="container container__column container__column--info" size="12"
-        style="display: flex; flex-direction: column;">
-        <h5 class="container container__column container__column--text1">{{infoOne}}</h5>
-        <h5 class="container container__column container__column--text1">{{infoTwo}}</h5>
+      <ion-col
+        class="container container__column container__column--info"
+        size="12"
+        style="display: flex; flex-direction: column"
+      >
+        <h5 class="container container__column container__column--text1">
+          {{ infoOne }}
+        </h5>
+        <h5 class="container container__column container__column--text1">
+          {{ infoTwo }}
+        </h5>
       </ion-col>
     </ion-row>
 
     <ion-row class="container container__row container__row--basic">
       <ion-col class="container container__column" size="12">
         <ion-item class="container container__item">
-          <ion-input class="container container__input"
-            *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberT'" type="text" inputmode="text"
-            formControlName="value" placeholder="{{placeholderMessage}}"></ion-input>
-          <ion-input class="container container__input"
-            *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberW'" type="text" inputmode="text"
-            formControlName="value" placeholder="{{placeholderMessage}}"></ion-input>
-          <ion-input class="container container__input" *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'text'"
-            type="text" formControlName="value" placeholder="{{placeholderMessage}}"></ion-input>
+          <ion-input
+            class="container container__input"
+            *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberT'"
+            type="text"
+            inputmode="text"
+            formControlName="value"
+            placeholder="{{ placeholderMessage }}"
+          ></ion-input>
+          <ion-input
+            class="container container__input"
+            *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'numberW'"
+            type="text"
+            inputmode="text"
+            formControlName="value"
+            placeholder="{{ placeholderMessage }}"
+          ></ion-input>
+          <ion-input
+            class="container container__input"
+            *ngIf="titleForm != 'Fecha de matanza' && typeValue == 'text'"
+            type="text"
+            formControlName="value"
+            placeholder="{{ placeholderMessage }}"
+          ></ion-input>
           <div *ngIf="value.invalid && (value.dirty || value.touched)">
-            <div class="container container__error" *ngIf="value.errors?.required">
+            <div
+              class="container container__error"
+              *ngIf="value.errors?.required"
+            >
               El campo es requerido
             </div>
-            <div class="container container__error" *ngIf=" value.errors?.invalidCharacters">
+            <div
+              class="container container__error"
+              *ngIf="value.errors?.invalidCharacters"
+            >
               Caracteres invalidos
             </div>
-            <div class="container container__error" *ngIf=" value.errors?.invalidWeight">
+            <div
+              class="container container__error"
+              *ngIf="value.errors?.invalidWeight"
+            >
               Peso invalido
             </div>
-            <div class="container container__error" *ngIf=" value.errors?.max">
+            <div class="container container__error" *ngIf="value.errors?.max">
               La máxima es de 4°C
             </div>
-            <div class="container container__error" *ngIf=" value.errors?.min">
+            <div class="container container__error" *ngIf="value.errors?.min">
               El minimo es de -18°C
             </div>
-            <div class="container container__error" *ngIf="value.errors?.invalidTemp">
-              Congelado max -18°C y Frescura max 4°C
+            <div
+              class="container container__error"
+              *ngIf="value.errors?.invalidTemp"
+            >
+              Congelado máx -18°C y Frescura máx 4°C
             </div>
           </div>
           <!-- <ion-input *ngIf="titleForm == 'Fecha de matanza'" placeholder="{{date}}"></ion-input> -->
-          <ion-datetime class="container container__datetime" *ngIf="titleForm == 'Fecha de matanza'"
-            placeholder="{{date}}" formControlName="value" display-format="YYYY-MM-DD"></ion-datetime>
+          <ion-datetime
+            class="container container__datetime"
+            *ngIf="titleForm == 'Fecha de matanza'"
+            placeholder="{{ date }}"
+            formControlName="value"
+            display-format="YYYY-MM-DD"
+          ></ion-datetime>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -54,11 +96,19 @@
     <ion-row class="container container__row container__row--observations">
       <ion-col class="container container__column" size="12">
         <ion-item class="container container__item">
-          <ion-label class="container container__label" position="stacked">Observaciones</ion-label>
-          <ion-textarea class="container container__textarea" formControlName="observations"></ion-textarea>
+          <ion-label class="container container__label" position="stacked"
+            >Observaciones</ion-label
+          >
+          <ion-textarea
+            class="container container__textarea"
+            formControlName="observations"
+          ></ion-textarea>
         </ion-item>
         <div *ngIf="observations.dirty">
-          <div class="container container__error" *ngIf="observations.errors?.invalidCharacters">
+          <div
+            class="container container__error"
+            *ngIf="observations.errors?.invalidCharacters"
+          >
             Caracteres invalidos
           </div>
         </div>
