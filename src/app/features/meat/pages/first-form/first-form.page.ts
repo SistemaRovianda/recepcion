@@ -33,7 +33,11 @@ export class FirstFormPage implements OnInit {
   }
 
   onBack(evt) {
-    if (this.firstForm.form.invalid) this.cancelRegister();
+    if (this.firstForm.form.valid) {
+      this.cancelRegister();
+    } else {
+      this._router.navigate(['menu', 'reception']);
+    }
   }
 
   onNextPage() {
