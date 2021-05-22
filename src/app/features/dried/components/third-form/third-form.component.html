@@ -19,4 +19,17 @@
       </app-check-form>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col size="12">
+        <ion-item>
+            <ion-label>Verifico</ion-label>
+            <ion-select (ionChange)="selectUser($event)" interface="action-sheet"
+                placeholder="Selecciona verificador">
+                <ion-select-option *ngFor="let user of users$ | async " [value]="user.userId">{{user.fullName}}
+                </ion-select-option>
+                <!-- <ion-select-option [value]="hawaii">Verificador 2</ion-select-option> -->
+            </ion-select>
+        </ion-item>
+    </ion-col>
+</ion-row>
 </ion-grid>

@@ -31,7 +31,13 @@ export class CalculatorDialogComponent implements OnInit {
   ngOnInit() {}
 
   pressNumber(num?: number) {
-    this.value += num;
+    if(num==null ){
+      if(this.typeCalc.toUpperCase()=="KG"){
+        this.value += ".";
+      }
+    }else{
+      this.value += num;
+    }
   }
 
   onCancel() {
@@ -71,6 +77,21 @@ export class CalculatorDialogComponent implements OnInit {
     this.modalCtrl.dismiss({
       quantity: this.generateCalc(+this.value, 'pz'),
       typeCalc: 'pz',
+    });
+  }
+
+  onAcceptBx() {
+    localStorage.removeItem('objQuantity');
+
+    let objQuantity = {
+      area: this.area,
+      typeCalc: this.typeCalc,
+      quantity: +this.value,
+    };
+    localStorage.setItem('objQuantity', JSON.stringify(objQuantity));
+    this.modalCtrl.dismiss({
+      quantity: this.value,
+      typeCalc: 'box',
     });
   }
 

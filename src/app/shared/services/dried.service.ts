@@ -33,6 +33,7 @@ export class DriedService {
       texture: dried.texture,
       weight: dried.weight,
       isPz: dried.isPz,
+      makeId: dried.makeId
     };
     return this.http.post<any>(`${this.endpoint}/entry/drief`, drief);
   }

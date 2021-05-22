@@ -17,6 +17,7 @@ export interface Dried {
   color?: boolean;
   texture?: boolean;
   weight?: boolean;
+  makeId: string;
 }
 
 export interface BasicInformationDried {
@@ -26,6 +27,7 @@ export interface BasicInformationDried {
   date?: string;
   observations?: string;
   quantity?: string;
+  makeId: string;
 }
 
 export interface FeatureSelectionTwoInformation {

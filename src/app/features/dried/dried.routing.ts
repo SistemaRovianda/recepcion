@@ -10,6 +10,7 @@ import { ThirdStepPageModule } from './pages/third-step/third-step.module';
 import { PrintReportPage } from './pages/print-report/print-report.page';
 import { PrintReportPageModule } from './pages/print-report/print-report.module';
 import { ProductsResolve } from 'src/app/shared/resolvers/products.resolver';
+import { UsersResolve } from 'src/app/shared/resolvers/users.resolver';
 
 const routes: Routes = [
   {
@@ -22,10 +23,14 @@ const routes: Routes = [
   {
     path: 'second-step',
     component: SecondStepPage,
+    
   },
   {
     path: 'third-step',
     component: ThirdStepPage,
+    resolve: {
+      users: UsersResolve,
+    },
   },
   {
     path: 'print-report/:id',
@@ -43,6 +48,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  providers: [ProductsResolve],
+  providers: [ProductsResolve,UsersResolve],
 })
 export class DriedRoutingModule {}

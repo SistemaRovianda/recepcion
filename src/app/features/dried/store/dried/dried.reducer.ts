@@ -7,6 +7,7 @@ import {
   clearEntryDried,
   saveEntryDriedSuccess,
   saveEntryDriedError,
+  saveEntryDried,
 } from './dried.actions';
 
 export interface DriedState {
@@ -51,7 +52,10 @@ const _driedReducer = createReducer<DriedState>(
   ),
   on(saveEntryDriedSuccess, (state) => ({
     ...state,
-    loading: true
+    loading: false
+  })),
+  on(saveEntryDried,(state)=>({
+    ...state,loading: true
   })),
   on(
     saveEntryDriedError, (state) => ({

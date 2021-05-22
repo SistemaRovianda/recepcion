@@ -70,6 +70,10 @@ export class FirstFormComponent implements OnInit {
     this.openModalCalculator('pz', this.area);
   }
 
+  calcBX() {
+    this.openModalCalculator('box', this.area);
+  }
+
   async openModalCalculator(typeCalc?: string, area?: string) {
     const modal = await this.modalCtrl.create({
       component: CalculatorDialogComponent,

@@ -34,7 +34,7 @@ export class FirstStepPage implements OnInit {
   }
 
   onBack(evt) {
-    if (this.form.form.invalid) this.cancelRegister();
+    this.cancelRegister();
     if(localStorage.getItem('objQuantity')!=null){
       localStorage.removeItem('objQuantity')
     };
