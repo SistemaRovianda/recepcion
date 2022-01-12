@@ -83,6 +83,21 @@
             </ion-button>
           </ion-col>
         </ion-row>
+        <ion-row *ngIf="typeCalc!='kg'">
+          
+          <ion-radio-group  (ionChange)="setTypePzBox($event)" [(ngModel)]="typeCalc" style="display: flex;width: 100%;">
+            <ion-item style="width: 50%;margin: 10px;">
+              <ion-label>Piezas</ion-label>
+              <ion-radio slot="start" value="pz" ></ion-radio>
+            </ion-item>
+        
+            <ion-item style="width: 50%;margin: 10px;">
+              <ion-label>Cajas</ion-label>
+              <ion-radio slot="start" value="box" ></ion-radio>
+            </ion-item> 
+        
+          </ion-radio-group>
+        </ion-row>
       </ion-grid>
     </ion-col>
     <ion-col size="4">
@@ -95,16 +110,17 @@
             </ion-button>
           </ion-col>
         </ion-row>
+        
         <ion-row class="actions__row">
           <ion-col size="12">
-            <ion-button *ngIf="typeCalc == 'kg'" class="container container__button container__button--accept"
-              (click)="onAcceptKg()" expand="block" color="primary">
+            <ion-button  class="container container__button container__button--accept"
+              (click)="onAccept()" expand="block" color="primary">
               Aceptar
             </ion-button>
-            <ion-button *ngIf="typeCalc == 'pz'" class="container container__button container__button--accept"
+            <!-- <ion-button *ngIf="typeCalc == 'pz' || typeCalc=='box'" class="container container__button container__button--accept"
               (click)="onAcceptPz()" expand="block" color="primary">
               Aceptar
-            </ion-button>
+            </ion-button> -->
           </ion-col>
         </ion-row>
       </ion-grid>

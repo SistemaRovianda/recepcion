@@ -25,14 +25,14 @@ export class FirstFormComponent implements OnInit {
   @Input() area: string;
 
   @Output('onSubmit') submit = new EventEmitter();
-
+  isBox:boolean=false;
   constructor(
     private fb: FormBuilder,
     private modalCtrl: ModalController,
     private _store: Store<AppState>
   ) {
     this.form = fb.group({
-      proveedor: ['', [Validators.required, CustomValidators.text]],
+      proveedor: [''],
       lotProveedor: [
         '',
         [Validators.required, CustomValidators.textAndNumbers],
@@ -40,13 +40,14 @@ export class FirstFormComponent implements OnInit {
       productId: ['', Validators.required],
       date: [
         {
-          value: moment(new Date()).format('YYYY-MM-DD'),
+          value: moment(new Date()).format('DD/MM/YYYY'),
           disabled: true,
         },
       ],
-      quantity: ['', [Validators.required, CustomValidators.integerNumber]],
+      quantity: ['', [Validators.required]],
       isPz: ['', Validators.required],
       observations: [''],
+      isBox: ['']
     });
   }
 
@@ -61,17 +62,17 @@ export class FirstFormComponent implements OnInit {
     };
     this.submit.emit(basicInformation);
   }
-
+  uniMed:string;
   calcKG() {
+    this.form.get("isBox").setValue(false);
     this.openModalCalculator('kg', this.area);
   }
 
   calcPZ() {
-    this.openModalCalculator('pz', this.area);
-  }
-
-  calcBX() {
-    this.openModalCalculator('box', this.area);
+    if(!this.uniMed){
+      this.uniMed='pz';
+    }
+    this.openModalCalculator(this.uniMed, this.area);
   }
 
   async openModalCalculator(typeCalc?: string, area?: string) {
@@ -80,7 +81,7 @@ export class FirstFormComponent implements OnInit {
       cssClass: 'calculator-dialog',
       componentProps: {
         typeCalc: typeCalc,
-        area: area,
+        area: area
       },
     });
 
@@ -88,9 +89,19 @@ export class FirstFormComponent implements OnInit {
       if (valueReturn !== null) {
         if (valueReturn.data !== undefined) {
           this.form.get('quantity').setValue(valueReturn.data.quantity);
-          this.form
-            .get('isPz')
-            .setValue(valueReturn.data.typeCalc == 'pz' ? true : false);
+          if(valueReturn.data.typeCalc=='pz'){
+            this.form.get("isPz").setValue(true);
+            this.form.get("isBox").setValue(false);
+            this.uniMed='pz';
+          }else if(valueReturn.data.typeCalc=='box'){
+            this.uniMed='box';
+            this.form.get("isPz").setValue(true);
+            this.form.get("isBox").setValue(true);
+          }else if(valueReturn.data.typeCalc=='kg'){
+            this.uniMed='kg';
+            this.form.get("isPz").setValue(false);
+            this.form.get("isBox").setValue(false);
+          }
         }
       }
     });

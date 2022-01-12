@@ -51,7 +51,7 @@
       <ion-col class="form form__column" size="6">
         <ion-item class="form form__item">
           <ion-label class="form form__label" position="stacked">Fecha</ion-label>
-          <ion-input type="text" formControlName="date"></ion-input>
+          <ion-input type="text" formControlName="date" ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -59,18 +59,16 @@
       <ion-col class="form form__column" size="12">
 
         <ion-item class="form form__item">
-          <ion-label class="form form__label" position="stacked">Cantidad*</ion-label>
+          <ion-label class="form form__label" position="stacked">Cantidad* {{form.get('quantity').value}}</ion-label>
         </ion-item>
         <div class="form form__actions">
           <ion-button (click)="calcKG()" class="form form__button" expand="block" color="secondary">
             Kg
           </ion-button>
           <ion-button (click)="calcPZ()" class="form form__button" expand="block" color="secondary">
-            Pz
+            Pz/Cajas
           </ion-button>
-          <ion-button (click)="calcBX()" class="form form__button" expand="block" color="secondary">
-            Pz
-          </ion-button>
+          
         </div>
 
       </ion-col>

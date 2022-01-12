@@ -18,6 +18,7 @@ export interface Dried {
   texture?: boolean;
   weight?: boolean;
   makeId: string;
+  isBox?:boolean
 }
 
 export interface BasicInformationDried {

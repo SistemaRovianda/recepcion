@@ -16,7 +16,7 @@ export class FirstFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
-      proveedor: ['', [Validators.required, CustomValidators.text]],
+      proveedor: [''],
       lotProveedor: [
         '',
         [Validators.required, CustomValidators.textAndNumbers],
@@ -25,7 +25,7 @@ export class FirstFormComponent implements OnInit {
       rawMaterial: ['', [Validators.required, CustomValidators.textAndNumbers]],
       date: [
         {
-          value: moment(new Date()).format('YYYY-MM-DD'),
+          value: moment(new Date()).format('DD/MM/YYYY'),
           disabled: true,
         },
       ],

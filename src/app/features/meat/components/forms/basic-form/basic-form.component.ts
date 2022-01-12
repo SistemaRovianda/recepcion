@@ -26,7 +26,7 @@ export class BasicFormComponent implements OnInit {
   date: string;
 
   constructor(private fb: FormBuilder) {
-    this.date = moment(new Date()).format('YYYY-MM-DD');
+    this.date = moment(new Date()).format('DD/MM/YYYY');
     this.form = fb.group({
       value: ['', Validators.required],
       observations: ['', CustomValidators.textAndNumbers],

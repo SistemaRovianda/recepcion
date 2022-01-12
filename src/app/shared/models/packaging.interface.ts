@@ -8,7 +8,8 @@ export interface Packaging {
   quality?: boolean;
   strageMaterial?: boolean;
   transport?: boolean;
-  isPz?: true;
+  isPz?: boolean;
+  isBox?:boolean,
   makeId?: string;
   verifitId?: string;
 }
