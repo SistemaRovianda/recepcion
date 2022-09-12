@@ -4,17 +4,12 @@
       <ion-col class="form form__column" size="6">
         <ion-item class="form form__item">
           <ion-label class="form form__label" position="stacked">Proveedor*</ion-label>
-          <ion-input class="form form__input" type="text" formControlName="proveedor" placeholder="Ingrese proveedor">
+          <ion-input class="form form__input" type="text" formControlName="proveedor" placeholder="Ingrese proveedor" maxlength="254">
           </ion-input>
         </ion-item>
-        <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)">
-          <div *ngIf="proveedor.errors.required">
+          <div *ngIf="proveedor.invalid">
             El campo es requerido
           </div>
-          <div *ngIf="proveedor.errors.invalidText">
-            Caracteres invalidos
-          </div>
-        </div>
       </ion-col>
       <ion-col class="form form__column" size="6">
         <ion-item class="form form__item">
